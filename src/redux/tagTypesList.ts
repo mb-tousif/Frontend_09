@@ -1,0 +1,1 @@
+export const tagTypesList= [ "User", "Service", "Booking", "Payment", "Review", "Notification", "Feedback"]

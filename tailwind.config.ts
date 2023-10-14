@@ -15,8 +15,15 @@ const config: Config = {
       maxHeight: {
         "70vh": "70vh",
       },
+      backgroundImage: {
+        main: "url('/src/assets/heroBanner.png')",
+      },
     },
   },
   plugins: [],
+  corePlugins: {
+    preflight: false,
+  },
+  important: true,
 };
-export default config
+export default config;

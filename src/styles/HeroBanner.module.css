@@ -1,0 +1,17 @@
+.banner {
+    background: url('../assets/heroBanner.png');
+    height: 100vh;
+    padding-top: 6rem;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: right;
+    overflow: hidden;
+    position: relative;
+}
+
+@media (max-width: 600px) {
+    .banner {
+        background-position: center;
+        height: 60vh;
+    }
+}

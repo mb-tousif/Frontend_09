@@ -1,8 +1,9 @@
+import HeroBanner from "@/components/ui/HeroBanner";
 
 export default function Home() {
   return (
-    <div className="">
-      <h1>Painting Booking and Management Service</h1>
-    </div>
+    <section className="">
+      <HeroBanner />
+    </section>
   );
 }
