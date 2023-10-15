@@ -14,3 +14,17 @@ export type TUserLoginData = {
 export type TUserLoginResponse = {
   token: string | null;
 };
+
+export type TUser = {
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+    role: string;
+    status: string;
+    imgUrl: string;
+    address: string;
+    contact: string;
+    createdAt: Date;
+    updatedAt: Date;
+};

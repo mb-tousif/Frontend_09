@@ -1,9 +1,11 @@
 import HeroBanner from "@/components/ui/HeroBanner";
+import Subscribe from "@/components/ui/Subscribe";
 
 export default function Home() {
   return (
-    <section className="">
+    <div className="">
       <HeroBanner />
-    </section>
+      <Subscribe />
+    </div>
   );
 }

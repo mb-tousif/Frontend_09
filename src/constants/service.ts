@@ -5,6 +5,12 @@ export enum ENUM_SERVICE_CATEGORY {
   SHOP_PAINTING = "Shop painting",
 }
 
+export enum ENUM_SERVICE_STATUS {
+  AVAILABLE = "Available",
+  UPCOMING = "Upcoming",
+  NOT_AVAILABLE = "Not available",
+}
+
 export const furniturePaintName: string[] = [
   "Wooden Furniture Paint",
   "Metal Furniture Paint",

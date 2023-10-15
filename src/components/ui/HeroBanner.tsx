@@ -1,28 +1,27 @@
-import React from 'react'
+import React from 'react';
+import Link from 'next/link';
 
 export default function HeroBanner() {
   return (
-    <div className="h-screen flex items-center">
-      <section
-        className="w-full bg-cover bg-center py-32"
-        style={{
-          backgroundImage: `url('../../assets/heroBanner.png')`,
-        }}
-      >
-        <div className="container mx-auto text-center text-white">
-          <h1 className="text-5xl font-medium mb-6">Welcome to My Agency</h1>
-          <p className="text-xl mb-12">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-            euismod odio, gravida pellentesque urna varius vitae.
+    <div className="min-h-70vh bg-[#426A56] flex items-center">
+      <div className="w-full py-24">
+        <div className="container mx-auto text-center text-gray-50">
+          <h1 className="sm:text-3xl md:text-5xl text-lg font-medium mb-6">
+            Bringing Colors to Life, One Stroke at a Time!
+          </h1>
+          <p className="text-lg mb-12">
+            Transforming spaces through artistry and precision. Our painters
+            bring your vision to life, one brushstroke at a time. Your dream,
+            our canvas.
           </p>
-          <a
-            href="#"
-            className="bg-indigo-500 text-white py-4 px-12 rounded-full hover:bg-indigo-600"
+          <Link
+            href="/services"
+            className="bg-[#2D5A84] text-white py-4 px-12 rounded-xl hover:bg-[#127A9E] transition duration-300 ease-in-out"
           >
             Demo
-          </a>
+          </Link>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
