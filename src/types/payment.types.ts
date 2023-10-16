@@ -1,9 +1,9 @@
-export type TCart = {
+export type TPayment = {
   id?: string;
   userId?: string;
+  bookingId: string;
   serviceId: string;
-  quantity: number;
-  totalPrice: number;
+  amount: number;
   status?: string;
   createdAt?: Date;
   updatedAt?: Date;

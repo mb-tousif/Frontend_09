@@ -184,7 +184,7 @@ export default function Register() {
                   </p>
                 )}
               </div> */}
-              <div className="mb-6">
+              {/* <div className="mb-6">
                 <label className="inline-block mb-2 mr-2 text-gray-700">
                   User Role
                 </label>
@@ -205,7 +205,7 @@ export default function Register() {
                     User role is required.
                   </p>
                 )}
-              </div>
+              </div> */}
               <div className="mb-4">
                 <label
                   className="block mb-2 text-sm font-bold text-gray-700"

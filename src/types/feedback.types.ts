@@ -1,7 +1,7 @@
 export type TFeedback = {
-  id: string;
-  userId: string;
+  id?: string;
+  userId?: string;
   comment: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 };

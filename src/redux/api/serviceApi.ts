@@ -16,7 +16,7 @@ export const serviceApi = baseApi.injectEndpoints({
       },
       transformResponse: (response: TService[], meta: IMeta) => {
         return {
-          subscription: response,
+          services: response,
           meta,
         };
       },
@@ -48,8 +48,50 @@ export const serviceApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.Service],
     }),
+    deleteServiceById: build.mutation({
+      query: (id: string) => ({
+        url: `/services/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [tagTypes.Service],
+    }),
+    getAvailableServices: build.query({
+      query: (arg: Record<string, any>) => ({
+        url: "/services/all-available-services",
+        method: "GET",
+        params: arg,
+      }),
+      transformResponse: (response: TService[], meta: IMeta) => {
+        return {
+          services: response,
+          meta,
+        };
+      },
+      providesTags: [tagTypes.Service],
+    }),
+    getUpcomingServices: build.query({
+      query: (arg: Record<string, any>) => ({
+        url: "/services/all-upcoming-services",
+        method: "GET",
+        params: arg,
+      }),
+      transformResponse: (response: TService[], meta: IMeta) => {
+        return {
+          services: response,
+          meta,
+        };
+      },
+      providesTags: [tagTypes.Service],
+    }),
   }),
 });
 
 export const {
+  useAllServicesQuery,
+  useGetServiceByIdQuery,
+  useCreateServiceMutation,
+  useUpdateServiceByIdMutation,
+  useDeleteServiceByIdMutation,
+  useGetAvailableServicesQuery,
+  useGetUpcomingServicesQuery,
 } = serviceApi;

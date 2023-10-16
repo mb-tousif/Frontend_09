@@ -1,11 +1,11 @@
 export type TSchedule = {
-  id: string;
+  id?: string;
   bookingId: string;
   serviceId: string;
   duration: string;
   startDate: string;
   endDate: string;
-  status: string;
-  createdAt: Date;
-  updatedAt: Date;
+  status?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 };

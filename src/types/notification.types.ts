@@ -1,9 +1,9 @@
 export type TNotification = {
-  id: string;
-  userId: string;
-  bookingId: string | null;
-  paymentId: string | null;
+  id?: string;
+  userId?: string;
+  bookingId?: string | null;
+  paymentId?: string | null;
   message: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 };

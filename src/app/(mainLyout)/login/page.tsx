@@ -25,10 +25,11 @@ const LoginPage = () => {
     try {
       // console.log(data);
       const res = await userLogin({ ...data }).unwrap();
+      message.success(res.message);
       dispatch(setToken(res.data.token));
       router.push("/dashboard");
     } catch (err: any) {
-      console.error(err.message);
+      message.error(err.data.message);
     }
   };
 

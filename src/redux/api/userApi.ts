@@ -1,8 +1,11 @@
+import { IMeta } from "@/types/common";
 import { baseApi } from "../baseApi";
 import { tagTypes } from "../tagTypesList";
+import { TUser } from "@/types/user.types";
 
 export const userApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
+    // Auth api
     userLogin: build.mutation({
       query: (loginData) => ({
         url: "/auth/login",
@@ -25,7 +28,55 @@ export const userApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.User],
     }),
+    // user api
+    getAllUser: build.query({
+      query: (arg: Record<string, any>) => {
+        return {
+          url: "/users/all-users",
+          method: "GET",
+          params: arg,
+        };
+      },
+      transformResponse: (response: TUser[], meta: IMeta) => {
+        return {
+          users: response,
+          meta,
+        };
+      },
+      providesTags: [tagTypes.User],
+    }),
+    // get by id
+    getUserById: build.query({
+      query: (id: string) => ({
+        url: `/users/profile/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.User],
+    }),
+    // get by id
+    updateUserById: build.mutation({
+      query: (payload) => ({
+        url: `/users/update-profile/${payload.id}`,
+        method: "PUT",
+        data: payload.body,
+      }),
+      invalidatesTags: [tagTypes.User],
+    }),
+    deleteUserById: build.mutation({
+      query: (id: string) => ({
+        url: `/users/delete-profile/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [tagTypes.User],
+    }),
   }),
 });
 
-export const { useUserLoginMutation, useUserRegisterMutation } = userApi;
+export const { 
+  useUserLoginMutation, 
+  useUserRegisterMutation,
+  useGetAllUserQuery,
+  useGetUserByIdQuery,
+  useUpdateUserByIdMutation,
+  useDeleteUserByIdMutation,
+} = userApi;
