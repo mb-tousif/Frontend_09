@@ -5,6 +5,26 @@ export enum ENUM_SERVICE_CATEGORY {
   SHOP_PAINTING = "Shop painting",
 }
 
+export const services = [ 
+  {
+    id: 1,
+    name: "Furniture painting",
+    description: "We provide the furniture painting service across the country. We have a team of experts who are well trained and experienced in this field. We provide the best quality service at a reasonable price. We use the best quality paint and tools for painting.",
+  },{
+    id: 2,
+    name: "Home painting",
+    description: "We provide the home painting service across the country. We have a team of experts who are well trained and experienced in this field. We provide the best quality service at a reasonable price. We use the best quality paint and tools for painting.",
+  },{
+    id: 3,
+    name: "Office painting",
+    description: "We provide the office painting service across the country. We have a team of experts who are well trained and experienced in this field. We provide the best quality service at a reasonable price. We use the best quality paint and tools for painting.",
+  },{
+    id: 4,
+    name: "Shop painting",
+    description: "We provide the shop painting service across the country. We have a team of experts who are well trained and experienced in this field. We provide the best quality service at a reasonable price. We use the best quality paint and tools for painting.",
+  }
+];
+
 export enum ENUM_SERVICE_STATUS {
   AVAILABLE = "Available",
   UPCOMING = "Upcoming",

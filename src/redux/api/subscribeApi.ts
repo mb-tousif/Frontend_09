@@ -3,7 +3,7 @@ import { baseApi } from "../baseApi";
 import { IMeta } from "@/types/common";
 import { tagTypes } from "../tagTypesList";
 
-export const courseApi = baseApi.injectEndpoints({
+export const subscribeApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     // get all
     allSubscriptions: build.query({
@@ -33,7 +33,7 @@ export const courseApi = baseApi.injectEndpoints({
     // create
     createSubscription: build.mutation({
       query: (payload: TSubscribe) => ({
-        url: "/subscribes",
+        url: "/subscribes/create-subscribe",
         method: "POST",
         body: payload,
       }),
@@ -46,4 +46,4 @@ export const {
   useAllSubscriptionsQuery,
   useSubscriptionByIdQuery,
   useCreateSubscriptionMutation,
-} = courseApi;
+} = subscribeApi;

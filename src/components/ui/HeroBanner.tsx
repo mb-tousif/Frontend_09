@@ -7,12 +7,10 @@ export default function HeroBanner() {
       <div className="w-full py-24">
         <div className="container mx-auto text-center text-gray-50">
           <h1 className="sm:text-3xl md:text-5xl text-lg font-medium mb-6">
-            Bringing Colors to Life, One Stroke at a Time!
+            Welcome to Painting Service Ltd.
           </h1>
-          <p className="text-lg mb-12">
-            Transforming spaces through artistry and precision. Our painters
-            bring your vision to life, one brushstroke at a time. Your dream,
-            our canvas.
+          <p className="sm:text-xl md:text-3xl mb-12">
+            Bringing Colors to Life, <br/> One Stroke at a Time!
           </p>
           <Link
             href="/services"

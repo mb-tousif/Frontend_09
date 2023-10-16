@@ -1,12 +1,10 @@
 "use client";
-import { Button, Col, Input, Row, message } from "antd";
+import { Button, Col, Row, message } from "antd";
 import registerImage from "@/assets/register.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
 import { useUserRegisterMutation } from "@/redux/api/userApi";
-import { useAppDispatch } from "@/redux/hooks";
-import { setToken } from "@/redux/slices/authSlice";
 import Form from "@/components/form/Form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormInput from "@/components/form/FormInput";
@@ -25,9 +23,12 @@ const RegisterPage = () => {
     try {
       console.log(data);
       const res = await userRegister({ ...data }).unwrap();
+      if (res) {
+        message.success("User registered successfully");
+      }
       router.push("/login");
     } catch (err: any) {
-      console.error(err.message);
+      message.error(err.data.message);
     }
   };
 
