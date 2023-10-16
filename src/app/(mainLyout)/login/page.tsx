@@ -10,6 +10,7 @@ import { setToken } from "@/redux/slices/authSlice";
 import Form from "@/components/form/Form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormInput from "@/components/form/FormInput";
+import { loginSchema } from "@/schema/userSchema";
 
 type FormValues = {
   id: string;
@@ -22,9 +23,9 @@ const LoginPage = () => {
   const router = useRouter();
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
-      console.log(data);
+      // console.log(data);
       const res = await userLogin({ ...data }).unwrap();
-      dispatch(setToken(res.token));
+      dispatch(setToken(res.data.token));
       router.push("/dashboard");
     } catch (err: any) {
       console.error(err.message);
@@ -52,7 +53,7 @@ const LoginPage = () => {
           First login your account
         </h1>
         <div>
-          <Form submitHandler={onSubmit} resolver={zodResolver}>
+          <Form submitHandler={onSubmit} resolver={zodResolver(loginSchema)}>
             <div>
               <FormInput
                 name="email"

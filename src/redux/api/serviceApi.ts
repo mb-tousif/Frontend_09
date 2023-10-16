@@ -35,16 +35,16 @@ export const serviceApi = baseApi.injectEndpoints({
       query: (payload: TService) => ({
         url: "/services/create-service",
         method: "POST",
-        body: payload,
+        data: payload,
       }),
       invalidatesTags: [tagTypes.Service],
     }),
     // get by id
     updateServiceById: build.mutation({
-      query: (payload: TService, id: string) => ({
-        url: `/services/${id}`,
-        method: "PATCH",
-        body: payload,
+      query: (payload) => ({
+        url: `/services/${payload.id}`,
+        method: "PUT",
+        data: payload.body,
       }),
       invalidatesTags: [tagTypes.Service],
     }),

@@ -1,12 +1,13 @@
 import { TService } from "@/types/service.types";
+import Link from "next/link";
 import React from "react";
 
-export default function ServiceCard({props}:TService[]) {
+export default function ServiceCard({payload}:TService[]) {
   return (
     <div>
       <div className="grid text-gray-50 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-6 p-2 mt-6">
         <div className="relative bg-gray-700 rounded-2xl mx-auto w-full max-w-sm p-6">
-          <a
+          <Link
             href="#"
             className="relative inline-block w-full transform transition-transform duration-300 ease-in-out"
           >
@@ -57,7 +58,7 @@ export default function ServiceCard({props}:TService[]) {
                 </div>
               </div>
             </div>
-          </a>
+          </L>
         </div>
       </div>
     </div>
