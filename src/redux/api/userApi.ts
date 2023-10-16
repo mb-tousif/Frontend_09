@@ -15,10 +15,13 @@ export const userApi = baseApi.injectEndpoints({
       invalidatesTags: [tagTypes.User],
     }),
     userRegister: build.mutation({
-      query: (registerData) => ({
-        url: `/auth/signup`,
+      query: (data) => ({
+        url: "/auth/signup",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
         method: "POST",
-        data: registerData,
+        body: data,
       }),
       invalidatesTags: [tagTypes.User],
     }),

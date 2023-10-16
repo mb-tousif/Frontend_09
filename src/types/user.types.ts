@@ -16,15 +16,15 @@ export type TUserLoginResponse = {
 };
 
 export type TUser = {
-    id: string;
+    id?: string;
     name: string;
     email: string;
     password: string;
-    role: string;
-    status: string;
-    imgUrl: string;
+    role?: string;
+    status?: string;
+    imgUrl?: string;
     address: string;
     contact: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 };

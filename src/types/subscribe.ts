@@ -1,6 +1,6 @@
 export type TSubscribe = {
-  id: string;
+  id?: string;
   email: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 };
