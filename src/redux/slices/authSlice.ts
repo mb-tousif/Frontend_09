@@ -2,7 +2,7 @@
 import { TUserLoginResponse } from "@/types/user.types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-const getToken = (): string | null => {
+export const getToken = (): string | null => {
   let token = null;
   if (typeof window !== "undefined") {
     return localStorage.getItem("token");

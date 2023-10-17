@@ -1,5 +1,5 @@
-import './globals.css'
-import type { Metadata } from 'next'
+import "./globals.css";
+import type { Metadata } from "next";
 import RootProvider from "@/lib/Provider";
 
 export const metadata: Metadata = {
@@ -11,13 +11,13 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <RootProvider>
-      <html lang="en">
+    <html lang="en">
+      <RootProvider>
         <body>{children}</body>
-      </html>
-    </RootProvider>
+      </RootProvider>
+    </html>
   );
 }

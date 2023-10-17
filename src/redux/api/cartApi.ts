@@ -21,6 +21,22 @@ export const cartApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.Cart],
     }),
+    getCartByUserId: build.query({
+      query: ( arg: Record<string, any>) => {
+        return {
+          url: "/carts/user-carts",
+          method: "GET",
+          params: arg,
+        };
+      },
+      transformResponse: (response: TCart[], meta: IMeta) => {
+        return {
+          carts: response,
+          meta,
+        };
+      },
+      providesTags: [tagTypes.Cart],
+    }),
     createCart: build.mutation({
       query: (payload: TCart) => ({
         url: "/carts/create-cart",
@@ -57,7 +73,8 @@ export const cartApi = baseApi.injectEndpoints({
 });
 
 export const { 
-    useGetAllCartQuery, 
+    useGetAllCartQuery,
+    useGetCartByUserIdQuery, 
     useCreateCartMutation, 
     useGetCartByIdQuery, 
     useUpdateCartByIdMutation, 

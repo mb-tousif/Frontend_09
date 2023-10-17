@@ -16,7 +16,7 @@ export default function HeroBanner() {
             href="/services"
             className="bg-[#2D5A84] text-white py-4 px-12 rounded-xl hover:bg-[#127A9E] transition duration-300 ease-in-out"
           >
-            Demo
+            Explore Our Services
           </Link>
         </div>
       </div>

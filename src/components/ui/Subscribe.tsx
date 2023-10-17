@@ -30,10 +30,10 @@ export default function Subscribe() {
         <div className="md:flex items-center justify-center md:w-1/2 md:bg-gray-700">
           <div className="py-6 px-8 md:py-0">
             <h2 className="text-gray-700 text-2xl font-bold md:text-gray-100">
-              Sign Up For The Best Return
+              Sign Up For News Letter
             </h2>
             <p className="mt-2 text-gray-600 md:text-gray-400">
-              Crypto Trade Corp. is the best platform for your financial growth.
+              Painting Service Ltd is the best partner for your painting.
             </p>
           </div>
         </div>

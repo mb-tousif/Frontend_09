@@ -5,24 +5,39 @@ export enum ENUM_SERVICE_CATEGORY {
   SHOP_PAINTING = "Shop painting",
 }
 
-export const services = [ 
+export const services = [
   {
     id: 1,
     name: "Furniture painting",
-    description: "We provide the furniture painting service across the country. We have a team of experts who are well trained and experienced in this field. We provide the best quality service at a reasonable price. We use the best quality paint and tools for painting.",
-  },{
+    imgUrl:
+      "https://img.freepik.com/free-photo/interior-designer-working-with-young-couple_155003-19074.jpg",
+    description:
+      "Give your furniture new life! Our professional furniture painting service transforms old pieces into fresh, stylish accents for your home or workspace.",
+  },
+  {
     id: 2,
     name: "Home painting",
-    description: "We provide the home painting service across the country. We have a team of experts who are well trained and experienced in this field. We provide the best quality service at a reasonable price. We use the best quality paint and tools for painting.",
-  },{
+    imgUrl:
+      "https://img.freepik.com/free-vector/household-renovation-professions_23-2148676135.jpg",
+    description:
+      "Transform your space with our expert home painting service. Professional painters, quality materials, and stunning results. Refresh your home today!",
+  },
+  {
     id: 3,
     name: "Office painting",
-    description: "We provide the office painting service across the country. We have a team of experts who are well trained and experienced in this field. We provide the best quality service at a reasonable price. We use the best quality paint and tools for painting.",
-  },{
+    imgUrl:
+      "https://img.freepik.com/premium-photo/office-room-3d-rendering_982048-80.jpg",
+    description:
+      "Elevate your workplace with our professional office painting. Expert painters, minimal disruption, and a fresh, inspiring environment for your team.",
+  },
+  {
     id: 4,
     name: "Shop painting",
-    description: "We provide the shop painting service across the country. We have a team of experts who are well trained and experienced in this field. We provide the best quality service at a reasonable price. We use the best quality paint and tools for painting.",
-  }
+    imgUrl:
+      "https://img.freepik.com/premium-photo/man-hardware-store-holds-set-brushes-rollers-paint-decor_278641-448.jpg",
+    description:
+      "Revitalize your shop with our expert painting service. Enhance curb appeal, attract customers, and create a welcoming atmosphere for your business.",
+  },
 ];
 
 export enum ENUM_SERVICE_STATUS {

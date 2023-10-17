@@ -3,7 +3,7 @@ import { store } from "@/redux/store";
 import { Provider } from "react-redux";
 import StyledComponentsRegistry from "./AntdRegestry";
 
-const Providers = ({ children }: { children: React.ReactNode }) => {
+const RootProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
       <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
@@ -11,4 +11,4 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default Providers;
+export default RootProvider;

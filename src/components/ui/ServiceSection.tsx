@@ -1,4 +1,5 @@
 import { services } from '@/constants/service';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
@@ -14,26 +15,39 @@ export default function ServiceSection() {
             key={service.id}
             className="p-7 rounded-xl bg-slate-500 dark:bg-neutral-700/70"
           >
-            <h3 className="text-xl font-semibold mb-7">{service.name}</h3>
-            <p className="font-medium leading-7 mb-6 dark:text-gray-400">
-              {service.description}
-            </p>
-            <Link
-              href="/services"
-              className="py-3 flex items-center justify-center w-full font-semibold rounded-md bg-[#2D5A84] hover:bg-[#127A9E] transition duration-300 ease-in-out"
-            >
-              Our All Services
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-                className=" h-5 w-5 ms-3"
-              >
-                <path
-                  fill="currentColor"
-                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                />
-              </svg>
-            </Link>
+            <div className="relative">
+              <Image
+                src={service.imgUrl}
+                alt="service"
+                width={500}
+                height={500}
+                className="absolute z-0 inset-0 object-cover object-center w-full h-full rounded-lg"
+              />
+              <div className="relative p-3 md:p-10 z-20 bg-[#141414b0] rounded-lg">
+                <h3 className="text-xl font-semibold mb-7 text-[#fff]">
+                  {service.name}
+                </h3>
+                <p className="font-medium leading-7 mb-6 text-[#fff]">
+                  {service.description}
+                </p>
+                <Link
+                  href="/services"
+                  className="py-3 flex items-center justify-center w-full font-semibold rounded-md bg-[#2D5A84] hover:bg-[#127A9E] transition duration-300 ease-in-out"
+                >
+                  Our All Services
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    className=" h-5 w-5 ms-3"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </div>
           </div>
         ))}
       </div>

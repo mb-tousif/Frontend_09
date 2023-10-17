@@ -28,6 +28,17 @@ export const userApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.User],
     }),
+    resetPassword: build.mutation({
+      query: (data) => ({
+        url: "/auth/reset-password",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [tagTypes.User],
+    }),
     // user api
     getAllUser: build.query({
       query: (arg: Record<string, any>) => {
@@ -75,6 +86,7 @@ export const userApi = baseApi.injectEndpoints({
 export const { 
   useUserLoginMutation, 
   useUserRegisterMutation,
+  useResetPasswordMutation,
   useGetAllUserQuery,
   useGetUserByIdQuery,
   useUpdateUserByIdMutation,
