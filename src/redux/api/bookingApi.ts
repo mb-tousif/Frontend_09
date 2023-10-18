@@ -30,6 +30,16 @@ export const bookingApi = baseApi.injectEndpoints({
       invalidatesTags: [tagTypes.Booking],
     }),
     // get by id
+    getBookingByUserId: build.query({
+      query: (arg: Record<string, any>) => ({
+        url: `/bookings/all-bookings-by-user`,
+        method: "GET",
+        params: arg,
+      }),
+      providesTags: [tagTypes.Booking],
+    }),
+
+    // get by id
     getBookingById: build.query({
       query: (id: string) => ({
         url: `/bookings/${id}`,
@@ -59,6 +69,7 @@ export const bookingApi = baseApi.injectEndpoints({
 export const { 
     useGetAllBookingsQuery,
     useCreateBookingMutation,
+    useGetBookingByUserIdQuery,
     useGetBookingByIdQuery,
     useUpdateBookingByIdMutation,
     useDeleteBookingByIdMutation,

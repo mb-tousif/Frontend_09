@@ -11,6 +11,13 @@ export enum ENUM_BOOKING_STATUS {
   DELIVERED = "Delivered",
 }
 
+export enum ENUM_CART_STATUS {
+  PENDING= "Pending",
+  BOOKED= "Booked",
+  CANCELLED="Cancelled by user",
+  FAILED= "Cancelled by admin",
+};
+
 export enum ENUM_PAYMENT_STATUS {
   PENDING = "Pending",
   PARTIALLY_PAID = "Partially Paid",

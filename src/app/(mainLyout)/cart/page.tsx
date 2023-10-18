@@ -22,7 +22,6 @@ export default function CartPage() {
     }
     // @ts-ignore
     const carts = data?.carts?.data?.data;
-    console.log(carts);
     
     return (
       <div>

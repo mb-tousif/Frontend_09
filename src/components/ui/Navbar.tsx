@@ -4,7 +4,8 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { removeToken } from "@/redux/slices/authSlice";
 import Link from "next/link";
 import React, { useState } from "react";
-import { GiReceiveMoney, GiPayMoney } from "react-icons/gi";
+import { FaPaintRoller } from "react-icons/fa";
+import { GiLargePaintBrush } from "react-icons/gi";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -50,9 +51,9 @@ export default function Navbar() {
           <div className="md:hidden flex" onClick={() => setOpen(!open)}>
             <div className="flex justify-items-end">
               {open ? (
-                <GiReceiveMoney className="ml-4 w-8 h-8" />
+                <FaPaintRoller className="ml-4 w-8 h-8" />
               ) : (
-                <GiPayMoney className="ml-4 w-8 h-8" />
+                <GiLargePaintBrush className="ml-4 w-8 h-8" />
               )}
             </div>
           </div>

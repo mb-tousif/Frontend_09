@@ -1,11 +1,10 @@
 "use client";
 import PaginationSection from '@/components/ui/PaginationSection';
 import ServiceHeroSection from '@/components/ui/ServiceHeroSection';
-import { useCreateCartMutation } from '@/redux/api/cartApi';
 import { useAllServicesQuery } from '@/redux/api/serviceApi';
-import { useAppSelector } from '@/redux/hooks';
+import { useAppSelector, useDebounced } from '@/redux/hooks';
 import { TService } from '@/types/service.types';
-import { Row, Space, Spin } from 'antd';
+import { Input, Row, Space, Spin } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -14,9 +13,17 @@ import { FaCartPlus } from "react-icons/fa";
 import { LuView } from "react-icons/lu";
 
 export default function Services() {
+  const [search, setSearch] = useState<string>("");
+  const query: Record<string, any> = {};
+   const debouncedSearchTerm = useDebounced({
+     searchQuery: search,
+     delay: 600,
+   });
+  if (!!debouncedSearchTerm) {
+    query["search"] = debouncedSearchTerm;
+  }
   const { data, isLoading: serviceIsLoading } =
-    useAllServicesQuery({})
-  const [createCart ]= useCreateCartMutation();
+    useAllServicesQuery({...query})
   const { token } = useAppSelector((state) => state.auth);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -53,6 +60,17 @@ export default function Services() {
     <>
       <ServiceHeroSection />
       <div className="mx-auto container px-6 xl:px-0 py-6">
+        <div className="flex justify-center p-2">
+          <Input
+            size="large"
+            placeholder="Search by name, category, status only"
+            onChange={(e) => setSearch(e.target.value)}
+            style={{
+              width: "80%",
+              color: "black",
+            }}
+          />
+        </div>
         <div className="flex flex-col">
           <div className="mt-4 grid md:p-4 p-2 lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
             {currentServices?.map((service) => (
@@ -64,7 +82,7 @@ export default function Services() {
                   <Image
                     width={500}
                     height={500}
-                    className="group-hover:opacity-60 rounded-xl transition duration-500"
+                    className="group-hover:opacity-60 max-h-60 rounded-xl transition duration-500"
                     src={service.imgUrl}
                     alt="Service Image"
                   />

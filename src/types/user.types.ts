@@ -21,6 +21,7 @@ export type TUser = {
     email: string;
     password: string;
     role?: string;
+    gender: string;
     status?: string;
     imgUrl?: string;
     address: string;
