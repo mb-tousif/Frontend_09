@@ -4,6 +4,11 @@ export enum ENUM_USER_ROLE {
   ADMIN = "Admin",
   USER = "User",
 }
+export enum ENUM_USER_ROLE_FOR_DASHBOARD {
+  SUPER_ADMIN = "super_admin",
+  ADMIN = "admin",
+  USER = "user",
+}
 
 export enum ENUM_BOOKING_STATUS {
   PENDING = "Pending",

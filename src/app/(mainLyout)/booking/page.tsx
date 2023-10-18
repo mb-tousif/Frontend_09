@@ -40,7 +40,7 @@ export default function Booking() {
     );
   }
   // @ts-ignore
-  const carts = cartData.carts.data.data.filter(
+  const carts = cartData?.carts?.data?.data.filter(
     (cart: TCart) => cart.status === "Pending"
   );
   const bookings = data.data.filter( (booking: any) => booking.status === ENUM_BOOKING_STATUS.PENDING || ENUM_BOOKING_STATUS.CONFIRMED);
@@ -48,7 +48,7 @@ export default function Booking() {
 	
   if (bookings?.length === 0) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center min-h-70vh">
         <div className="text-2xl font-bold text-gray-700">
           You have no Booking
         </div>

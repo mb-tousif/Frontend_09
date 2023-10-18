@@ -3,6 +3,7 @@ import { useAllServicesQuery, useGetServiceByIdQuery } from '@/redux/api/service
 import { TService } from '@/types/service.types';
 import { Row, Space, Spin } from 'antd';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
 export default function Service({ params }: any) {
@@ -52,7 +53,9 @@ export default function Service({ params }: any) {
                 <label className="text-gray-800 text-sm" htmlFor="count">
                   Price: ${service?.price}
                 </label>
-                <div className="flex items-center mt-1">Time takes: {service.schedule}</div>
+                <div className="flex items-center mt-1">
+                  Time takes: {service.schedule}
+                </div>
               </div>
               <div className="mt-1">
                 <label className="text-gray-700 text-sm" htmlFor="count">
@@ -72,66 +75,73 @@ export default function Service({ params }: any) {
               </div>
               <div className="flex items-center mt-6">
                 {
-                // @ts-ignore
-                  service?.carts[0]?.status === "Pending" ? 
-                  <button className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
-                  Pay Now
-                </button>:
-                <button className="mx-2 flex text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
-                  add to cart
-                  <svg
-                    className="h-5 w-5 ml-2"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                  </svg>
-                </button>
+                  // @ts-ignore
+                  service?.carts[0]?.status === "Pending" ? (
+                    <button className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+                      Pay Now
+                    </button>
+                  ) : (
+                    <Link href={`/cart/${service.id}`}>
+                      <button className="mx-2 flex text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
+                        add to cart
+                        <svg
+                          className="h-5 w-5 ml-2"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                      </button>
+                    </Link>
+                  )
                 }
               </div>
             </div>
           </div>
           {/* Show related category data */}
-            <div className="mt-16">
-              <h3 className="text-gray-600 text-2xl font-medium">
-                More Same Category Services
-              </h3>
-              <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-          {
-                services?.map((service: TService) =>
-                <div key={service.id} className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+          <div className="mt-16">
+            <h3 className="text-gray-600 text-2xl font-medium">
+              More Same Category Services
+            </h3>
+            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+              {services?.map((service: TService) => (
+                <div
+                  key={service.id}
+                  className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden"
+                >
                   <div
                     className="flex items-end justify-end h-56 w-full bg-cover"
                     style={{
                       backgroundImage: `url(${service.imgUrl})`,
                     }}
                   >
-                    <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                      <svg
-                        className="h-5 w-5"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                      </svg>
-                    </button>
+                    <Link href={`/cart/${service.id}`}>
+                      <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                        <svg
+                          className="h-5 w-5"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                      </button>
+                    </Link>
                   </div>
                   <div className="px-5 py-3">
                     <h3 className="text-gray-700 uppercase">{service.name}</h3>
                     <span className="text-gray-500 mt-2">${service.price}</span>
                   </div>
                 </div>
-            )
-          }
-          </div>
+              ))}
+            </div>
           </div>
         </div>
       </main>

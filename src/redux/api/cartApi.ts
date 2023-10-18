@@ -22,17 +22,10 @@ export const cartApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.Cart],
     }),
     getCartByUserId: build.query({
-      query: ( arg: Record<string, any>) => {
+      query: ( ) => {
         return {
           url: "/carts/user-carts",
           method: "GET",
-          params: arg,
-        };
-      },
-      transformResponse: (response: TCart[], meta: IMeta) => {
-        return {
-          carts: response,
-          meta,
         };
       },
       providesTags: [tagTypes.Cart],
@@ -41,7 +34,7 @@ export const cartApi = baseApi.injectEndpoints({
       query: (payload: TCart) => ({
         url: "/carts/create-cart",
         method: "POST",
-        data: payload,
+        body: payload,
       }),
       invalidatesTags: [tagTypes.Cart],
     }),
@@ -58,7 +51,7 @@ export const cartApi = baseApi.injectEndpoints({
       query: (payload) => ({
         url: `/carts/${payload.id}`,
         method: "PUT",
-        data: payload.body,
+        body: payload.body,
       }),
       invalidatesTags: [tagTypes.Cart],
     }),

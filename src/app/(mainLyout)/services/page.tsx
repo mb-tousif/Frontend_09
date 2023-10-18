@@ -22,6 +22,8 @@ export default function Services() {
   if (!!debouncedSearchTerm) {
     query["search"] = debouncedSearchTerm;
   }
+  // filter by min price and max price
+  
   const { data, isLoading: serviceIsLoading } =
     useAllServicesQuery({...query})
   const { token } = useAppSelector((state) => state.auth);

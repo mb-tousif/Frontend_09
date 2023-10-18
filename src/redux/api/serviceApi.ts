@@ -24,7 +24,7 @@ export const serviceApi = baseApi.injectEndpoints({
     }),
     // get by id
     getServiceById: build.query({
-      query: (id: string | string[] | undefined) => ({
+      query: (id: string) => ({
         url: `/services/${id}`,
         method: "GET",
       }),

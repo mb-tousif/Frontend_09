@@ -1,4 +1,5 @@
 "use client";
+import SideBar from "@/components/ui/SideBar";
 import { useAppSelector } from "@/redux/hooks";
 import { Layout, Row, Space, Spin } from "antd";
 import { useRouter } from "next/navigation";
@@ -34,7 +35,8 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Layout hasSider>
-        {children}
+      <SideBar />
+      {children}
     </Layout>
   );
 };

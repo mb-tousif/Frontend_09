@@ -27,7 +27,7 @@ const LoginPage = () => {
       const res = await userLogin({ ...data }).unwrap();
       message.success(res.message);
       dispatch(setToken(res.data.token));
-      router.push("/dashboard");
+      router.push("/services");
     } catch (err: any) {
       message.error(err.data.message);
     }
