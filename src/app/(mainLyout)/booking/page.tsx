@@ -43,7 +43,7 @@ export default function Booking() {
   const carts = cartData?.carts?.data?.data.filter(
     (cart: TCart) => cart.status === "Pending"
   );
-  const bookings = data.data.filter( (booking: any) => booking.status === ENUM_BOOKING_STATUS.PENDING || ENUM_BOOKING_STATUS.CONFIRMED);
+  const bookings = data?.data?.filter( (booking: any) => booking.status === ENUM_BOOKING_STATUS.PENDING || ENUM_BOOKING_STATUS.CONFIRMED);
 	console.log(bookings);
 	
   if (bookings?.length === 0) {
@@ -62,7 +62,7 @@ export default function Booking() {
         <h1 className="mb-10 text-center text-2xl font-bold">Booking Items</h1>
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div className="rounded-lg md:w-2/3">
-            {bookings.map((booking: TBooking) => (
+            {bookings?.map((booking: TBooking) => (
               <div
                 key={booking.id}
                 className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
@@ -80,17 +80,17 @@ export default function Booking() {
                     <h2 className="text-lg font-bold text-gray-900">
                       {
                         // @ts-ignore
-                        booking.services?.name
+                        booking?.services?.name
                       }
                     </h2>
                     <p className="mt-1 text-xs text-gray-700">
                       {
                         // @ts-ignore
-                        booking.services?.description
+                        booking?.services?.description
                       }
                     </p>
                     <p className="mt-1 text-sm text-gray-700">
-                      Booking Status: {booking.status}
+                      Booking Status: {booking?.status}
                     </p>
                     <div className="flex justify-center p-2">
                       <button className="px-3 py-2 hover:bg-blue-600 bg-blue-500 text-white text-xs font-bold uppercase rounded">
@@ -108,12 +108,12 @@ export default function Booking() {
               className="mt-6 h-full mb-6 rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3"
             >
               <div className="flex justify-between">
-                <p className="text-gray-700">Status: {cart.status}</p>
-                <p className="text-gray-700">Quantity: {cart.quantity}</p>
+                <p className="text-gray-700">Status: {cart?.status}</p>
+                <p className="text-gray-700">Quantity: {cart?.quantity}</p>
               </div>
               <div className="mb-2 flex justify-between">
                 <p className="text-gray-700">Total Price</p>
-                <p className="text-gray-700">${cart.totalPrice}</p>
+                <p className="text-gray-700">${cart?.totalPrice}</p>
               </div>
               <hr className="my-4" />
               {/* <div className="flex justify-between">

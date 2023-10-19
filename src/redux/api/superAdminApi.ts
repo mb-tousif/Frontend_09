@@ -14,12 +14,12 @@ export const superAdminApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.User],
     }),
-    // get by id
+    // update by id
     updateUserBySuperAdmin: build.mutation({
       query: (payload) => ({
         url: `/super-admins/update-user/${payload.id}`,
-        method: "PUT",
-        data: payload.body,
+        method: "PATCH",
+        body: payload.body,
       }),
       invalidatesTags: [tagTypes.User],
     }),

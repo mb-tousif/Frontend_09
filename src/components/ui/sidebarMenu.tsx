@@ -9,13 +9,12 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BsCardChecklist } from "react-icons/bs";
-import { BiSolidUserCircle } from "react-icons/bi";
 import { LuPaintbrush } from "react-icons/lu";
-import { AiOutlinePlusSquare } from "react-icons/ai";
+import { AiFillHome } from "react-icons/ai";
 import { useAppDispatch } from "@/redux/hooks";
 import { removeToken } from "@/redux/slices/authSlice";
-import { ENUM_USER_ROLE } from "@/constants/common";
-import { FaUserTie } from "react-icons/fa";
+import { ENUM_USER_ROLE_FOR_DASHBOARD } from "@/constants/common";
+import { FaBlog } from "react-icons/fa";
 
 export const SidebarMenus = (role: string) => {
   const router = useRouter();
@@ -28,89 +27,77 @@ const logout = () => {
 
   const defaultSidebarItems: MenuProps["items"] = [
     {
+      label: <h2 onClick={logout}>Logout</h2>,
+      key: "logout",
+      icon: <LogoutOutlined />,
+    },
+    {
+      label: <Link href={`/`}>Home Page</Link>,
+      key: "/",
+      icon: <AiFillHome />,
+    },
+    {
       label: "Profile",
       key: "profile",
       icon: <ProfileOutlined />,
       children: [
         {
-          label: <Link href={`/${role}/profile`}>Profile</Link>,
-          key: `/${role}/profile`,
-        }
+          label: <Link href={`/dashboard/${role}/profile`}>Profile</Link>,
+          key: `/dashboard/${role}/profile`,
+        },
       ],
-    },
-    {
-      label: <h2 onClick={logout}>Logout</h2>,
-      key: "logout",
-      icon: <LogoutOutlined />,
     },
   ];
 
-  const commonAdminSidebarItems: MenuProps["items"] = [
+  const commonAdminSuperAdminSidebarItems: MenuProps["items"] = [
     {
-      label: <Link href={`/${role}/services`}>Services</Link>,
+      label: <Link href={`/dashboard/${role}/manage_user`}>Manage User</Link>,
+      icon: <UserOutlined />,
+      key: `/dashboard/${role}/manage-user`,
+    },
+    {
+      label: (
+        <Link href={`/dashboard/${role}/manage_booking`}>Manage Booking</Link>
+      ),
+      icon: <BsCardChecklist />,
+      key: `/dashboard/${role}/manage_booking`,
+    },
+    {
+      label: (
+        <Link href={`/dashboard/${role}/manage_service`}>Manage Service</Link>
+      ),
       icon: <LuPaintbrush />,
-      key: `/${role}/services`,
+      key: `/dashboard/${role}/manage_service`,
+    },
+    {
+      label: <Link href={`/${role}/manage_blogs`}>Manage Blogs</Link>,
+      icon: <FaBlog />,
+      key: `/dashboard/${role}/manage_blogs`,
     },
   ];
 
   const adminSidebarItems: MenuProps["items"] = [
-    ...commonAdminSidebarItems,
-    {
-      label: <Link href={`/${role}/services`}>Service</Link>,
-      icon: <LuPaintbrush />,
-      key: `/${role}/services`,
-    },
-    {
-      label: <Link href={`/${role}/user`}>User</Link>,
-      icon: <BiSolidUserCircle />,
-      key: `/${role}/user`,
-    },
-    {
-      label: <Link href={`/${role}/booking`}>Booking</Link>,
-      icon: <BsCardChecklist />,
-      key: `/${role}/booking`,
-    },
-
     ...defaultSidebarItems,
+    ...commonAdminSuperAdminSidebarItems,
   ];
 
   const superAdminSidebarItems: MenuProps["items"] = [
-    {
-      label: <Link href={`/${role}/manage-admin`}>Manage Admin</Link>,
-      icon: <FaUserTie />,
-      key: `/${role}/manage-admin`,
-    },
-    {
-      label: <Link href={`/${role}/manage-users`}>Manage User</Link>,
-      icon: <UserOutlined />,
-      key: `/${role}/manage-users`,
-    },
-    {
-      label: <Link href={`/${role}/manage-Booking`}>Manage Booking</Link>,
-      icon: <BsCardChecklist />,
-      key: `/${role}/division`,
-    },
-    {
-      label: <Link href={`/${role}/manage-service`}>Manage Service</Link>,
-      icon: <LuPaintbrush />,
-      key: `/${role}/district`,
-    },
-    ...commonAdminSidebarItems,
     ...defaultSidebarItems,
+    ...commonAdminSuperAdminSidebarItems,
   ];
 
   const userSidebarItems: MenuProps["items"] = [
     {
-      label: <Link href={`/${role}/services`}>Services</Link>,
+      label: <Link href={`/dashboard/${role}/services`}>Services</Link>,
       icon: <TableOutlined />,
-      key: `/${role}/services`,
+      key: `/dashboard/${role}/services`,
     },
     ...defaultSidebarItems,
   ];
 
-  if (role === ENUM_USER_ROLE.SUPER_ADMIN) return superAdminSidebarItems;
-  else if (role === ENUM_USER_ROLE.ADMIN) return adminSidebarItems;
-  else if (role === ENUM_USER_ROLE.USER) return userSidebarItems;
+  if (role === ENUM_USER_ROLE_FOR_DASHBOARD.SUPER_ADMIN) return superAdminSidebarItems;
+  else if (role === ENUM_USER_ROLE_FOR_DASHBOARD.ADMIN) return adminSidebarItems;
+  else if (role === ENUM_USER_ROLE_FOR_DASHBOARD.USER) return userSidebarItems;
   else {
     return defaultSidebarItems;
   }

@@ -35,8 +35,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Layout hasSider>
+      {/* ts-ignore */}
       <SideBar />
-      {children}
+      <div className="flex justify-center">{children}</div>
     </Layout>
   );
 };
