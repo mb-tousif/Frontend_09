@@ -66,13 +66,13 @@ export const userApi = baseApi.injectEndpoints({
     }),
     // get by id
     updateUserById: build.mutation({
-      query: (payload) => ({
-        url: `/users/update-profile/${payload.id}`,
+      query: ({id, payload}) => ({
+        url: `/users/update-profile/${id}`,
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
         method: "PATCH",
-        body: payload.body,
+        body: payload,
       }),
       invalidatesTags: [tagTypes.User],
     }),

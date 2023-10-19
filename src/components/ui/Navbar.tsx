@@ -3,7 +3,7 @@ import { navBarRoutes } from "@/constants/routesEnums";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { removeToken } from "@/redux/slices/authSlice";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaPaintRoller } from "react-icons/fa";
 import { GiLargePaintBrush } from "react-icons/gi";
 

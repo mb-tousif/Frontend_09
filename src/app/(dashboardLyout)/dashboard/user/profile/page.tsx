@@ -15,26 +15,19 @@ import { FiEdit } from "react-icons/fi";
 export default function UserProfile() {
   const userInfo: IUserInfo = getUserInfo();
   const { data, isLoading, isError } = useGetUserByIdQuery(userInfo?.id);
-  const [updateUserById] = useUpdateUserByIdMutation();
+  const [updateUserById] = useUpdateUserByIdMutation({fixedCacheKey: "User"});
   const user = data?.data;
   const [open, setOpen] = useState(false);
   const {
-    handleSubmit, register
+    handleSubmit, register, reset
   } = useForm<TUser>();
   const onSubmit: SubmitHandler<TUser> = async (data: TUser) => {
     try {
-      // const res = await updateUserById({ ...data }).unwrap();
-      // console.log(res);
-       const newData = data;
-       const payload = {
-         ...newData,
+       const res = await updateUserById({
          id: userInfo?.id,
-       };
-       const res = await updateUserById(payload).unwrap();
-       console.log(res);
-      //  console.log(data);
-      //  console.log(newData);
-
+         payload:data,
+       }).unwrap();
+      setOpen(false);
       message.success(res.message);
     } catch (err: any) {
       message.error(err.data.message);

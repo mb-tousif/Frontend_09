@@ -10,7 +10,6 @@ import Image from "next/image";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import { useUpdateUserBySuperAdminMutation } from "@/redux/api/superAdminApi";
-import Link from "next/link";
 
 export default function ManageUser() {
   const { data, isLoading } = useGetAllUserQuery({ fixedCacheKey: "Users" });
@@ -19,30 +18,24 @@ export default function ManageUser() {
     updateUserBySuperAdmin,
     { isSuccess, isError, data: updateUser, error },
   ] = useUpdateUserBySuperAdminMutation();
-  // ts-ignore
+  // @ts-ignore
   const users = data?.users?.data?.data;
-  const makeAdmin = (id: string) => {
-    const payload = {
-      id: id,
-      role: "admin",
-    };
-    updateUserBySuperAdmin(payload as any);
-  };
-  const makeUser = (id: string) => {
-    const payload = {
-      id: id,
-      role: "user",
-    };
-    updateUserBySuperAdmin(payload as any);
-  };
-  console.log(updateUser);
-  
-  const deleteUser = (id: string) => {
-    deleteUserById(id);
-    if (deleteSuccess){
-      message.success("User deleted successfully");
-    }
-  };
+ const makeAdmin = async (id: string) => {
+   const payload = {
+     role: ENUM_USER_ROLE_FOR_DASHBOARD.ADMIN,
+   };
+   await updateUserBySuperAdmin({ id: id, payload: payload });
+ };
+ const makeUser = async (id: string) => {
+   const payload= {
+     role: ENUM_USER_ROLE_FOR_DASHBOARD.USER,
+   };
+   await updateUserBySuperAdmin({ id: id, payload: payload });
+ };
+
+ const deleteUser = async (id: string) => {
+   await deleteUserById(id);
+ };
   if (isLoading) {
     return (
       <Row

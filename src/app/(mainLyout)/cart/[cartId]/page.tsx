@@ -32,6 +32,7 @@ export default function AddToCart({ params }: {params: any}) {
     serviceId: service.id as string,
   };
   const handleAddToCart = (data: TCart) => {
+    console.log(data, "cart data");
     createCart(data);
   };
   if (isSuccess) {

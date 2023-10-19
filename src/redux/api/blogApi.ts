@@ -35,7 +35,7 @@ export const blogApi = baseApi.injectEndpoints({
       query: (payload: TBlog) => ({
         url: "/blogs/create-blogs",
         method: "POST",
-        data: payload,
+        body: payload,
       }),
       invalidatesTags: [tagTypes.Blog],
     }),

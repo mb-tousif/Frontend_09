@@ -12,6 +12,11 @@ const config: Config = {
         "70vh": "70vh",
         "50vh": "50vh",
       },
+      minWidth: {
+        "70vh": "70vh",
+        "50vh": "50vh",
+        "90vh": "90vh",
+      },
       maxHeight: {
         "70vh": "70vh",
       },

@@ -5,6 +5,9 @@ import {
   TableOutlined,
   LogoutOutlined,
   UserOutlined,
+  ToolFilled,
+  ProfileFilled,
+  DeleteFilled,
 } from "@ant-design/icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -17,7 +20,7 @@ import { ENUM_USER_ROLE_FOR_DASHBOARD } from "@/constants/common";
 import { FaBlog } from "react-icons/fa";
 
 export const SidebarMenus = (role: string) => {
-  const router = useRouter();
+const router = useRouter();
 const dispatch = useAppDispatch();
 const logout = () => {
     dispatch(removeToken());
@@ -26,11 +29,6 @@ const logout = () => {
   };
 
   const defaultSidebarItems: MenuProps["items"] = [
-    {
-      label: <h2 onClick={logout}>Logout</h2>,
-      key: "logout",
-      icon: <LogoutOutlined />,
-    },
     {
       label: <Link href={`/`}>Home Page</Link>,
       key: "/",
@@ -55,18 +53,92 @@ const logout = () => {
       ),
       icon: <BsCardChecklist />,
       key: `/dashboard/${role}/manage_booking`,
+      children: [
+        {
+          label: (
+            <Link href={`/dashboard/${role}/manage_booking/pending`}>
+              Pending Booking
+            </Link>
+          ),
+          icon: <ProfileFilled />,
+          key: `/dashboard/${role}/manage_booking/pending`,
+        },
+        {
+          label: (
+            <Link href={`/dashboard/${role}/manage_booking/accepted`}>
+              Accepted Booking
+            </Link>
+          ),
+          icon: <ToolFilled />,
+          key: `/dashboard/${role}/manage_booking/accepted`,
+        },
+        {
+          label: (
+            <Link href={`/dashboard/${role}/manage_booking/rejected`}>
+              Rejected Booking
+            </Link>
+          ),
+          icon: <DeleteFilled />,
+          key: `/dashboard/${role}/manage_booking/rejected`,
+        },
+      ],
     },
     {
       label: (
         <Link href={`/dashboard/${role}/manage_service`}>Manage Service</Link>
       ),
+      key: "manage_service",
       icon: <LuPaintbrush />,
-      key: `/dashboard/${role}/manage_service`,
+      children: [
+        {
+          label: (
+            <Link href={`/dashboard/${role}/manage_service/create`}>
+              Create Service
+            </Link>
+          ),
+          icon: <ProfileFilled />,
+          key: `/dashboard/${role}/manage_service/create`,
+        },
+        {
+          label: (
+            <Link href={`/dashboard/${role}/manage_service/edit`}>
+              Edit Service
+            </Link>
+          ),
+          icon: <ToolFilled />,
+          key: `/dashboard/${role}/manage_service/edit`,
+        },
+        {
+          label: (
+            <Link href={`/dashboard/${role}/manage_service/delete`}>
+              Delete Service
+            </Link>
+          ),
+          icon: <DeleteFilled />,
+          key: `/dashboard/${role}/manage_service/delete`,
+        },
+      ],
     },
     {
-      label: <Link href={`/${role}/manage_blogs`}>Manage Blogs</Link>,
+      label: <Link href={`/dashboard/${role}/manage_blogs`}>Manage Blogs</Link>,
       icon: <FaBlog />,
       key: `/dashboard/${role}/manage_blogs`,
+      children: [
+        {
+          label: (
+            <Link href={`/dashboard/${role}/manage_blogs/create`}>
+              Create Blog
+            </Link>
+          ),
+          icon: <ProfileFilled />,
+          key: `/dashboard/${role}/manage_blogs/create`,
+        },
+      ],
+    },
+    {
+      label: <h2 onClick={logout}>Logout</h2>,
+      key: "logout",
+      icon: <LogoutOutlined />,
     },
   ];
 
@@ -81,12 +153,17 @@ const logout = () => {
   ];
 
   const userSidebarItems: MenuProps["items"] = [
+    ...defaultSidebarItems,
     {
       label: <Link href={`/dashboard/${role}/services`}>Services</Link>,
       icon: <TableOutlined />,
       key: `/dashboard/${role}/services`,
     },
-    ...defaultSidebarItems,
+    {
+      label: <h2 onClick={logout}>Logout</h2>,
+      key: "logout",
+      icon: <LogoutOutlined />,
+    },
   ];
 
   if (role === ENUM_USER_ROLE_FOR_DASHBOARD.SUPER_ADMIN) return superAdminSidebarItems;

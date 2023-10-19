@@ -3,7 +3,7 @@ export type TBlog = {
   userId?: string;
   title: string;
   content: string;
-  imgUrl?: string;
+  imgUrl: string;
   createdAt?: Date;
   updatedAt?: Date;
 };

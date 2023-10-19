@@ -9,50 +9,45 @@ import { TUser } from "@/types/user.types";
 import { message } from "antd";
 import Image from "next/image";
 import { MdDelete } from "react-icons/md";
-import { FiEdit } from "react-icons/fi";
 
 export default function ManageUser() {
   const { data, isLoading } = useGetAllUserQuery({});
   const [deleteUserById] = useDeleteUserByIdMutation();
-  const [
-    updateUserBySuperAdmin,
-    { isSuccess, isError, data: updateUser, error },
-  ] = useUpdateUserByAdminMutation();
-  // ts-ignore
+  const [updateUserByAdmin, { isSuccess, isError, data: updateUser, error }] =
+    useUpdateUserByAdminMutation();
+  // @ts-ignore
   const users = data?.users?.data?.data as TUser[];
-  const makeAdmin = (id: string) => {
+  
+  const makeActive = async (id: string) => {
     const payload = {
-      id: id,
-      role: "admin",
+      status: "Active", 
     };
-    updateUserBySuperAdmin(payload as any);
+   await updateUserByAdmin({ id:id, payload:payload });
   };
-  const makeUser = (id: string) => {
+  const makeInactive = async (id: string) => {
     const payload = {
-      id: id,
-      role: "user",
+      status: "Inactive",
     };
-    updateUserBySuperAdmin(payload as any);
+    const res = await updateUserByAdmin({ id: id, payload: payload }).unwrap();
   };
 
-  const deleteUser = (id: string) => {
-    deleteUserById(id);
+  const deleteUser = async (id: string) => {
+    await deleteUserById(id);
   };
 
   if (isSuccess) {
-    message.success("User role updated successfully");
+    message.success("User status updated successfully");
   }
   if (isError) {
     message.error(error?.data?.message);
   }
-  console.log(updateUser);
 
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-12 mx-auto">
         <div className="flex flex-col text-center w-full mb-10">
           <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
-           Manage All Users
+            Manage All Users
           </h1>
         </div>
         <div className="w-full mx-auto overflow-auto">
@@ -66,13 +61,10 @@ export default function ManageUser() {
                   User Email Address
                 </th>
                 <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                  User Role
+                  User Status
                 </th>
                 <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr">
-                  Set Role
-                </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr">
-                  Edit User
+                  Set User Status
                 </th>
                 <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr">
                   Delete User
@@ -80,56 +72,47 @@ export default function ManageUser() {
               </tr>
             </thead>
             <tbody>
-              {users?.map((users: TUser) => (
-                <tr key={users.id} className="border border-gray-200">
+              {users?.map((user: TUser) => (
+                <tr key={user.id} className="border border-gray-200">
                   <td className="px-4 py-3">
                     <div className="avatar">
                       <div className="w-12 rounded-full">
                         <Image
                           width={200}
                           height={200}
-                          src={`${users?.imgUrl}`}
+                          src={`${user?.imgUrl}`}
                           alt="Avatar"
                         />
                       </div>
                     </div>
                   </td>
-                  <td className="px-4 py-3">{users?.email}</td>
-                  <td className="px-4 py-3">{users?.role}</td>
-                  {users.role === ENUM_USER_ROLE_FOR_DASHBOARD.USER ? (
+                  <td className="px-4 py-3">{user?.email}</td>
+                  <td className="px-4 py-3 text-black">{user?.status}</td>
+                  {user.status === "Active" ? (
                     <td className="px-4 py-3">
                       <button
-                        type="button"
-                        onClick={() => makeAdmin(users?.id as string)}
+                        onClick={() => makeInactive(user?.id as string)}
                         className="badge border-none p-2.5 bg-green-500"
                       >
-                        Set role Admin
+                        Inactive User
                       </button>
                     </td>
                   ) : (
                     <td className="px-4 py-3">
                       <button
-                        onClick={() => makeUser(users?.id as string)}
+                        onClick={() => makeActive(user?.id as string)}
                         className="badge border-none p-2.5 bg-[#0d70e0ce]"
                       >
-                        Set role User
+                        Active User
                       </button>
                     </td>
                   )}
                   <td className="px-4 py-3">
                     <button
-                      onClick={() => deleteUser(users?.id as string)}
+                      onClick={() => deleteUser(user?.id as string)}
                       className="badge border-none p-2.5 bg-green-500"
                     >
                       <MdDelete className="text-gray-50" />
-                    </button>
-                  </td>
-                  <td className="px-4 py-3">
-                    <button
-                      onClick={() => deleteUser(users?.id as string)}
-                      className="badge border-none p-2.5 bg-green-500"
-                    >
-                      <FiEdit className="text-gray-50" />
                     </button>
                   </td>
                 </tr>

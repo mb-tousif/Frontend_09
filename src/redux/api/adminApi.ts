@@ -15,10 +15,10 @@ export const adminApi = baseApi.injectEndpoints({
     }),
     // get by id
     updateUserByAdmin: build.mutation({
-      query: (payload) => ({
-        url: `/admins/update-user/${payload.id}`,
-        method: "PUT",
-        data: payload.body,
+      query: ({id, payload}) => ({
+        url: `/admins/update-user/${id}`,
+        method: "PATCH",
+        body: payload,
       }),
       invalidatesTags: [tagTypes.User],
     }),
