@@ -13,8 +13,8 @@ import { useUpdateUserBySuperAdminMutation } from "@/redux/api/superAdminApi";
 import Link from "next/link";
 
 export default function ManageUser() {
-  const { data, isLoading } = useGetAllUserQuery({ fixedCacheKey: "users" });
-  const [deleteUserById] = useDeleteUserByIdMutation({fixedCacheKey: "users"});
+  const { data, isLoading } = useGetAllUserQuery({ fixedCacheKey: "Users" });
+  const [deleteUserById,{ isSuccess:deleteSuccess}] = useDeleteUserByIdMutation({fixedCacheKey: "Users"});
   const [
     updateUserBySuperAdmin,
     { isSuccess, isError, data: updateUser, error },
@@ -39,6 +39,9 @@ export default function ManageUser() {
   
   const deleteUser = (id: string) => {
     deleteUserById(id);
+    if (deleteSuccess){
+      message.success("User deleted successfully");
+    }
   };
   if (isLoading) {
     return (
@@ -62,7 +65,6 @@ export default function ManageUser() {
   if (isError) {
     message.error(error?.data?.message);
   }
-  console.log(updateUser);
 
   return (
     <section className="text-gray-600 body-font">
@@ -94,27 +96,27 @@ export default function ManageUser() {
               </tr>
             </thead>
             <tbody>
-              {users?.map((users: TUser) => (
-                <tr key={users.id} className="border border-gray-200">
+              {users?.map((user: TUser) => (
+                <tr key={user.id} className="border border-gray-200">
                   <td className="px-4 py-3">
                     <div className="avatar">
                       <div className="w-12 rounded-full">
                         <Image
                           width={200}
                           height={200}
-                          src={`${users?.imgUrl}`}
+                          src={`${user?.imgUrl}`}
                           alt="Avatar"
                         />
                       </div>
                     </div>
                   </td>
-                  <td className="px-4 py-3">{users?.email}</td>
-                  <td className="px-4 py-3">{users?.role}</td>
-                  {users.role === ENUM_USER_ROLE_FOR_DASHBOARD.USER ? (
+                  <td className="px-4 py-3">{user?.email}</td>
+                  <td className="px-4 py-3">{user?.role}</td>
+                  {user.role === ENUM_USER_ROLE_FOR_DASHBOARD.USER ? (
                     <td className="px-4 py-3">
                       <button
                         type="button"
-                        onClick={() => makeAdmin(users?.id as string)}
+                        onClick={() => makeAdmin(user?.id as string)}
                         className="badge border-none p-2.5 bg-green-500"
                       >
                         Set role Admin
@@ -123,19 +125,19 @@ export default function ManageUser() {
                   ) : (
                     <td className="px-4 py-3">
                       <button
-                        onClick={() => makeUser(users?.id as string)}
+                        onClick={() => makeUser(user?.id as string)}
                         className="badge border-none p-2.5 bg-[#0d70e0ce]"
                       >
                         Set role User
                       </button>
                     </td>
                   )}
-                  <td className="px-4 py-3">
-                    <Link
-                      href={`/dashboard/admin/manage_user/edit/:${users?.id}`}
+                  <td className="px-4 py-3 text-center">
+                    <button
+                      onClick={() => deleteUser(user?.id as string)}
                     >
-                      <MdDelete className="text-gray-50" />
-                    </Link>
+                    <MdDelete className="text-[#214f7a] w-6 h-6" />
+                    </button>
                   </td>
                 </tr>
               ))}

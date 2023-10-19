@@ -1,4 +1,5 @@
 "use client";
+import CompanyInfo from "@/components/ui/CompanyInfo";
 import HeroBanner from "@/components/ui/HeroBanner";
 import ServiceCard from "@/components/ui/ServiceCard";
 import ServiceSection from "@/components/ui/ServiceSection";
@@ -46,6 +47,7 @@ export default function Home() {
         <ServiceCard payload={upcomingPayload} />
       </div>
       <Subscribe />
+      <CompanyInfo />
     </div>
   );
 }

@@ -23,7 +23,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         justify="center"
         align="middle"
         style={{
-          height: "100vh",
+          height: "100vh"
         }}
       >
         <Space>

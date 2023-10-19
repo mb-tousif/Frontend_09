@@ -37,15 +37,9 @@ const logout = () => {
       icon: <AiFillHome />,
     },
     {
-      label: "Profile",
-      key: "profile",
+      label: <Link href={`/dashboard/${role}/profile`}>Profile</Link>,
+      key: `/dashboard/${role}/profile`,
       icon: <ProfileOutlined />,
-      children: [
-        {
-          label: <Link href={`/dashboard/${role}/profile`}>Profile</Link>,
-          key: `/dashboard/${role}/profile`,
-        },
-      ],
     },
   ];
 

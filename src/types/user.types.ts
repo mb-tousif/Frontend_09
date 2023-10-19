@@ -17,15 +17,15 @@ export type TUserLoginResponse = {
 
 export type TUser = {
     id?: string;
-    name: string;
-    email: string;
-    password: string;
+    name?: string;
+    email?: string;
+    password?: string;
     role?: string;
-    gender: string;
+    gender?: string;
     status?: string;
     imgUrl?: string;
-    address: string;
-    contact: string;
+    address?: string;
+    contact?: string;
     createdAt?: Date;
     updatedAt?: Date;
 };

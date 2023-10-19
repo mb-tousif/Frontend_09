@@ -2,7 +2,11 @@
 import { getToken } from "@/redux/slices/authSlice";
 import jwtDecode from "jwt-decode";
 
-export const getUserInfo = () => {
+export interface IUserInfo {
+  id: string;
+  role: string;
+}
+export const getUserInfo = ():IUserInfo | any => {
   const authToken = getToken();
   // console.log(authToken);
   if (authToken) {
