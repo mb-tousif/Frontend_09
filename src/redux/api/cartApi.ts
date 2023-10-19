@@ -36,7 +36,7 @@ export const cartApi = baseApi.injectEndpoints({
         method: "POST",
         body: payload,
       }),
-      invalidatesTags: [tagTypes.Cart],
+      invalidatesTags: [tagTypes.Cart, tagTypes.Booking],
     }),
     // get by id
     getCartById: build.query({
@@ -60,7 +60,7 @@ export const cartApi = baseApi.injectEndpoints({
         url: `/carts/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: [tagTypes.Cart],
+      invalidatesTags: [tagTypes.Cart, tagTypes.Booking],
     }),
   }),
 });

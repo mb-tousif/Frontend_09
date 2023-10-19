@@ -51,8 +51,26 @@ export const bookingApi = baseApi.injectEndpoints({
     updateBookingById: build.mutation({
       query: (payload) => ({
         url: `/bookings/update-booking/${payload.id}`,
-        method: "PUT",
+        method: "PATCH",
         data: payload.body,
+      }),
+      invalidatesTags: [tagTypes.Booking],
+    }),
+    // get by id
+    updateBookingStatusByUser: build.mutation({
+      query: ({ id, payload }) => ({
+        url: `/bookings/update-booking-status-by-user/${id}`,
+        method: "PATCH",
+        body: payload,
+      }),
+      invalidatesTags: [tagTypes.Booking],
+    }),
+    // get by id
+    updateBookingStatusByManagement: build.mutation({
+      query: ({ id, payload }) => ({
+        url: `/bookings/update-booking-status-by-management/${id}`,
+        method: "PATCH",
+        data: payload,
       }),
       invalidatesTags: [tagTypes.Booking],
     }),
@@ -73,4 +91,6 @@ export const {
     useGetBookingByIdQuery,
     useUpdateBookingByIdMutation,
     useDeleteBookingByIdMutation,
+    useUpdateBookingStatusByUserMutation,
+    useUpdateBookingStatusByManagementMutation
 } = bookingApi;

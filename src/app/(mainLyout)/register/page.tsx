@@ -160,6 +160,72 @@ export default function Register() {
                   )}
                 </div>
               </div>
+              <div className="mb-4">
+                <label
+                  className="block mb-2 text-sm font-bold text-gray-700"
+                  htmlFor="name"
+                >
+                  Profile Picture
+                </label>
+                <input
+                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                  {...register("imgUrl", { required: true })}
+                  type="text"
+                  placeholder="Enter Your Name"
+                />
+                {errors.imgUrl && (
+                  <p className="text-rose-600 text-center text-sm">
+                    Profile picture is required.
+                  </p>
+                )}
+              </div>
+              <div className="mb-6">
+                <label className="inline-block mb-2 mr-2 text-gray-700">
+                  Gender:
+                </label>
+                <input
+                  id="male"
+                  placeholder="Male"
+                  {...register("gender", { required: true })}
+                  type="radio"
+                  value="Male"
+                />
+                <label
+                  htmlFor="male"
+                  className="inline-block mb-2 m-2 text-gray-700"
+                >
+                  Male
+                </label>
+                <input
+                  id="female"
+                  {...register("gender", { required: true })}
+                  type="radio"
+                  value="Female"
+                />
+                <label
+                  htmlFor="female"
+                  className="inline-block mb-2 m-2 text-gray-700"
+                >
+                  Female
+                </label>
+                <input
+                  id="others"
+                  {...register("gender", { required: true })}
+                  type="radio"
+                  value="Other"
+                />
+                <label
+                  htmlFor="others"
+                  className="inline-block mb-2 m-2 text-gray-700"
+                >
+                  Other
+                </label>
+                {errors.gender && (
+                  <p className="text-rose-600 text-center">
+                    Select your gender.
+                  </p>
+                )}
+              </div>
               {/* upload image later
               <div className="mb-4">
                 <label className="flex flex-col items-center px-4 py-6 bg-white text-[#03A776] rounded-lg shadow border border-blue cursor-pointer hover:bg-blue">

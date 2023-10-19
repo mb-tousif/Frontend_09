@@ -1,11 +1,11 @@
 "use client";
-import { ENUM_BOOKING_STATUS } from "@/constants/common";
-import { useGetBookingByUserIdQuery } from "@/redux/api/bookingApi";
+import { ENUM_BOOKING_STATUS_FOR_USER } from "@/constants/common";
+import { useGetBookingByUserIdQuery, useUpdateBookingStatusByUserMutation } from "@/redux/api/bookingApi";
 import { useGetCartByUserIdQuery } from "@/redux/api/cartApi";
 import { useAppSelector } from "@/redux/hooks";
 import { TBooking } from "@/types/booking.types";
 import { TCart } from "@/types/cart.types";
-import { Row, Space, Spin } from "antd";
+import { Row, Space, Spin, message } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -18,6 +18,7 @@ export default function Booking() {
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { data, isLoading: bookingLoad } = useGetBookingByUserIdQuery({});
+  const [updateBookingStatusByUser] = useUpdateBookingStatusByUserMutation();
   useEffect(() => {
     if (!token) {
       router.push("/login");
@@ -43,8 +44,11 @@ export default function Booking() {
   const carts = cartData?.carts?.data?.data.filter(
     (cart: TCart) => cart.status === "Pending"
   );
-  const bookings = data?.data?.filter( (booking: any) => booking.status === ENUM_BOOKING_STATUS.PENDING || ENUM_BOOKING_STATUS.CONFIRMED);
-	console.log(bookings);
+  const bookings = data?.data?.filter(
+    (booking: any) =>
+      booking.status === ENUM_BOOKING_STATUS_FOR_USER.PENDING ||
+      booking.status === ENUM_BOOKING_STATUS_FOR_USER.CONFIRMED
+  );
 	
   if (bookings?.length === 0) {
     return (
@@ -55,6 +59,38 @@ export default function Booking() {
       </div>
     );
   }
+
+  const handlePayNow = async (bookingId: string) => {
+    try {
+      const payloadStatus = {
+        status: ENUM_BOOKING_STATUS_FOR_USER.CONFIRMED,
+      };
+      const res = await updateBookingStatusByUser({
+        id:bookingId,
+        payload: payloadStatus,
+      }).unwrap();
+      console.log(res);
+      // message.success(res.message);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const cancelBooking = async (bookingId: string) => {
+    try {
+      const payloadStatus = {
+        status: ENUM_BOOKING_STATUS_FOR_USER.CANCELLED,
+      };
+      const res = await updateBookingStatusByUser({
+        id:bookingId,
+        payload: payloadStatus,
+      }).unwrap();
+      console.log(res);
+      // message.success(res.message);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -93,9 +129,23 @@ export default function Booking() {
                       Booking Status: {booking?.status}
                     </p>
                     <div className="flex justify-center p-2">
-                      <button className="px-3 py-2 hover:bg-blue-600 bg-blue-500 text-white text-xs font-bold uppercase rounded">
-                        Pay Now
-                      </button>
+                      {
+                        // @ts-ignore
+                        booking?.status === ENUM_BOOKING_STATUS_FOR_USER.PENDING ? (
+                          <button
+                            onClick={() => handlePayNow(booking?.id as string)}
+                            className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600"
+                          >
+                            Pay Now
+                          </button>
+                        ):
+                        <button
+                            onClick={() => cancelBooking(booking?.id as string)}
+                            className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600"
+                          >
+                            Cancel Booking
+                          </button>
+                      }
                     </div>
                   </div>
                 </div>
