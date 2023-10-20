@@ -1,13 +1,24 @@
 "use client"
-import { ENUM_CART_STATUS } from '@/constants/common';
 import { useDeleteCartByIdMutation, useGetCartByUserIdQuery } from '@/redux/api/cartApi';
+import { useAppSelector } from '@/redux/hooks';
 import { TCart } from '@/types/cart.types';
 import { Row, Space, Spin, message } from 'antd';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function CartPage() {
+  const { token } = useAppSelector((state) => state.auth);
+  const router = useRouter();
+  const [loading, setIsLoading] = useState<boolean>(false);
     const { data, isLoading } =useGetCartByUserIdQuery({});
     const [deleteCartById, { isSuccess, isError, error}] = useDeleteCartByIdMutation();
-    if ( isLoading ) {
+    useEffect(() => {
+      if (!token) {
+        router.push("/login");
+      }
+      setIsLoading(true);
+    }, [token, router]);
+    if ( isLoading || loading ) {
       return (
         <Row
           justify="center"
