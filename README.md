@@ -9,4 +9,4 @@
 
 - [x] Super Admin can see all the admin list and delete an admin. They can also see all the user list and delete a user. They can also see all the booking list and delete a booking. They can also see all the blog list and delete a blog. They have full access to the site.
 
-### This project [Live Site](https://painting-service-roan.vercel.app/)
+### This project [Live Site](https://frontend-pjz7sw9v8-mb-tousif.vercel.app/)
