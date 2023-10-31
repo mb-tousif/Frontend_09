@@ -21,7 +21,7 @@ const config: Config = {
         "70vh": "70vh",
       },
       backgroundImage: {
-        main: "url('/src/assets/heroBanner.png')",
+        main: "url('https://img.freepik.com/free-photo/top-view-paint-can_23-2149705365.jpg')",
       },
     },
   },

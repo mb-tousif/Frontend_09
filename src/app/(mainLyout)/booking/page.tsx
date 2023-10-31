@@ -69,10 +69,11 @@ export default function Booking() {
         id:bookingId,
         payload: payloadStatus,
       }).unwrap();
-      console.log(res);
-      // message.success(res.message);
+      // console.log(res);
+      message.success(res.message);
     } catch (error) {
-      console.log(error);
+      // @ts-ignore
+      message.error(error?.data?.message || error?.message);
     }
   };
 
@@ -85,10 +86,11 @@ export default function Booking() {
         id:bookingId,
         payload: payloadStatus,
       }).unwrap();
-      console.log(res);
-      // message.success(res.message);
+      // console.log(res);
+      message.success(res.message);
     } catch (error) {
-      console.log(error);
+      // @ts-ignore
+      message.error( error?.data?.message || error?.message)
     }
   };
 

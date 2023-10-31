@@ -6,15 +6,12 @@ import React from 'react'
 export default function ServiceSection() {
   return (
     <div className="p-2 md:p-6">
-      <h1 className="text-[#245b8f] font-medium sm:text-2xl md:text-3xl text-center">
+      <h1 className="text-gray-50 font-medium sm:text-2xl md:text-3xl text-center">
         Our Service Category
       </h1>
       <div className="grid text-gray-50 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-6 p-2 mt-6">
         {services.map((service) => (
-          <div
-            key={service.id}
-            className="p-7 rounded-xl bg-slate-500 dark:bg-neutral-700/70"
-          >
+          <div key={service.id} className="p-7 rounded-xl">
             <div className="relative">
               <Image
                 src={service.imgUrl}
@@ -32,7 +29,7 @@ export default function ServiceSection() {
                 </p>
                 <Link
                   href="/services"
-                  className="py-3 flex items-center justify-center w-full font-semibold rounded-md bg-[#2D5A84] hover:bg-[#127A9E] transition duration-300 ease-in-out"
+                  className="py-3 flex items-center justify-center w-full font-semibold rounded-md bg-[#50577A] hover:bg-[#474E68] text-gray-50 transition duration-300 ease-in-out"
                 >
                   Our All Services
                   <svg

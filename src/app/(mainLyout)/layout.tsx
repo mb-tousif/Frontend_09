@@ -8,7 +8,7 @@ export default function RootPageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-gradient-to-r from-slate-300 to-slate-500">
+    <div className="bg-[#8d99ae]">
       <ScrollToTop />
       <Navbar />
       <div>{children}</div>

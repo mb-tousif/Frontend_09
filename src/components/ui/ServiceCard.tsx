@@ -10,7 +10,7 @@ export default function ServiceCard({payload}:{payload:TService[] | undefined}) 
       {services?.map((service) => (
         <div
           key={service.id}
-          className="relative bg-gray-700 rounded-2xl mx-auto w-full max-w-sm p-6"
+          className="relative bg-[#474E68] rounded-2xl mx-auto w-full max-w-sm p-6"
         >
           <Link
             href={`/services/${service.id}`}

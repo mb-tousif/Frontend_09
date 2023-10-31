@@ -9,7 +9,7 @@ import { useState } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   return (
-    <nav className="bg-[#071948] w-full text-[#fff] relative z-10">
+    <nav className="bg-[#50577A] w-full text-gray-50 relative z-10">
       <div className="flex items-center justify-between h-16">
         <div className="flex flex-auto">
           <div className="hidden mx-auto my-auto md:block">
