@@ -42,6 +42,7 @@ export default function Services() {
     }
     setIsLoading(true);
   }, [token, router]);
+                console.log(services);
 
   if (!isLoading || serviceIsLoading) {
     return (
@@ -77,7 +78,7 @@ export default function Services() {
           <div className="mt-4 grid md:p-4 p-2 lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
             {currentServices?.map((service) => (
               <div
-                key={service.id}
+                key={service?.id}
                 className="group rounded-2xl group-hover:bg-opacity-60 transition duration-500 relative bg-[#14141493] pt-24 pb-4 text-white"
               >
                 <div className="flex justify-center">
@@ -85,7 +86,7 @@ export default function Services() {
                     width={500}
                     height={500}
                     className="group-hover:opacity-60 max-h-60 rounded-xl transition duration-500"
-                    src={service.imgUrl}
+                    src={service?.imgUrl}
                     alt="Service Image"
                   />
                 </div>
@@ -95,11 +96,11 @@ export default function Services() {
                 </article> */}
                 <p className="pt-3 text-center">
                   <span className="text-lg">Duration: </span>
-                  {service.schedule}
+                  {service?.schedule}
                 </p>
                 <p className="pt-1 text-center">
                   <span className="text-lg">Price: </span>
-                  {service.price}
+                  {service?.price}
                 </p>
                 <div className="flex item-center justify-center mb-2">
                   <svg
@@ -136,20 +137,20 @@ export default function Services() {
                 <div className="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
                   <div>
                     <p className="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-white">
-                      {service.category}
+                      {service?.category}
                     </p>
                   </div>
                   <div>
                     <p className="group-hover:opacity-60 transition duration-500 text-xl font-semibold leading-5 text-white">
-                      {service.name}
+                      {service?.name}
                     </p>
                   </div>
                 </div>
                 <div className="flex flex-row bottom-8 left-8 space-x-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
-                  <Link href={`/cart/${service.id}`}>
+                  <Link href={`/cart/${service?.id}`}>
                     <FaCartPlus className="text-white w-6 h-6" />
                   </Link>
-                  <Link href={`/services/${service.id}`}>
+                  <Link href={`/services/${service?.id}`}>
                     <LuView className="text-white w-6 h-6" />
                   </Link>
                 </div>

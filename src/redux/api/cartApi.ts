@@ -36,7 +36,7 @@ export const cartApi = baseApi.injectEndpoints({
         method: "POST",
         body: payload,
       }),
-      invalidatesTags: [tagTypes.Cart, tagTypes.Booking],
+      invalidatesTags: [tagTypes.Cart, tagTypes.Booking, tagTypes.User],
     }),
     // get by id
     getCartById: build.query({

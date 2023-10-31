@@ -63,7 +63,7 @@ export const bookingApi = baseApi.injectEndpoints({
         method: "PATCH",
         body: payload,
       }),
-      invalidatesTags: [tagTypes.Booking],
+      invalidatesTags: [tagTypes.Booking, tagTypes.Cart],
     }),
     // get by id
     updateBookingStatusByManagement: build.mutation({

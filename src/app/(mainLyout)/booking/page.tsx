@@ -100,7 +100,7 @@ export default function Booking() {
           <div className="rounded-lg md:w-2/3">
             {bookings?.map((booking: TBooking) => (
               <div
-                key={booking.id}
+                key={booking?.id}
                 className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
               >
                 <Image

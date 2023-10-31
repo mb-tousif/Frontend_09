@@ -18,7 +18,7 @@ export default function CartPage() {
       }
       setIsLoading(true);
     }, [token, router]);
-    if ( isLoading || loading ) {
+    if (  isLoading  ) {
       return (
         <Row
           justify="center"
@@ -45,9 +45,10 @@ export default function CartPage() {
     }
     // @ts-ignore
     const carts = data?.data?.data
+    console.log(data);
     
 
-    if (carts?.length === 0) {
+    if (carts?.length === undefined || carts?.length ===0) {
       return (
         <div className="flex justify-center items-center min-h-70vh">
           <div className="text-2xl font-bold text-gray-700">

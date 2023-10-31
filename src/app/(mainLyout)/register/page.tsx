@@ -110,12 +110,12 @@ export default function Register() {
                         value: true,
                         message: "Password is required",
                       },
-                      pattern: {
-                        value:
-                          /^(?=.*[a-z]{3,})(?=.*[A-Z])(?=.*\d)(?=.*[^\w\d])(.{6,})$/,
-                        message:
-                          "Password must be with one uppercase, number and special character",
-                      },
+                      // pattern: {
+                      //   value:
+                      //     /^(?=.*[a-z]{3,})(?=.*[A-Z])(?=.*\d)(?=.*[^\w\d])(.{6,})$/,
+                      //   message:
+                      //     "Password must be with one uppercase, number and special character",
+                      // },
                       minLength: {
                         value: 6,
                         message: "Password min-length six characters",
@@ -129,11 +129,11 @@ export default function Register() {
                       {errors.password.message}
                     </p>
                   )}
-                  {errors.password?.type === "pattern" && (
+                  {/* {errors.password?.type === "pattern" && (
                     <span className="text-red-600 text-xs">
                       {errors.password.message}
                     </span>
-                  )}
+                  )} */}
                   {errors.password?.type === "minLength" && (
                     <p className="text-rose-600 text-center text-sm">
                       {errors.password.message}

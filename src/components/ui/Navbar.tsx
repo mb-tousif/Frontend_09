@@ -1,20 +1,13 @@
 "use client";
 import { navBarRoutes } from "@/constants/routesEnums";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { removeToken } from "@/redux/slices/authSlice";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import { FaPaintRoller } from "react-icons/fa";
 import { GiLargePaintBrush } from "react-icons/gi";
+import UserState from "../client/UserState";
+import { useState } from "react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const { token } = useAppSelector((state) => state.auth);
-  const dispatch = useAppDispatch();
-  const handleAuth = () => {
-    dispatch(removeToken());
-  };
-
   return (
     <nav className="bg-[#071948] w-full text-[#fff] relative z-10">
       <div className="flex items-center justify-between h-16">
@@ -30,22 +23,7 @@ export default function Navbar() {
                   {route.name}
                 </Link>
               ))}
-              {token ? (
-                <Link
-                  onClick={() => handleAuth()}
-                  href="/"
-                  className="px-3 underline-none py-2 justify-end rounded-md text-base md:text-lg font-medium"
-                >
-                  Log out
-                </Link>
-              ) : (
-                <Link
-                  href="/login"
-                  className="px-3 underline-none py-2 justify-end rounded-md text-base md:text-lg font-medium"
-                >
-                  Login
-                </Link>
-              )}
+              <UserState />
             </div>
           </div>
           <div className="md:hidden flex" onClick={() => setOpen(!open)}>
@@ -74,22 +52,7 @@ export default function Navbar() {
               {route.name}
             </Link>
           ))}
-          {token ? (
-            <Link
-              onClick={() => handleAuth()}
-              href="/"
-              className="block underline-none px-3 py-2 rounded-md text-base font-medium"
-            >
-              Log out
-            </Link>
-          ) : (
-            <Link
-              href="/login"
-              className="block underline-none px-3 py-2 rounded-md text-base font-medium"
-            >
-              Login
-            </Link>
-          )}
+          <UserState />
         </div>
       </div>
     </nav>

@@ -155,9 +155,9 @@ const logout = () => {
   const userSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
     {
-      label: <Link href={`/dashboard/${role}/services`}>Services</Link>,
+      label: <Link href={`/services`}>Services</Link>,
       icon: <TableOutlined />,
-      key: `/dashboard/${role}/services`,
+      key: `/services`,
     },
     {
       label: <h2 onClick={logout}>Logout</h2>,
