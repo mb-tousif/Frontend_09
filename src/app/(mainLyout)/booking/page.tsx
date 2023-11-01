@@ -60,7 +60,7 @@ export default function Booking() {
     );
   }
 
-  const handlePayNow = async (bookingId: string) => {
+  const confirmBooking = async (bookingId: string) => {
     try {
       const payloadStatus = {
         status: ENUM_BOOKING_STATUS_FOR_USER.CONFIRMED,
@@ -96,7 +96,7 @@ export default function Booking() {
 
   return (
     <div>
-      <div className="min-h-70v pt-20 text-gray-50">
+      <div className="min-h-70v pt-10 text-gray-50">
         <h1 className="mb-10 text-center text-2xl font-bold">Booking Items</h1>
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div className="rounded-lg md:w-2/3">
@@ -136,10 +136,12 @@ export default function Booking() {
                         booking?.status ===
                         ENUM_BOOKING_STATUS_FOR_USER.PENDING ? (
                           <button
-                            onClick={() => handlePayNow(booking?.id as string)}
+                            onClick={() =>
+                              confirmBooking(booking?.id as string)
+                            }
                             className="mt-6 w-full rounded-md py-1.5 font-medium text-gray-50 bg-[#50577A] hover:bg-[#474E68]"
                           >
-                            Pay Now
+                            Confirm Booking
                           </button>
                         ) : (
                           <button

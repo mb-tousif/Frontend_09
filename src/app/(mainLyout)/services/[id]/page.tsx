@@ -1,4 +1,5 @@
 "use client"
+import ReviewList from '@/components/ui/ReviewList';
 import { useAllServicesQuery, useGetServiceByIdQuery } from '@/redux/api/serviceApi';
 import { TService } from '@/types/service.types';
 import { Row, Space, Spin } from 'antd';
@@ -40,34 +41,34 @@ export default function Service({ params }: any) {
                 width={500}
                 className="h-full w-full rounded-md object-cover max-w-lg mx-auto"
                 src={service?.imgUrl}
-                alt="Nike Air"
+                alt="Service Image"
               />
             </div>
             <div className="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
-              <h3 className="text-gray-700 uppercase text-lg">
+              <h3 className="text-gray-50 uppercase text-lg">
                 {service?.category}
               </h3>
-              <span className="text-gray-800 mt-3">{service?.name}</span>
+              <span className="text-gray-50 mt-3">{service?.name}</span>
               <hr className="my-3" />
               <div className="mt-2">
-                <label className="text-gray-800 text-sm" htmlFor="count">
+                <label className="text-gray-50 text-sm" htmlFor="count">
                   Price: ${service?.price}
                 </label>
-                <div className="flex items-center mt-1">
+                <p className="flex text-gray-50 items-center mt-1">
                   Time takes: {service.schedule}
-                </div>
+                </p>
               </div>
               <div className="mt-1">
-                <label className="text-gray-700 text-sm" htmlFor="count">
+                <label className="text-gray-50 text-sm" htmlFor="count">
                   {service?.description}
                 </label>
                 <div className="flex items-center mt-1">
                   {service?.status === "Available" ? (
-                    <button className="rounded-xl text-gray-50 p-2 bg-teal-600 mr-2 focus:outline-none">
+                    <button className="rounded-xl text-gray-50 p-2 bg-[#50577A] mr-2 focus:outline-none">
                       {service?.status}
                     </button>
                   ) : (
-                    <button className="rounded-xl text-gray-50 p-2 bg-pink-600 mr-2 focus:outline-none">
+                    <button className="rounded-xl text-gray-50 p-2 bg-[#50577A] mr-2 focus:outline-none">
                       {service?.status}
                     </button>
                   )}
@@ -77,41 +78,47 @@ export default function Service({ params }: any) {
                 {
                   // @ts-ignore
                   service?.carts[0]?.status === "Pending" ? (
-                    <button className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+                    <button className="px-8 py-2 bg-[#50577A] hover:bg-[#474E68] text-gray-50 text-sm font-medium rounded">
                       Pay Now
                     </button>
                   ) : (
-                    <Link href={`/cart/${service.id}`}>
-                      <button className="mx-2 flex text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
-                        add to cart
-                        <svg
-                          className="h-5 w-5 ml-2"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
-                      </button>
-                    </Link>
+                    ""
                   )
                 }
+                {service.status === "Available" ? (
+                  <Link href={`/cart/${service.id}`}>
+                    <button className="mx-2 flex bg-[#50577A] hover:bg-[#474E68] border-none text-gray-50 rounded-md p-2">
+                      add to cart
+                      <svg
+                        className="h-5 w-5 ml-2"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                      </svg>
+                    </button>
+                  </Link>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
           {/* Show related category data */}
+          <ReviewList service={service} />
           <div className="mt-16">
-            <h3 className="text-gray-600 text-2xl font-medium">
+            <h3 className="text-gray-50 text-2xl font-medium">
               More Same Category Services
             </h3>
             <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
               {services?.map((service: TService) => (
                 <div
                   key={service.id}
-                  className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden"
+                  className="w-full bg-[#474E68] max-w-sm mx-auto rounded-md shadow-md overflow-hidden"
                 >
                   <div
                     className="flex items-end justify-end h-56 w-full bg-cover"
@@ -120,7 +127,7 @@ export default function Service({ params }: any) {
                     }}
                   >
                     <Link href={`/cart/${service.id}`}>
-                      <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                      <button className="p-2 rounded-full bg-[#50577A] hover:bg-[#474E68] text-gray-50 mx-5 mb-4">
                         <svg
                           className="h-5 w-5"
                           fill="none"
@@ -136,8 +143,8 @@ export default function Service({ params }: any) {
                     </Link>
                   </div>
                   <div className="px-5 py-3">
-                    <h3 className="text-gray-700 uppercase">{service.name}</h3>
-                    <span className="text-gray-500 mt-2">${service.price}</span>
+                    <h3 className="text-gray-50 uppercase">{service.name}</h3>
+                    <span className="text-gray-50 mt-2">${service.price}</span>
                   </div>
                 </div>
               ))}

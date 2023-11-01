@@ -42,7 +42,6 @@ export default function Services() {
     }
     setIsLoading(true);
   }, [token, router]);
-                console.log(services);
 
   if (!isLoading || serviceIsLoading) {
     return (

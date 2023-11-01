@@ -36,7 +36,7 @@ export enum ENUM_PAYMENT_STATUS {
   REFUNDED = "Refunded",
 }
 
-enum ENUM_USER_STATUS {
+export enum ENUM_USER_STATUS {
   ACTIVE = "Active",
   INACTIVE = "Inactive",
   BLOCKED = "Blocked",

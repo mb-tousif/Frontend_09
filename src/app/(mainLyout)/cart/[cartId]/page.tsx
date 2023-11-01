@@ -32,12 +32,11 @@ export default function AddToCart({ params }: {params: any}) {
     serviceId: service.id as string,
   };
   const handleAddToCart = (data: TCart) => {
-    console.log(data, "cart data");
     createCart(data);
   };
   if (isSuccess) {
-    router.push('/cart');
-    message.success("Add to cart successfully");
+    router.push('/booking');
+    message.success("Cart added, please confirm your booking");
   }
   if (isError) {
     // @ts-ignore
@@ -83,7 +82,7 @@ export default function AddToCart({ params }: {params: any}) {
               onClick={() => {
                 handleAddToCart(cartData);
               }}
-              className="mt-3 w-3/5 rounded-md py-1.5 font-medium text-gray-50 bg-[#50577A] hover:bg-[#474E68]"
+              className="mt-3 w-3/5 rounded-md border-gray-50 border-2 py-1.5 font-medium text-gray-50 hover:border-none hover:bg-[#474E68]"
             >
               Add to cart
             </button>

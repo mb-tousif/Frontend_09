@@ -4,28 +4,28 @@ export const serviceTypes = [
     name: "Furniture painting",
     imgUrl:
       "https://img.freepik.com/free-photo/interior-designer-working-with-young-couple_155003-19074.jpg",
-    revenue: "+ 220.000",
+    revenue: "220.000",
   },
   {
     id: 2,
     name: "Home painting",
     imgUrl:
       "https://img.freepik.com/free-vector/household-renovation-professions_23-2148676135.jpg",
-    revenue: "+ 360.000",
+    revenue: "360.000",
   },
   {
     id: 3,
     name: "Office painting",
     imgUrl:
       "https://img.freepik.com/premium-photo/office-room-3d-rendering_982048-80.jpg",
-    revenue: "+ 480.000",
+    revenue: "480.000",
   },
   {
     id: 4,
     name: "Shop painting",
     imgUrl:
       "https://img.freepik.com/premium-photo/man-hardware-store-holds-set-brushes-rollers-paint-decor_278641-448.jpg",
-    revenue: "+ 320.000",
+    revenue: "320.000",
   },
 ];
 

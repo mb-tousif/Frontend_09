@@ -1,4 +1,5 @@
 "use client"
+import { ENUM_CART_STATUS } from '@/constants/common';
 import { useDeleteCartByIdMutation, useGetCartByUserIdQuery } from '@/redux/api/cartApi';
 import { useAppSelector } from '@/redux/hooks';
 import { TCart } from '@/types/cart.types';
@@ -44,15 +45,15 @@ export default function CartPage() {
       message.error(error?.data?.message);
     }
     // @ts-ignore
-    const carts = data?.data?.data
-    console.log(data);
-    
+    const carts = data?.data?.data.filter(
+      (cart: any) => cart.status === ENUM_CART_STATUS.BOOKED
+    );
 
     if (carts?.length === undefined || carts?.length ===0) {
       return (
         <div className="flex justify-center items-center min-h-70vh">
           <div className="text-2xl font-bold text-gray-700">
-            You have no Cart
+            You have no Cart which is booked
           </div>
         </div>
       );
