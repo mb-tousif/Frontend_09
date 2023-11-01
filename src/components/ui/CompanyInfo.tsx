@@ -71,7 +71,7 @@ export default function CompanyInfo() {
                 target="_blank"
                 href="https://goo.gl/maps/QcWzYETAh4FS3KTD7"
               >
-                1234 Street, City, State, 12345
+                Green Road, Dhaka-1205.
               </a>
             </div>
           </div>
