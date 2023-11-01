@@ -35,9 +35,9 @@ export default function UserProfile() {
   };
 
   return (
-    <div className="mx-auto my-auto">
+    <div className="mx-auto text-gray-50 my-auto">
       <div className="flex md:mx-36 flex-col justify-center items-center min-h-70vh">
-        <div className="relative flex justify-center flex-col items-center rounded-[10px] border-[1px] border-gray-200 w-[400px] mx-auto p-4 bg-slate-500 bg-clip-border shadow-md shadow-[#F3F3F3] dark:border-[#ffffff33] dark:!bg-navy-800 dark:text-white dark:shadow-none">
+        <div className="relative flex justify-center flex-col items-center rounded-[10px] border-[1px] border-gray-200 w-[400px] mx-auto p-4 bg-[#474E68] bg-clip-border shadow-md shadow-[#F3F3F3] dark:border-[#ffffff33] dark:!bg-navy-800 dark:text-white dark:shadow-none">
           <div className="relative flex h-32 w-full justify-center rounded-xl bg-cover">
             <Image
               width={500}
@@ -57,29 +57,21 @@ export default function UserProfile() {
             </div>
           </div>
           <div className="mt-16 flex flex-col items-center">
-            <h4 className="text-xl font-bold text-gray-50 dark:text-white">
-              {user?.name}
-            </h4>
-            <p className="text-base font-normal text-[#214f7a]">{user?.role}</p>
+            <h4 className="text-xl font-bold">{user?.name}</h4>
+            <p className="text-base font-normal">{user?.role}</p>
           </div>
           <div className="mt-6 mb-3 flex gap-14 md:!gap-14">
             <div className="flex flex-col items-center justify-center">
-              <p className="text-2xl font-bold text-gray-50 dark:text-white">
-                17
-              </p>
-              <p className="text-sm font-normal text-[#214f7a]">Posts</p>
+              <p className="text-2xl font-bold">17</p>
+              <p className="text-sm font-normal">Posts</p>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <p className="text-2xl font-bold text-gray-50 dark:text-white">
-                9.7K
-              </p>
-              <p className="text-sm font-normal text-[#214f7a]">Sales</p>
+              <p className="text-2xl font-bold">9.7K</p>
+              <p className="text-sm font-normal">Sales</p>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <p className="text-2xl font-bold text-gray-50 dark:text-white">
-                434
-              </p>
-              <p className="text-sm font-normal text-[#214f7a]">Service</p>
+              <p className="text-2xl font-bold">434</p>
+              <p className="text-sm font-normal">Service</p>
             </div>
           </div>
         </div>
@@ -87,7 +79,7 @@ export default function UserProfile() {
       <div className="flex justify-center pb-4">
         <button
           onClick={() => setOpen(!open)}
-          className="bg-[#214f7a] flex text-white px-4 py-2 rounded-md"
+          className="bg-[#50577A] hover:bg-[#474E68] text-gray-50 flex px-4 py-2 rounded-md"
         >
           Edit Profile <FiEdit className="ml-2 w-6 h-6" />
         </button>
@@ -97,20 +89,20 @@ export default function UserProfile() {
           open ? "block" : "hidden"
         } text-[#232274f9] md:mx-36 w-full justify-center items-center`}
       >
-        <div className="min-h-50vh md:w-4/6 rounded-2xl bg-slate-500">
+        <div className="min-h-50vh md:w-4/6 rounded-2xl bg-[#474E68]">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="px-8 pt-6 pb-8 mb-4 rounded"
           >
             <div className="mb-4">
               <label
-                className="block mb-2 text-sm font-bold text-gray-700"
+                className="block mb-2 text-sm font-bold text-gray-50"
                 htmlFor="name"
               >
                 Full Name
               </label>
               <input
-                className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                className="w-full px-3 bg-[#8d99ae] py-2 mb-3 text-sm leading-tight text-gray-50 border-none rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                 {...register("name")}
                 type="text"
                 defaultValue={user?.name}
@@ -118,13 +110,13 @@ export default function UserProfile() {
             </div>
             <div className="mb-4">
               <label
-                className="block mb-2 text-sm font-bold text-gray-700"
+                className="block mb-2 text-sm font-bold text-gray-50"
                 htmlFor="email"
               >
                 Email
               </label>
               <input
-                className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                className="w-full bg-[#8d99ae] px-3 py-2 mb-3 text-sm leading-tight text-gray-50 border-none rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                 type="email"
                 {...register("email")}
                 defaultValue={user?.email}
@@ -132,13 +124,13 @@ export default function UserProfile() {
             </div>
             <div className="md:ml-2">
               <label
-                className="block mb-2 text-sm font-bold text-gray-700"
+                className="block mb-2 text-sm font-bold text-gray-50"
                 htmlFor="phoneNumber"
               >
                 Enter Phone Number
               </label>
               <input
-                className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                className="w-full bg-[#8d99ae] px-3 py-2 mb-3 text-sm leading-tight text-gray-50 border-none rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                 type="text"
                 {...register("contact")}
                 defaultValue={user?.contact}
@@ -146,13 +138,13 @@ export default function UserProfile() {
             </div>
             <div className="mb-4">
               <label
-                className="block mb-2 text-sm font-bold text-gray-700"
+                className="block mb-2 text-sm font-bold text-gray-50"
                 htmlFor="address"
               >
                 Address
               </label>
               <textarea
-                className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                className="w-full bg-[#8d99ae] px-3 py-2 mb-3 text-sm leading-tight text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                 rows={6}
                 {...register("address")}
                 defaultValue={user?.address}
@@ -160,7 +152,7 @@ export default function UserProfile() {
             </div>
             <div className="mb-6 text-center">
               <button
-                className="w-full px-4 py-2 font-bold text-white bg-gradient-to-r from-[#03A776] to-[#0D1519] rounded-full focus:outline-none focus:shadow-outline"
+                className="w-full px-4 py-2 font-bold text-gray-50 bg-[#50577A] hover:bg-[#474E68] rounded-full focus:outline-none focus:shadow-outline"
                 type="submit"
               >
                 Update Profile

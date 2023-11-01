@@ -26,8 +26,8 @@ export default function PaginationSection({
               key={index}
               onClick={() => setCurrentPage(page)}
               className={`${
-                page === currentPage ? "text-white" : "text-gray-800"
-              } text-lg transition duration-150 hover:bg-[#127A9E] bg-[#074c7d] font-semibold py-2 p-4 rounded-lg`}
+                page === currentPage ? "text-gray-50" : "text-gray-800"
+              } text-lg transition duration-150 bg-[#50577A] hover:bg-[#474E68] font-semibold py-2 p-4 rounded-lg`}
             >
               {page}
             </button>

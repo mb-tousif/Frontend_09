@@ -96,14 +96,14 @@ export default function Booking() {
 
   return (
     <div>
-      <div className="min-h-70vh bg-gray-100 pt-20">
+      <div className="min-h-70v pt-20 text-gray-50">
         <h1 className="mb-10 text-center text-2xl font-bold">Booking Items</h1>
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div className="rounded-lg md:w-2/3">
             {bookings?.map((booking: TBooking) => (
               <div
                 key={booking?.id}
-                className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
+                className="justify-between mb-6 rounded-lg bg-[#3c4153ad] p-6 shadow-md sm:flex sm:justify-start"
               >
                 <Image
                   width={200}
@@ -115,38 +115,40 @@ export default function Booking() {
                 />
                 <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                   <div className="mt-5 sm:mt-0">
-                    <h2 className="text-lg font-bold text-gray-900">
+                    <h2 className="text-lg font-bold">
                       {
                         // @ts-ignore
                         booking?.services?.name
                       }
                     </h2>
-                    <p className="mt-1 text-xs text-gray-700">
+                    <p className="mt-1 text-xs">
                       {
                         // @ts-ignore
                         booking?.services?.description
                       }
                     </p>
-                    <p className="mt-1 text-sm text-gray-700">
+                    <p className="mt-1 text-sm">
                       Booking Status: {booking?.status}
                     </p>
                     <div className="flex justify-center p-2">
                       {
                         // @ts-ignore
-                        booking?.status === ENUM_BOOKING_STATUS_FOR_USER.PENDING ? (
+                        booking?.status ===
+                        ENUM_BOOKING_STATUS_FOR_USER.PENDING ? (
                           <button
                             onClick={() => handlePayNow(booking?.id as string)}
-                            className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600"
+                            className="mt-6 w-full rounded-md py-1.5 font-medium text-gray-50 bg-[#50577A] hover:bg-[#474E68]"
                           >
                             Pay Now
                           </button>
-                        ):
-                        <button
+                        ) : (
+                          <button
                             onClick={() => cancelBooking(booking?.id as string)}
-                            className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600"
+                            className="mt-6 w-full rounded-md py-1.5 font-medium text-gray-50 bg-[#50577A] hover:bg-[#474E68] "
                           >
                             Cancel Booking
                           </button>
+                        )
                       }
                     </div>
                   </div>
@@ -157,7 +159,7 @@ export default function Booking() {
           {carts?.map((cart: TCart) => (
             <div
               key={cart.id}
-              className="mt-6 h-full mb-6 rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3"
+              className="mt-6 h-full mb-6 rounded-lg border bg-[#3c4153ad] p-6 shadow-md md:mt-0 md:w-1/3"
             >
               <div className="flex justify-between">
                 <p className="text-gray-700">Status: {cart?.status}</p>
@@ -175,7 +177,7 @@ export default function Booking() {
                 <p className="text-sm text-gray-700">including VAT</p>
               </div>
             </div> */}
-              <button className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
+              <button className="mt-6 w-full rounded-md text-gray-50 bg-[#50577A] hover:bg-[#474E68] py-1.5 font-medium">
                 Check out
               </button>
             </div>

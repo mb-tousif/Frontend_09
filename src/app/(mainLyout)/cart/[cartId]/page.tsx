@@ -47,7 +47,7 @@ export default function AddToCart({ params }: {params: any}) {
     <div className="flex justify-center p-6 text-blue-50">
       <div
         key={service?.id}
-        className="mt-6 h-full rounded-xl pb-6 bg-[#2c292993] shadow-md md:mt-0 md:w-4/6"
+        className="mt-6 h-full rounded-xl bg-[#3c4153ad] pb-6 shadow-md md:mt-0 md:w-4/6"
       >
         <div className="flex justify-center">
           <Image
@@ -83,7 +83,7 @@ export default function AddToCart({ params }: {params: any}) {
               onClick={() => {
                 handleAddToCart(cartData);
               }}
-              className="mt-3 w-3/5 rounded-md bg-blue-500 py-1.5 font-medium hover:bg-blue-600"
+              className="mt-3 w-3/5 rounded-md py-1.5 font-medium text-gray-50 bg-[#50577A] hover:bg-[#474E68]"
             >
               Add to cart
             </button>

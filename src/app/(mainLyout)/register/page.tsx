@@ -36,7 +36,7 @@ export default function Register() {
             <Image src={leftImage} className="min-h-full" alt="leftImage" />
           </div>
           <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-            <h3 className="pt-4 text-2xl text-[#03A776] font-bold text-center">
+            <h3 className="pt-4 text-2xl text-[#474E68] font-bold text-center">
               Create an Account!
             </h3>
             <form
@@ -293,7 +293,7 @@ export default function Register() {
               </div>
               <div className="mb-6 text-center">
                 <button
-                  className="w-full px-4 py-2 font-bold text-white bg-gradient-to-r from-[#03A776] to-[#0D1519] rounded-full focus:outline-none focus:shadow-outline"
+                  className="w-full px-4 py-2 font-bold bg-[#50577A] hover:bg-[#474E68] text-gray-50 rounded-full focus:outline-none focus:shadow-outline"
                   type="submit"
                 >
                   Register Account
@@ -303,7 +303,7 @@ export default function Register() {
               <div className="text-center">
                 <span className="text-sm md:text-base text-[#0D1519] align-baseline">
                   Already have an account ?
-                  <Link href="/login" className="ml-2 hover:text-[#03A776]">
+                  <Link href="/login" className="ml-2 hover:text-[#474E68]">
                     Login
                   </Link>
                 </span>

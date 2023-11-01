@@ -72,6 +72,7 @@ export default function Services() {
               width: "80%",
               color: "black",
             }}
+            className="bg-[#474E68] border-none text-gary-50 placeholder:text-gray-50"
           />
         </div>
         <div className="flex flex-col">
@@ -79,7 +80,7 @@ export default function Services() {
             {currentServices?.map((service) => (
               <div
                 key={service?.id}
-                className="group rounded-2xl group-hover:bg-opacity-60 transition duration-500 relative bg-[#14141493] pt-24 pb-4 text-white"
+                className="group rounded-2xl group-hover:bg-opacity-60 transition duration-500 relative bg-[#474E68] pt-24 pb-4 text-white"
               >
                 <div className="flex justify-center">
                   <Image

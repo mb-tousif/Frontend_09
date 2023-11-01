@@ -59,12 +59,12 @@ export default function CartPage() {
     }
     
     return (
-      <div className='min-h-70vh'>
+      <div className="min-h-70vh">
         <div className="flex flex-col justify-center">
           {carts?.map((cart: TCart) => (
             <div
               key={cart.id}
-              className="flex max-w-3xl m-6 min-h-50vh bg-white shadow-lg rounded-lg overflow-hidden"
+              className="flex max-w-3xl m-6 min-h-50vh bg-[#3c4153ad] shadow-lg rounded-lg overflow-hidden"
             >
               <div
                 className="w-3/5 bg-cover"
@@ -75,37 +75,38 @@ export default function CartPage() {
                   backgroundPosition: "center center",
                 }}
               ></div>
-              <div className="w-2/3 p-4">
-                <h1 className="text-gray-900 font-bold text-2xl">
+              <div className="w-2/3 p-4 text-gray-50">
+                <h1 className="font-bold text-2xl">
                   {/* @ts-ignore */}
                   {cart?.services?.name}
                 </h1>
-                <p className="mt-2 text-gray-600 text-sm">
+                <p className="mt-2 text-sm">
                   {/* @ts-ignore */}
                   {cart?.services?.description}
                 </p>
-                {
-                  carts.length > 0 ? (
-                <div className="flex item-center justify-between mt-3">
-                  <h1 className="text-gray-700 font-bold text-xl">{cart?.totalPrice}</h1>
-                  <button className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
-                    Buy now
-                  </button>
-                  <button 
-                  onClick={() => handleDeleteCart(cart?.id as string)}
-                  className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
-                    Delete cart
-                  </button>
-                </div>
-                  ): (
-                    <div className="flex item-center justify-between mt-3">
-                  <h1 className="text-gray-700 font-bold text-xl">{cart?.totalPrice}</h1>
-                  <button className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
-                    Buy now
-                  </button>
-                </div>
-                  )
-                }
+                {carts.length > 0 ? (
+                  <div className="flex item-center justify-between mt-3">
+                    <h1 className="font-bold text-xl">{cart?.totalPrice}</h1>
+                    <button className="px-3 bg-[#50577A] hover:bg-[#474E68] py-2 text-xs font-bold uppercase rounded">
+                      Buy now
+                    </button>
+                    <button
+                      onClick={() => handleDeleteCart(cart?.id as string)}
+                      className="px-3 bg-[#50577A] hover:bg-[#474E68] py-2 text-xs font-bold uppercase rounded"
+                    >
+                      Delete cart
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex item-center justify-between mt-3">
+                    <h1 className="font-bold text-gray-50 text-xl">
+                      {cart?.totalPrice}
+                    </h1>
+                    <button className="px-3 py-2 bg-[#50577A] hover:bg-[#474E68] text-xs font-bold uppercase rounded">
+                      Buy now
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ))}
