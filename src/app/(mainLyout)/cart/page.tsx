@@ -60,15 +60,15 @@ export default function CartPage() {
     }
     
     return (
-      <div className="min-h-70vh">
-        <div className="flex flex-col justify-center">
+      <div className="min-h-70vh p-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {carts?.map((cart: TCart) => (
             <div
               key={cart.id}
-              className="flex max-w-3xl m-6 min-h-50vh bg-[#3c4153ad] shadow-lg rounded-lg overflow-hidden"
+              className="sm:flex max-w-3xl rounded-lg mx-auto my-auto min-h-50vh bg-[#3c4153ad]"
             >
               <div
-                className="w-3/5 bg-cover"
+                className="sm:w-3/5 bg-cover"
                 style={{
                   // @ts-ignore
                   backgroundImage: `url(${cart?.services?.imgUrl})`,
@@ -81,13 +81,29 @@ export default function CartPage() {
                   {/* @ts-ignore */}
                   {cart?.services?.name}
                 </h1>
-                <p className="mt-2 text-sm">
+                <p className="mt-2 text-sm text-justify">
                   {/* @ts-ignore */}
                   {cart?.services?.description}
                 </p>
+                <div
+                  key={cart.id}
+                  className="mt-6 w-full h-auto mb-6 rounded-lg border bg-[#3c4153ad] p-6"
+                >
+                  <div className="flex justify-between">
+                    <p className="text-gray-50">Status: {cart?.status}</p>
+                    <p className="text-gray-50">Quantity: {cart?.quantity}</p>
+                  </div>
+                  <div className="mb-2 flex justify-between">
+                    <p className="text-gray-50">Total Price</p>
+                    <p className="text-gray-50">${cart?.totalPrice}</p>
+                  </div>
+                  <hr className="my-4" />
+                  <button className="mt-6 w-full rounded-md text-gray-50 bg-[#50577A] hover:bg-[#474E68] py-1.5 font-medium">
+                    Increment Quantity
+                  </button>
+                </div>
                 {carts.length > 0 ? (
                   <div className="flex item-center justify-between mt-3">
-                    <h1 className="font-bold text-xl">{cart?.totalPrice}</h1>
                     <button className="px-3 bg-[#50577A] hover:bg-[#474E68] py-2 text-xs font-bold uppercase rounded">
                       Buy now
                     </button>
@@ -100,9 +116,6 @@ export default function CartPage() {
                   </div>
                 ) : (
                   <div className="flex item-center justify-between mt-3">
-                    <h1 className="font-bold text-gray-50 text-xl">
-                      {cart?.totalPrice}
-                    </h1>
                     <button className="px-3 py-2 bg-[#50577A] hover:bg-[#474E68] text-xs font-bold uppercase rounded">
                       Buy now
                     </button>

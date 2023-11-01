@@ -28,7 +28,7 @@ export default function Blog() {
     <div className="antialiased p-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {blogs?.map((blog: TBlog) => (
-          <div key={blog.id} className="md:p-8 p-2 bg-[#195487a4] rounded-3xl">
+          <div key={blog.id} className="md:p-8 p-2 bg-[#50577A] rounded-3xl">
             <Image
               className="rounded-lg w-full"
               width={500}
@@ -47,7 +47,7 @@ export default function Blog() {
                 {blog?.content}
               </p>
             </div>
-            <div className="flex items-center space-x-2 mt-20">
+            <div className="flex items-center space-x-2 mt-10">
               <Image
                 width={500}
                 height={500}
@@ -55,12 +55,14 @@ export default function Blog() {
                 src={blog?.users?.imgUrl}
                 className="w-10 h-10 object-cover object-center rounded-full"
                 alt="Blog Author"
-                />
+              />
               <div>
-                 {/* @ts-ignore */}
-                <p className="text-gray-900 font-semibold">{blog?.users?.name}</p>
-                <p className="text-gray-700 font-semibold text-sm">
+                <p className="text-gray-50 font-semibold">
                 {/* @ts-ignore */}
+                  {blog?.users?.name}
+                </p>
+                <p className="text-gray-50 font-semibold text-sm">
+                  {/* @ts-ignore */}
                   {blog?.createdAt}
                 </p>
               </div>

@@ -41,7 +41,7 @@ export default function Booking() {
     );
   }
   // @ts-ignore
-  const carts = cartData?.carts?.data?.data.filter(
+  const carts = cartData?.data?.data.filter(
     (cart: TCart) => cart.status === "Pending"
   );
   const bookings = data?.data?.filter(
@@ -158,32 +158,6 @@ export default function Booking() {
               </div>
             ))}
           </div>
-          {carts?.map((cart: TCart) => (
-            <div
-              key={cart.id}
-              className="mt-6 h-full mb-6 rounded-lg border bg-[#3c4153ad] p-6 shadow-md md:mt-0 md:w-1/3"
-            >
-              <div className="flex justify-between">
-                <p className="text-gray-700">Status: {cart?.status}</p>
-                <p className="text-gray-700">Quantity: {cart?.quantity}</p>
-              </div>
-              <div className="mb-2 flex justify-between">
-                <p className="text-gray-700">Total Price</p>
-                <p className="text-gray-700">${cart?.totalPrice}</p>
-              </div>
-              <hr className="my-4" />
-              {/* <div className="flex justify-between">
-              <p className="text-lg font-bold">Total</p>
-              <div className="">
-                <p className="mb-1 text-lg font-bold">$134.98 USD</p>
-                <p className="text-sm text-gray-700">including VAT</p>
-              </div>
-            </div> */}
-              <button className="mt-6 w-full rounded-md text-gray-50 bg-[#50577A] hover:bg-[#474E68] py-1.5 font-medium">
-                Check out
-              </button>
-            </div>
-          ))}
         </div>
       </div>
     </div>

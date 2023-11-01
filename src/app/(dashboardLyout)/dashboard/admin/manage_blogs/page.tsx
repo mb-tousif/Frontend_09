@@ -4,7 +4,7 @@ import { TBlog } from "@/types/blog.types";
 import { Row, Space, Spin, message } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import { AiTwotoneDelete } from "react-icons/ai";
+import { AiTwotoneDelete, AiTwotoneEdit } from "react-icons/ai";
 
 export default function AdminAllBlogs() {
   const { data, isLoading } = useGetAllBlogsQuery({});
@@ -37,11 +37,11 @@ export default function AdminAllBlogs() {
 
   return (
     <div className="antialiased flex flex-col md:mx-36 justify-center items-center h-[100vh]">
-      <div className="relative flex w-full flex-col rounded-[10px] border-[1px] border-gray-200 bg-white bg-clip-border shadow-md shadow-[#F3F3F3]">
-        <div className="flex h-fit w-full items-center justify-between rounded-t-2xl bg-white px-4 pb-[20px] pt-4 shadow-2xl shadow-gray-100 dark:!bg-navy-700 dark:shadow-none">
-          <h4 className="text-lg font-bold text-gray-700">Top Blogs</h4>
+      <div className="relative flex w-full flex-col rounded-[10px] bg-[#50577abd] bg-clip-border">
+        <div className="flex h-fit w-full items-center justify-between rounded-t-2xl px-4 pb-[20px] pt-4">
+          <h4 className="text-lg font-bold text-gray-50">Top Blogs</h4>
           <Link href="/dashboard/admin/manage_blogs/create">
-            <button className="rounded-[20px] px-4 py-2 text-base font-medium text-brand-500 transition duration-200 active:bg-gray-200">
+            <button className="rounded-[20px] text-gray-50 border-2 hover:border-none px-4 py-2 text-base font-medium text-brand-500 transition duration-200">
               Add Blog
             </button>
           </Link>
@@ -51,24 +51,24 @@ export default function AdminAllBlogs() {
             <thead>
               <tr>
                 <th className="pointer">
-                  <div className="flex items-center justify-between pb-2 pt-4 text-start uppercase tracking-wide text-gray-600 sm:text-xs lg:text-xs">
+                  <p className="text-center pb-2 pt-4 text-gray-50 text-xs sm:text-sm">
                     Authors
-                  </div>
+                  </p>
                 </th>
                 <th className="pointer">
-                  <div className="flex items-center justify-between pb-2 pt-4 text-start uppercase tracking-wide text-gray-600 sm:text-xs lg:text-xs">
+                  <p className="text-center pb-2 pt-4 text-gray-50 text-xs sm:text-sm">
                     Title
-                  </div>
+                  </p>
                 </th>
                 <th className="pointer">
-                  <div className="flex items-center justify-between pb-2 pt-4 text-start uppercase tracking-wide text-gray-600 sm:text-xs lg:text-xs">
+                  <p className="text-center pb-2 pt-4 text-gray-50 text-xs sm:text-sm">
                     Views
-                  </div>
+                  </p>
                 </th>
                 <th className="pointer">
-                  <div className="flex items-center justify-between pb-2 pt-4 text-start uppercase tracking-wide text-gray-600 sm:text-xs lg:text-xs">
+                  <p className="text-center pb-2 pt-4 text-gray-50 text-xs sm:text-sm">
                     Action
-                  </div>
+                  </p>
                 </th>
               </tr>
             </thead>
@@ -87,7 +87,7 @@ export default function AdminAllBlogs() {
                           alt=""
                         />
                       </div>
-                      <p className="text-sm font-medium text-[#2C68A5] dark:text-white">
+                      <p className="text-sm font-medium text-gray-50">
                         {
                           // @ts-ignore
                           blog?.users?.name
@@ -96,24 +96,29 @@ export default function AdminAllBlogs() {
                     </div>
                   </td>
                   <td className="py-3 text-sm">
-                    <p className="text-md font-medium text-[#145A2C]">
+                    <p className="text-md font-medium text-gray-50">
                       {blog?.title.slice(0, 14)} ...
                     </p>
                   </td>
                   <td className="py-3 text-sm">
                     <div className="mx-2 flex font-bold">
-                      <p className="text-md font-medium text-[#2C68A5] dark:text-white">
-                        3.4k
-                      </p>
+                      <p className="text-md font-medium text-gray-50">3.4k</p>
                     </div>
                   </td>
                   <td className="py-3 text-sm">
                     <div className="mx-2 flex font-bold">
                       <button
                         onClick={() => handleDeleteBlog(blog?.id as string)}
-                       className="text-md font-medium text-gray-600 dark:text-white">
-                        <AiTwotoneDelete className="text-[#2C68A5] w-6 h-6" />
+                        className="text-md font-medium text-gray-50"
+                      >
+                        <AiTwotoneDelete className="text-gray-50 w-6 h-6" />
                       </button>
+                      <Link
+                        href={`/dashboard/admin/manage_blogs/edit/${blog?.id}`}
+                        className="text-md font-medium text-gray-600 dark:text-white"
+                      >
+                        <AiTwotoneEdit className="text-gray-50 ml-2 w-6 h-6" />
+                      </Link>
                     </div>
                   </td>
                 </tr>
