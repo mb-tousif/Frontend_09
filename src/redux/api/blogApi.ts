@@ -43,8 +43,8 @@ export const blogApi = baseApi.injectEndpoints({
     updateBlogById: build.mutation({
       query: (payload) => ({
         url: `/blogs/update-blogs/${payload.id}`,
-        method: "PUT",
-        data: payload.body,
+        method: "PATCH",
+        body: payload.body,
       }),
       invalidatesTags: [tagTypes.Blog],
     }),
