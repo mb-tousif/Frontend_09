@@ -72,6 +72,11 @@ export default function Service({ params }: any) {
                       {service?.status}
                     </button>
                   )}
+                  <Link href={`/services/review/${service.id}`}>
+                    <button className="rounded-xl text-gray-50 p-2 bg-[#50577A] mr-2 focus:outline-none">
+                      Add Review
+                    </button>
+                  </Link>
                 </div>
               </div>
               <div className="flex items-center mt-6">
@@ -87,7 +92,7 @@ export default function Service({ params }: any) {
                 }
                 {service.status === "Available" ? (
                   <Link href={`/cart/${service.id}`}>
-                    <button className="mx-2 flex bg-[#50577A] hover:bg-[#474E68] border-none text-gray-50 rounded-md p-2">
+                    <button className="flex bg-[#50577A] hover:bg-[#474E68] border-none text-gray-50 rounded-md p-2">
                       add to cart
                       <svg
                         className="h-5 w-5 ml-2"

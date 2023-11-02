@@ -1,6 +1,11 @@
 "use client"
 import { ENUM_CART_STATUS } from '@/constants/common';
-import { useDeleteCartByIdMutation, useGetCartByUserIdQuery } from '@/redux/api/cartApi';
+import {
+  useDeleteCartByIdMutation,
+  useGetCartByUserIdQuery,
+  useIncrementCartQuantityMutation,
+  useDecrementCartQuantityMutation,
+} from "@/redux/api/cartApi";
 import { useAppSelector } from '@/redux/hooks';
 import { TCart } from '@/types/cart.types';
 import { Row, Space, Spin, message } from 'antd';
@@ -13,6 +18,10 @@ export default function CartPage() {
   const [loading, setIsLoading] = useState<boolean>(false);
     const { data, isLoading } =useGetCartByUserIdQuery({});
     const [deleteCartById, { isSuccess, isError, error}] = useDeleteCartByIdMutation();
+    const [incrementCartQuantity] =
+      useIncrementCartQuantityMutation();
+    const [decrementCartQuantity] =
+      useDecrementCartQuantityMutation();
     useEffect(() => {
       if (!token) {
         router.push("/login");
@@ -36,6 +45,14 @@ export default function CartPage() {
     }
     const handleDeleteCart = ( id: string) => {
       deleteCartById(id);
+    };
+
+    const handleQuantityCart = ( id: string) => {
+      incrementCartQuantity(id);
+    };
+
+    const handleDecrementCart = (id: string) => {
+      decrementCartQuantity(id);
     };
     if (isSuccess) {
       message.success("Cart deleted successfully");
@@ -98,8 +115,17 @@ export default function CartPage() {
                     <p className="text-gray-50">${cart?.totalPrice}</p>
                   </div>
                   <hr className="my-4" />
-                  <button className="mt-6 w-full rounded-md text-gray-50 bg-[#50577A] hover:bg-[#474E68] py-1.5 font-medium">
+                  <button
+                    onClick={() => handleQuantityCart(cart?.id as string)}
+                    className="mt-6 w-full rounded-md text-gray-50 bg-[#50577A] hover:bg-[#474E68] py-1.5 font-medium"
+                  >
                     Increment Quantity
+                  </button>
+                  <button
+                    onClick={() => handleDecrementCart(cart?.id as string)}
+                    className="mt-6 w-full rounded-md text-gray-50 bg-[#50577A] hover:bg-[#474E68] py-1.5 font-medium"
+                  >
+                    Decrement Quantity
                   </button>
                 </div>
                 {carts.length > 0 ? (

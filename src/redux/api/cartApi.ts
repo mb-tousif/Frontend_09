@@ -22,7 +22,7 @@ export const cartApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.Cart],
     }),
     getCartByUserId: build.query({
-      query: ( ) => {
+      query: () => {
         return {
           url: "/carts/user-carts",
           method: "GET",
@@ -55,11 +55,18 @@ export const cartApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.Cart],
     }),
-    updateCartQuantity: build.mutation({
+    incrementCartQuantity: build.mutation({
       query: (id: string) => ({
-        url: `/increment-cart-quantity/${id}`,
+        url: `/carts/increment-cart-quantity/${id}`,
         method: "PATCH",
+      }),
+      invalidatesTags: [tagTypes.Cart],
     }),
+    decrementCartQuantity: build.mutation({
+      query: (id: string) => ({
+        url: `/carts/decrement-cart-quantity/${id}`,
+        method: "PATCH",
+      }),
       invalidatesTags: [tagTypes.Cart],
     }),
     deleteCartById: build.mutation({
@@ -72,12 +79,13 @@ export const cartApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { 
-    useGetAllCartQuery,
-    useGetCartByUserIdQuery, 
-    useCreateCartMutation, 
-    useGetCartByIdQuery, 
-    useUpdateCartByIdMutation, 
-    useDeleteCartByIdMutation,
-    useUpdateCartQuantityMutation
+export const {
+  useGetAllCartQuery,
+  useGetCartByUserIdQuery,
+  useCreateCartMutation,
+  useGetCartByIdQuery,
+  useUpdateCartByIdMutation,
+  useDeleteCartByIdMutation,
+  useIncrementCartQuantityMutation,
+  useDecrementCartQuantityMutation,
 } = cartApi;
