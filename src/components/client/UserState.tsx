@@ -1,5 +1,4 @@
 "use client";
-
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { removeToken } from "@/redux/slices/authSlice";
 import Link from "next/link";
@@ -12,7 +11,7 @@ export default function UserState() {
     if (token) {
       setHasToken(true);
     }
-  }, [token]);
+  }, [token, hasToken]);
   const dispatch = useAppDispatch();
   const handleAuth = () => {
     dispatch(removeToken());

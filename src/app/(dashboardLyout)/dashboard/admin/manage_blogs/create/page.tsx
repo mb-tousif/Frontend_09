@@ -20,7 +20,7 @@ export default function ManageBlogsBySuperAdmin() {
       reset();
     } catch (err: any) {
       message.error(err.data.message);
-    }
+    }  
   };
   return (
     <div className="p-10 md:pl-20">

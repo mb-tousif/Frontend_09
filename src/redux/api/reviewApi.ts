@@ -25,7 +25,7 @@ export const reviewApi = baseApi.injectEndpoints({
       query: (payload: TReview) => ({
         url: "/reviews/create-review",
         method: "POST",
-        data: payload,
+        body: payload,
       }),
       invalidatesTags: [tagTypes.Review],
     }),

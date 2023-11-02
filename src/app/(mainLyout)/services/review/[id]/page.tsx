@@ -1,6 +1,7 @@
 "use client"
 import { useCreateReviewMutation } from '@/redux/api/reviewApi';
 import { TReview } from '@/types/review.types';
+import { message } from 'antd';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 export default function AddReview({ params }: any) {
@@ -11,31 +12,30 @@ export default function AddReview({ params }: any) {
     formState: { errors },
     reset,
   } = useForm<TReview>();
-  const onSubmit: SubmitHandler<TReview> = (data: TReview) => {
-      console.log("data", data);
-  };
+  const onSubmit: SubmitHandler<TReview> = async (data: TReview) => {
+    try {
+      data.serviceId = params?.id;
+      console.log(data);
+      
+      const res = await createReview({...data}).unwrap();
+      console.log(res);
+      message.success(res?.message);
+      reset();
+    } catch (err: any) {
+      message.error(err?.data?.message);
+}
+}
+  
   return (
     <div className="p-10 md:pl-20">
       <div className="w-full sm:w-4/6 mx-auto bg-slate-500 rounded-2xl p-5">
         <h3 className="p-4 text-2xl text-gray-50 font-bold text-center">
-            Add Review
+          Add Review
         </h3>
-        <form onSubmit={handleSubmit(onSubmit)} className="px-8 pt-6 pb-8 mb-4">
-          <div className="mb-4">
-            <label
-              className="block mb-2 text-sm font-bold text-gray-50"
-              htmlFor="serviceId"
-            >
-              Service Id
-            </label>
-            <input
-              className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 rounded"
-              {...register("serviceId", { required: true })}
-              type="text"
-              value={params?.id}
-              disabled
-            />
-          </div>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="px-8 pt-6 pb-8 mb-4"
+        >
           <div className="mb-4">
             <label
               className="block mb-2 text-sm font-bold text-gray-50"
@@ -45,12 +45,8 @@ export default function AddReview({ params }: any) {
             </label>
             <input
               className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 bg-slate-500 rounded focus:outline-none"
-              {...register("rating", {
-                required: true,
-                min: 1,
-                max: 5,
-              })}
-              type="number"
+              {...register("rating", { required: true})}
+              type="text"
               placeholder="Rate the service between 1 to 5"
             />
             {errors.rating?.type === "required" && (
@@ -72,7 +68,7 @@ export default function AddReview({ params }: any) {
           <div className="mb-4 mt-2">
             <label
               className="block mb-2 text-sm font-bold text-gray-50"
-              htmlFor="content"
+              htmlFor="comment"
             >
               Review Content
             </label>
