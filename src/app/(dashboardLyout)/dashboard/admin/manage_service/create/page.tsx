@@ -14,10 +14,7 @@ export default function CreateAdminService() {
      } = useForm<TService>();
      const onSubmit: SubmitHandler<TService> = async (data: TService) => {
        try {
-         
          const res = await createService({...data}).unwrap();
-        //  console.log(data, "data");
-        //  console.log(res, "res");
          message.success(res.message);
        } catch (err: any) {
          message.error(err.data.message);
@@ -32,13 +29,13 @@ export default function CreateAdminService() {
         >
           <div className="mb-4">
             <label
-              className="block mb-2 text-sm font-bold text-gray-700"
+              className="block mb-2 text-sm font-bold text-gray-50"
               htmlFor="name"
             >
               Service Title
             </label>
             <input
-              className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              className="w-full px-3 py-2 mb-3 text-sm leading-tight bg-gray-700 text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               {...(register("name"),
               {
                 required: true,
@@ -48,11 +45,11 @@ export default function CreateAdminService() {
             />
           </div>
           <div className="mb-4">
-            <label className="inline-block mb-2 mr-2 text-gray-700">
+            <label className="inline-block mb-2 mr-2 text-gray-50">
               Service category
             </label>
             <select
-              className={`w-full h-10 text-center bg-[#868d05] text-gray-50 rounded-lg text-xl ${
+              className={`w-full h-10 text-center bg-gray-700 text-gray-50 rounded-lg text-xl ${
                 errors.category &&
                 " focus:border-red-500 focus:ring-red-500 border-red-500"
               }`}
@@ -71,11 +68,11 @@ export default function CreateAdminService() {
             )}
           </div>
           <div className="mb-4">
-            <label className="inline-block mb-2 mr-2 text-gray-700">
+            <label className="inline-block mb-2 mr-2 text-gray-50">
               Service Status
             </label>
             <select
-              className={`w-full h-10 text-center bg-[#868d05] text-gray-50 rounded-lg text-xl ${
+              className={`w-full h-10 text-center bg-gray-700 text-gray-50 rounded-lg text-xl ${
                 errors.status &&
                 " focus:border-red-500 focus:ring-red-500 border-red-500"
               }`}
@@ -93,13 +90,13 @@ export default function CreateAdminService() {
           </div>
           <div className="mb-4">
             <label
-              className="block mb-2 text-sm font-bold text-gray-700"
+              className="block mb-2 text-sm font-bold text-gray-50"
               htmlFor="imgUrl"
             >
               Service image url
             </label>
             <input
-              className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              className="w-full px-3 py-2 mb-3 text-sm leading-tight bg-gray-700 text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               type="text"
               {...(register("imgUrl"),
               {
@@ -115,13 +112,13 @@ export default function CreateAdminService() {
           </div>
           <div className="md:ml-2">
             <label
-              className="block mb-2 text-sm font-bold text-gray-700"
+              className="block mb-2 text-sm font-bold text-gray-50"
               htmlFor="price"
             >
               Enter Price
             </label>
             <input
-              className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              className="w-full px-3 py-2 mb-3 text-sm leading-tight bg-gray-700 text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               type="number"
               {...(register("price"),
               {
@@ -137,13 +134,13 @@ export default function CreateAdminService() {
           </div>
           <div className="mb-4">
             <label
-              className="block mb-2 text-sm font-bold text-gray-700"
+              className="block mb-2 text-sm font-bold text-gray-50"
               htmlFor="schedule"
             >
               Service Duration
             </label>
             <input
-              className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              className="w-full px-3 py-2 mb-3 text-sm leading-tight bg-gray-700 text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               {...(register("schedule"),
               {
                 required: true,
@@ -159,13 +156,13 @@ export default function CreateAdminService() {
           </div>
           <div className="mb-4">
             <label
-              className="block mb-2 text-sm font-bold text-gray-700"
+              className="block mb-2 text-sm font-bold text-gray-50"
               htmlFor="description"
             >
               Description
             </label>
             <textarea
-              className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              className="w-full px-3 py-2 mb-3 text-sm leading-tight bg-gray-700 text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               rows={6}
               {...register("description")}
               placeholder="Enter Description"
@@ -178,10 +175,10 @@ export default function CreateAdminService() {
           </div>
           <div className="mb-6 text-center">
             <button
-              className="w-full px-4 py-2 font-bold text-white bg-gradient-to-r from-[#03A776] to-[#0D1519] rounded-full focus:outline-none focus:shadow-outline"
+              className="w-full px-4 py-2 font-bold text-gray-50 bg-[#50577A] hover:border-2 rounded-full focus:outline-none focus:shadow-outline"
               type="submit"
             >
-                Create Service
+              Create Service
             </button>
           </div>
         </form>

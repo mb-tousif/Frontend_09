@@ -13,7 +13,8 @@ export default function Service({ params }: any) {
   // console.log(service);
   const { data: serviceData, isLoading: serviceIsLoading } = useAllServicesQuery({category: service?.category});
   // @ts-ignore
-  const services = serviceData?.services?.data?.data;
+  const services = serviceData?.services?.data?.data.filter((service) => {
+    return service?.status === "Available"});
   
   if (isLoading || serviceIsLoading ) {
     return (
@@ -62,24 +63,8 @@ export default function Service({ params }: any) {
                 <label className="text-gray-50 text-sm" htmlFor="count">
                   {service?.description}
                 </label>
-                <div className="flex items-center mt-1">
-                  {service?.status === "Available" ? (
-                    <button className="rounded-xl text-gray-50 p-2 bg-[#50577A] mr-2 focus:outline-none">
-                      {service?.status}
-                    </button>
-                  ) : (
-                    <button className="rounded-xl text-gray-50 p-2 bg-[#50577A] mr-2 focus:outline-none">
-                      {service?.status}
-                    </button>
-                  )}
-                  <Link href={`/services/review/${service.id}`}>
-                    <button className="rounded-xl text-gray-50 p-2 bg-[#50577A] mr-2 focus:outline-none">
-                      Add Review
-                    </button>
-                  </Link>
-                </div>
               </div>
-              <div className="flex items-center mt-6">
+              <div className="flex justify-evenly items-center mt-6">
                 {
                   // @ts-ignore
                   service?.carts[0]?.status === "Pending" ? (
@@ -90,26 +75,27 @@ export default function Service({ params }: any) {
                     ""
                   )
                 }
-                {service.status === "Available" ? (
-                  <Link href={`/cart/${service.id}`}>
-                    <button className="flex bg-[#50577A] hover:bg-[#474E68] border-none text-gray-50 rounded-md p-2">
-                      add to cart
-                      <svg
-                        className="h-5 w-5 ml-2"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                      </svg>
-                    </button>
-                  </Link>
-                ) : (
-                  ""
-                )}
+                <Link href={`/cart/${service.id}`}>
+                  <button className="flex bg-[#50577A] hover:bg-[#474E68] border-none text-gray-50 rounded-md p-2">
+                    add to cart
+                    <svg
+                      className="h-5 w-5 ml-2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                  </button>
+                </Link>
+                <Link href={`/services/review/${service.id}`}>
+                  <button className="rounded-xl text-gray-50 p-2 bg-[#50577A] mr-2 focus:outline-none">
+                    Add Review
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

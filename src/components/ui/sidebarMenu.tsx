@@ -18,6 +18,7 @@ import { useAppDispatch } from "@/redux/hooks";
 import { removeToken } from "@/redux/slices/authSlice";
 import { ENUM_USER_ROLE_FOR_DASHBOARD } from "@/constants/common";
 import { FaBlog } from "react-icons/fa";
+import { TiCloudStorage } from "react-icons/ti";
 
 export const SidebarMenus = (role: string) => {
 const router = useRouter();
@@ -65,12 +66,12 @@ const logout = () => {
         },
         {
           label: (
-            <Link href={`/dashboard/${role}/manage_booking/accepted`}>
-              Accepted Booking
+            <Link href={`/dashboard/${role}/manage_booking/confirmed`}>
+              Confirmed Booking
             </Link>
           ),
           icon: <ToolFilled />,
-          key: `/dashboard/${role}/manage_booking/accepted`,
+          key: `/dashboard/${role}/manage_booking/confirmed`,
         },
         {
           label: (
@@ -101,21 +102,21 @@ const logout = () => {
         },
         {
           label: (
-            <Link href={`/dashboard/${role}/manage_service/edit`}>
-              Edit Service
+            <Link href={`/dashboard/${role}/manage_service/available_service`}>
+              Available Service
             </Link>
           ),
-          icon: <ToolFilled />,
-          key: `/dashboard/${role}/manage_service/edit`,
+          icon: <TiCloudStorage className="w-5 h-5 text-gray-50" />,
+          key: `/dashboard/${role}/manage_service/available_service`,
         },
         {
           label: (
-            <Link href={`/dashboard/${role}/manage_service/delete`}>
-              Delete Service
+            <Link href={`/dashboard/${role}/manage_service/upcoming_service`}>
+              Upcoming Service
             </Link>
           ),
-          icon: <DeleteFilled />,
-          key: `/dashboard/${role}/manage_service/delete`,
+          icon: <ToolFilled />,
+          key: `/dashboard/${role}/manage_service/upcoming_service`,
         },
       ],
     },

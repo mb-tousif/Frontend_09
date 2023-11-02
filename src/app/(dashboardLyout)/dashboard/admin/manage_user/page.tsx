@@ -11,7 +11,7 @@ import Image from "next/image";
 import { MdDelete } from "react-icons/md";
 
 export default function ManageUser() {
-  const { data, isLoading } = useGetAllUserQuery({});
+  const { data } = useGetAllUserQuery({});
   const [deleteUserById] = useDeleteUserByIdMutation();
   const [updateUserByAdmin, { isSuccess, isError, data: updateUser, error }] =
     useUpdateUserByAdminMutation();
@@ -28,7 +28,7 @@ export default function ManageUser() {
     const payload = {
       status: "Inactive",
     };
-    const res = await updateUserByAdmin({ id: id, payload: payload }).unwrap();
+    await updateUserByAdmin({ id: id, payload: payload }).unwrap();
   };
 
   const deleteUser = async (id: string) => {

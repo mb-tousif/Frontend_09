@@ -34,7 +34,8 @@ export default function Services() {
     const lastServiceIndex = currentPage * postsPerPage;
     const firstServiceIndex = lastServiceIndex - postsPerPage;
     // @ts-ignore
-    const services:TService[] = data?.services?.data?.data;
+    const services:TService[] = data?.services?.data?.data.filter((service) => {
+     return service?.status === "Available"});
     const currentServices = services?.slice(firstServiceIndex, lastServiceIndex);
   useEffect(() => {
     if (!token) {
