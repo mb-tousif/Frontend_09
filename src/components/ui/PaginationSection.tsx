@@ -15,7 +15,7 @@ export default function PaginationSection({
     let pages = [];
 
     for (let i = 1; i <= Math.ceil(totalData / dataPerPage); i++) {
-      pages.push(i);
+      pages?.push(i);
     }
   return (
     <div className="flex justify-center m-6">

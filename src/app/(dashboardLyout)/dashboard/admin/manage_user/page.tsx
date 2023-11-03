@@ -1,4 +1,5 @@
 "use client";
+import PaginationSection from "@/components/ui/PaginationSection";
 import { ENUM_USER_ROLE_FOR_DASHBOARD } from "@/constants/common";
 import { useUpdateUserByAdminMutation } from "@/redux/api/adminApi";
 import {
@@ -6,18 +7,23 @@ import {
   useGetAllUserQuery,
 } from "@/redux/api/userApi";
 import { TUser } from "@/types/user.types";
-import { message } from "antd";
+import { Row, Space, Spin, message } from "antd";
 import Image from "next/image";
+import { useState } from "react";
 import { MdDelete } from "react-icons/md";
 
 export default function ManageUser() {
-  const { data } = useGetAllUserQuery({});
+  const { data, isLoading } = useGetAllUserQuery({});
   const [deleteUserById] = useDeleteUserByIdMutation();
   const [updateUserByAdmin, { isSuccess, isError, data: updateUser, error }] =
     useUpdateUserByAdminMutation();
   // @ts-ignore
   const users = data?.users?.data?.data as TUser[];
-  
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(4);
+  const lastIndex = currentPage * postsPerPage;
+  const firstIndex = lastIndex - postsPerPage;
+  const currentData = users?.slice(firstIndex, lastIndex);
   const makeActive = async (id: string) => {
     const payload = {
       status: "Active", 
@@ -34,7 +40,21 @@ export default function ManageUser() {
   const deleteUser = async (id: string) => {
     await deleteUserById(id);
   };
-
+  if (isLoading) {
+    return (
+      <Row
+        justify="center"
+        align="middle"
+        style={{
+          height: "100vh",
+        }}
+      >
+        <Space>
+          <Spin tip="Loading" size="large"></Spin>
+        </Space>
+      </Row>
+    );
+  }
   if (isSuccess) {
     message.success("User status updated successfully");
   }
@@ -58,10 +78,13 @@ export default function ManageUser() {
                   People
                 </th>
                 <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
-                  User Email Address
+                  Name
                 </th>
                 <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
-                  User Status
+                  Role
+                </th>
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
+                  Status
                 </th>
                 <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tr">
                   Set User Status
@@ -72,21 +95,23 @@ export default function ManageUser() {
               </tr>
             </thead>
             <tbody>
-              {users?.map((user: TUser) => (
+              {currentData?.map((user: TUser) => (
                 <tr key={user.id} className="border border-gray-200">
                   <td className="px-4 py-3">
                     <div className="avatar">
-                      <div className="w-12 rounded-full">
+                      <div className="w-12 sm:w-16 md:w-20">
                         <Image
                           width={200}
                           height={200}
                           src={`${user?.imgUrl}`}
                           alt="Avatar"
+                          className="rounded-full h-14"
                         />
                       </div>
                     </div>
                   </td>
-                  <td className="px-4 py-3">{user?.email}</td>
+                  <td className="px-4 py-3">{user?.name}</td>
+                  <td className="px-4 py-3">{user?.role}</td>
                   <td className="px-4 py-3 text-gray-50">{user?.status}</td>
                   {user.status === "Active" ? (
                     <td className="px-4 py-3">
@@ -121,20 +146,12 @@ export default function ManageUser() {
           </table>
         </div>
         <div className="flex justify-end pl-4 mt-4 lg:w-2/3 w-full mx-auto">
-          <button className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
-            Fore More Users
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              className="w-4 h-4 ml-2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </button>
+          <PaginationSection
+            totalData={users?.length}
+            dataPerPage={currentData?.length}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
         </div>
       </div>
     </section>

@@ -10,6 +10,8 @@ import Image from "next/image";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import { useUpdateUserBySuperAdminMutation } from "@/redux/api/superAdminApi";
+import { useState } from "react";
+import PaginationSection from "@/components/ui/PaginationSection";
 
 export default function ManageUser() {
   const { data, isLoading } = useGetAllUserQuery({ fixedCacheKey: "Users" });
@@ -20,6 +22,11 @@ export default function ManageUser() {
   ] = useUpdateUserBySuperAdminMutation();
   // @ts-ignore
   const users = data?.users?.data?.data;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(4);
+  const lastIndex = currentPage * postsPerPage;
+  const firstIndex = lastIndex - postsPerPage;
+  const currentData = users?.slice(firstIndex, lastIndex);
  const makeAdmin = async (id: string) => {
    const payload = {
      role: ENUM_USER_ROLE_FOR_DASHBOARD.ADMIN,
@@ -76,10 +83,13 @@ export default function ManageUser() {
                   People
                 </th>
                 <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
-                  User Email Address
+                  Name
                 </th>
                 <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
-                  User Role
+                  Status
+                </th>
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
+                  Role
                 </th>
                 <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tr">
                   Update Role
@@ -90,21 +100,23 @@ export default function ManageUser() {
               </tr>
             </thead>
             <tbody>
-              {users?.map((user: TUser) => (
+              {currentData?.map((user: TUser) => (
                 <tr key={user.id} className="border border-gray-200">
                   <td className="px-4 py-3">
                     <div className="avatar">
-                      <div className="w-12 rounded-full">
+                      <div className="w-12 sm:w-16 md:w-20">
                         <Image
                           width={200}
                           height={200}
                           src={`${user?.imgUrl}`}
                           alt="Avatar"
+                          className="rounded-full"
                         />
                       </div>
                     </div>
                   </td>
-                  <td className="px-4 py-3">{user?.email}</td>
+                  <td className="px-4 py-3">{user?.name}</td>
+                  <td className="px-4 py-3">{user?.status}</td>
                   <td className="px-4 py-3">{user?.role}</td>
                   {user.role === ENUM_USER_ROLE_FOR_DASHBOARD.USER ? (
                     <td className="px-4 py-3">
@@ -127,10 +139,8 @@ export default function ManageUser() {
                     </td>
                   )}
                   <td className="px-4 py-3 text-center">
-                    <button
-                      onClick={() => deleteUser(user?.id as string)}
-                    >
-                    <MdDelete className="text-gray-50 w-6 h-6" />
+                    <button onClick={() => deleteUser(user?.id as string)}>
+                      <MdDelete className="text-gray-50 w-6 h-6" />
                     </button>
                   </td>
                 </tr>
@@ -139,20 +149,12 @@ export default function ManageUser() {
           </table>
         </div>
         <div className="flex justify-end pl-4 mt-4 lg:w-2/3 w-full mx-auto">
-          <button className="text-gray-50 inline-flex items-center md:mb-2 lg:mb-0">
-            Fore More Users
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              className="w-4 h-4 ml-2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </button>
+          <PaginationSection
+            totalData={users?.length}
+            dataPerPage={currentData?.length}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
         </div>
       </div>
     </section>

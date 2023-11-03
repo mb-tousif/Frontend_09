@@ -25,17 +25,17 @@ export default function Services() {
   // filter by min price and max price
   const { data, isLoading: serviceIsLoading } =
     useAllServicesQuery({...query})
-  const { token } = useAppSelector((state) => state.auth);
+  const { token } = useAppSelector((state) => state?.auth);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(4);
-    const lastServiceIndex = currentPage * postsPerPage;
-    const firstServiceIndex = lastServiceIndex - postsPerPage;
+    const lastIndex = currentPage * postsPerPage;
+    const firstIndex = lastIndex - postsPerPage;
     // @ts-ignore
     const services:TService[] = data?.services?.data?.data.filter((service) => {
      return service?.status === "Available"});
-    const currentServices = services?.slice(firstServiceIndex, lastServiceIndex);
+    const currentData = services?.slice(firstIndex, lastIndex);
   useEffect(() => {
     if (!token) {
       router.push("/login");
@@ -76,7 +76,7 @@ export default function Services() {
         </div>
         <div className="flex flex-col">
           <div className="mt-4 grid md:p-4 p-2 lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
-            {currentServices?.map((service) => (
+            {currentData?.map((service) => (
               <div
                 key={service?.id}
                 className="group rounded-2xl group-hover:bg-opacity-60 transition duration-500 relative bg-[#474E68] pt-24 pb-4 text-white"
@@ -90,10 +90,10 @@ export default function Services() {
                     alt="Service Image"
                   />
                 </div>
-                {/* <article className="pt-3">
+                <article className="p-6 text-justify">
                   <span className="text-lg">Description: </span>
                   {service.description}
-                </article> */}
+                </article>
                 <p className="pt-3 text-center">
                   <span className="text-lg">Duration: </span>
                   {service?.schedule}
@@ -161,7 +161,7 @@ export default function Services() {
       </div>
       <PaginationSection
         totalData={services?.length}
-        dataPerPage={currentServices?.length}
+        dataPerPage={currentData?.length}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       />
