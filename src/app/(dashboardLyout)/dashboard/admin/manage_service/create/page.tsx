@@ -21,7 +21,7 @@ export default function CreateAdminService() {
        }
      };
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center sm:p-8 md:p-20">
       <div className="min-h-50vh md:ml-32 w-full md:w-[600px] rounded-2xl bg-slate-500">
         <form
           onSubmit={handleSubmit(onSubmit)}
