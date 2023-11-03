@@ -14,8 +14,8 @@ import { useState } from "react";
 import PaginationSection from "@/components/ui/PaginationSection";
 
 export default function ManageUser() {
-  const { data, isLoading } = useGetAllUserQuery({ fixedCacheKey: "Users" });
-  const [deleteUserById ] = useDeleteUserByIdMutation({fixedCacheKey: "Users"});
+  const { data, isLoading } = useGetAllUserQuery({ fixedCacheKey: "User" });
+  const [deleteUserById ] = useDeleteUserByIdMutation({fixedCacheKey: "User"});
   const [
     updateUserBySuperAdmin,
     { isSuccess, isError, data: updateUser, error },
@@ -32,12 +32,14 @@ export default function ManageUser() {
      role: ENUM_USER_ROLE_FOR_DASHBOARD.ADMIN,
    };
    await updateUserBySuperAdmin({ id: id, payload: payload });
+   message.success("User role updated successfully");
  };
  const makeUser = async (id: string) => {
    const payload= {
      role: ENUM_USER_ROLE_FOR_DASHBOARD.USER,
    };
    await updateUserBySuperAdmin({ id: id, payload: payload });
+   message.success("User role updated successfully");
  };
 
  const deleteUser = async (id: string) => {
@@ -58,10 +60,6 @@ export default function ManageUser() {
         </Space>
       </Row>
     );
-  }
-
-  if (isSuccess) {
-    message.success("User role updated successfully");
   }
   if (isError) {
     message.error(error?.data?.message);

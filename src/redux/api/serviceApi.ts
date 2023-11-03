@@ -2,7 +2,7 @@ import { baseApi } from "../baseApi";
 import { IMeta } from "@/types/common";
 import { tagTypes } from "../tagTypesList";
 import { TService } from "@/types/service.types";
-
+// 
 export const serviceApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     // get all
@@ -35,22 +35,22 @@ export const serviceApi = baseApi.injectEndpoints({
       query: (payload: TService) => ({
         url: "/services/create-service",
         method: "POST",
-        data: payload,
+        body: payload,
       }),
       invalidatesTags: [tagTypes.Service],
     }),
     // get by id
     updateServiceById: build.mutation({
       query: (payload) => ({
-        url: `/services/${payload.id}`,
-        method: "PUT",
-        data: payload.body,
+        url: `/services/update-service/${payload.id}`,
+        method: "PATCH",
+        body: payload.body,
       }),
       invalidatesTags: [tagTypes.Service],
     }),
     deleteServiceById: build.mutation({
       query: (id: string) => ({
-        url: `/services/${id}`,
+        url: `/services/delete-service/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: [tagTypes.Service],

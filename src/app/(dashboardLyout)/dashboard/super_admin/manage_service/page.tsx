@@ -1,9 +1,9 @@
 "use client";
 import PaginationSection from '@/components/ui/PaginationSection';
-import { useAllServicesQuery } from '@/redux/api/serviceApi';
+import { useAllServicesQuery, useDeleteServiceByIdMutation } from '@/redux/api/serviceApi';
 import { TService } from '@/types/service.types';
 import { getUserInfo } from '@/utils/getUserInfo';
-import { Row, Space, Spin } from 'antd';
+import { Row, Space, Spin, message } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -18,11 +18,16 @@ export default function ManageService() {
       setRole(userInfo.role);
     }
   }, []);
+  const [deleteServiceById, { isSuccess, isError}] =
+    useDeleteServiceByIdMutation({ fixedCacheKey: "Service" });
   const { data, isLoading } = useAllServicesQuery({});
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
   const lastServiceIndex = currentPage * postsPerPage;
   const firstServiceIndex = lastServiceIndex - postsPerPage;
+  const deleteService = async (id: string) => {
+    await deleteServiceById(id);
+  };
   if (isLoading ) {
     return (
       <Row
@@ -41,6 +46,13 @@ export default function ManageService() {
   // @ts-ignore
   const services: TService[] = data?.services?.data?.data;
   const currentServices = services?.slice(firstServiceIndex, lastServiceIndex);
+  if (isSuccess) {
+    message.success("User deleted successfully");
+  }
+  if (isError) {
+    // @ts-ignore
+    message.error(isError?.data?.message);
+  }
   return (
     <div>
       <h1 className="text-center mt-4 text-4xl font-bold text-gray-50">
@@ -78,7 +90,7 @@ export default function ManageService() {
                           />
                         </div>
                         <div className="ml-3">
-                          <p className="text-gray-50 whitespace-no-wrap">
+                          <p className="text-gray-50 text-sm whitespace-no-wrap">
                             {service?.name}
                           </p>
                         </div>
@@ -105,7 +117,9 @@ export default function ManageService() {
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 text-sm">
                       <div className="text-gray-50 flex justify-evenly whitespace-no-wrap">
-                        <button>
+                        <button
+                          onClick={() => deleteService(service?.id as string)}
+                        >
                           <AiFillDelete className="text-gray-50 h-6 w-6" />
                         </button>
                         <Link

@@ -40,7 +40,7 @@ export default function AdminAllBlogs() {
       <div className="relative flex w-full flex-col rounded-[10px] bg-[#50577abd] bg-clip-border">
         <div className="flex h-fit w-full items-center justify-between rounded-t-2xl px-4 pb-[20px] pt-4">
           <h4 className="text-lg font-bold text-gray-50">Top Blogs</h4>
-          <Link href="/dashboard/admin/manage_blogs/create">
+          <Link href="/dashboard/super_admin/manage_blogs/create">
             <button className="rounded-[20px] text-gray-50 border-2 hover:border-none px-4 py-2 text-base font-medium text-brand-500 transition duration-200">
               Add Blog
             </button>
@@ -114,7 +114,7 @@ export default function AdminAllBlogs() {
                         <AiTwotoneDelete className="text-gray-50 w-6 h-6" />
                       </button>
                       <Link
-                        href={`/dashboard/admin/manage_blogs/edit/${blog?.id}`}
+                        href={`/dashboard/super_admin/manage_blogs/edit/${blog?.id}`}
                         className="text-md font-medium text-gray-600 dark:text-white"
                       >
                         <AiTwotoneEdit className="text-gray-50 ml-2 w-6 h-6" />
