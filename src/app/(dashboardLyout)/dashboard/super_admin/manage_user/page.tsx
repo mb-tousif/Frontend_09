@@ -13,7 +13,7 @@ import { useUpdateUserBySuperAdminMutation } from "@/redux/api/superAdminApi";
 
 export default function ManageUser() {
   const { data, isLoading } = useGetAllUserQuery({ fixedCacheKey: "Users" });
-  const [deleteUserById,{ isSuccess:deleteSuccess}] = useDeleteUserByIdMutation({fixedCacheKey: "Users"});
+  const [deleteUserById ] = useDeleteUserByIdMutation({fixedCacheKey: "Users"});
   const [
     updateUserBySuperAdmin,
     { isSuccess, isError, data: updateUser, error },
@@ -35,6 +35,7 @@ export default function ManageUser() {
 
  const deleteUser = async (id: string) => {
    await deleteUserById(id);
+   message.success("User deleted successfully");
  };
   if (isLoading) {
     return (
@@ -60,10 +61,10 @@ export default function ManageUser() {
   }
 
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-50 body-font">
       <div className="container px-5 py-12 mx-auto">
         <div className="flex flex-col text-center w-full mb-10">
-          <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
+          <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-50">
             Manage All Users
           </h1>
         </div>
@@ -71,19 +72,19 @@ export default function ManageUser() {
           <table className="table-auto w-full px-5 text-center whitespace-no-wrap">
             <thead>
               <tr>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tl">
                   People
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
                   User Email Address
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
                   User Role
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr">
-                  Set Role
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tr">
+                  Update Role
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tr">
                   Delete User
                 </th>
               </tr>
@@ -110,7 +111,7 @@ export default function ManageUser() {
                       <button
                         type="button"
                         onClick={() => makeAdmin(user?.id as string)}
-                        className="badge border-none p-2.5 bg-green-500"
+                        className="badge border-none p-2.5 hover:bg-slate-600 rounded-full"
                       >
                         Set role Admin
                       </button>
@@ -119,7 +120,7 @@ export default function ManageUser() {
                     <td className="px-4 py-3">
                       <button
                         onClick={() => makeUser(user?.id as string)}
-                        className="badge border-none p-2.5 bg-[#0d70e0ce]"
+                        className="badge border-none p-2.5 hover:bg-slate-600 rounded-full"
                       >
                         Set role User
                       </button>
@@ -129,7 +130,7 @@ export default function ManageUser() {
                     <button
                       onClick={() => deleteUser(user?.id as string)}
                     >
-                    <MdDelete className="text-[#214f7a] w-6 h-6" />
+                    <MdDelete className="text-gray-50 w-6 h-6" />
                     </button>
                   </td>
                 </tr>
@@ -138,7 +139,7 @@ export default function ManageUser() {
           </table>
         </div>
         <div className="flex justify-end pl-4 mt-4 lg:w-2/3 w-full mx-auto">
-          <button className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+          <button className="text-gray-50 inline-flex items-center md:mb-2 lg:mb-0">
             Fore More Users
             <svg
               fill="none"

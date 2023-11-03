@@ -1,89 +1,129 @@
-import Image from 'next/image';
-import React from 'react'
+"use client";
+import { useDeleteBlogByIdMutation, useGetAllBlogsQuery } from "@/redux/api/blogApi";
+import { TBlog } from "@/types/blog.types";
+import { Row, Space, Spin, message } from "antd";
+import Image from "next/image";
+import Link from "next/link";
+import { AiTwotoneDelete, AiTwotoneEdit } from "react-icons/ai";
 
-export default function AllBlogs() {
+export default function AdminAllBlogs() {
+  const { data, isLoading } = useGetAllBlogsQuery({});
+  const [deleteBlogById, { isSuccess}] = useDeleteBlogByIdMutation();
+  // @ts-ignore
+  const blogs = data?.blogs?.data?.data;
+  if (isLoading) {
+    return (
+      <Row
+        justify="center"
+        align="middle"
+        style={{
+          height: "100vh",
+        }}
+      >
+        <Space>
+          <Spin tip="Loading" size="large"></Spin>
+        </Space>
+      </Row>
+    );
+  }
+
+  const handleDeleteBlog = async (id: string) => {
+    await deleteBlogById(id).unwrap();
+  };
+
+  if (isSuccess) {
+    message.success("Blog Deleted Successfully");
+  }
+
   return (
-    <div className="flex flex-col md:mx-36 justify-center items-center h-[100vh]">
-      <div className="relative flex max-w-[500px] h-[430px] w-full flex-col rounded-[10px] border-[1px] border-gray-200 bg-white bg-clip-border shadow-md shadow-[#F3F3F3] dark:border-[#ffffff33] dark:!bg-navy-800 dark:text-white dark:shadow-none">
-        <div className="flex h-fit w-full items-center justify-between rounded-t-2xl bg-white px-4 pb-[20px] pt-4 shadow-2xl shadow-gray-100 dark:!bg-navy-700 dark:shadow-none">
-          <h4 className="text-lg font-bold text-navy-700 dark:text-white">
-            Top Creators
-          </h4>
-          <button className="linear rounded-[20px] bg-lightPrimary px-4 py-2 text-base font-medium text-brand-500 transition duration-200 hover:bg-gray-100 active:bg-gray-200 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:active:bg-white/20">
-            See all
-          </button>
+    <div className="antialiased flex flex-col md:mx-36 justify-center items-center h-[100vh]">
+      <div className="relative flex w-full flex-col rounded-[10px] bg-[#50577abd] bg-clip-border">
+        <div className="flex h-fit w-full items-center justify-between rounded-t-2xl px-4 pb-[20px] pt-4">
+          <h4 className="text-lg font-bold text-gray-50">Top Blogs</h4>
+          <Link href="/dashboard/admin/manage_blogs/create">
+            <button className="rounded-[20px] text-gray-50 border-2 hover:border-none px-4 py-2 text-base font-medium text-brand-500 transition duration-200">
+              Add Blog
+            </button>
+          </Link>
         </div>
-        <div className="w-full overflow-x-scroll px-4 md:overflow-x-hidden">
-          <table
-            role="table"
-            className="w-full min-w-[500px] overflow-x-scroll"
-          >
+        <div className="w-auto px-4">
+          <table className="w-full min-w-[500px]">
             <thead>
-              <tr role="row">
-                <th
-                  colSpan={1}
-                  role="columnheader"
-                  title="Toggle SortBy"
-                  className="pointer"
-                >
-                  <div className="flex items-center justify-between pb-2 pt-4 text-start uppercase tracking-wide text-gray-600 sm:text-xs lg:text-xs">
-                    Name
-                  </div>
+              <tr>
+                <th className="pointer">
+                  <p className="text-center pb-2 pt-4 text-gray-50 text-xs sm:text-sm">
+                    Authors
+                  </p>
                 </th>
-                <th
-                  colSpan={1}
-                  role="columnheader"
-                  title="Toggle SortBy"
-                  className="pointer"
-                >
-                  <div className="flex items-center justify-between pb-2 pt-4 text-start uppercase tracking-wide text-gray-600 sm:text-xs lg:text-xs">
-                    Artworks
-                  </div>
+                <th className="pointer">
+                  <p className="text-center pb-2 pt-4 text-gray-50 text-xs sm:text-sm">
+                    Title
+                  </p>
                 </th>
-                <th
-                  colSpan={1}
-                  role="columnheader"
-                  title="Toggle SortBy"
-                  className="pointer"
-                >
-                  <div className="flex items-center justify-between pb-2 pt-4 text-start uppercase tracking-wide text-gray-600 sm:text-xs lg:text-xs">
-                    Rating
-                  </div>
+                <th className="pointer">
+                  <p className="text-center pb-2 pt-4 text-gray-50 text-xs sm:text-sm">
+                    Views
+                  </p>
+                </th>
+                <th className="pointer">
+                  <p className="text-center pb-2 pt-4 text-gray-50 text-xs sm:text-sm">
+                    Action
+                  </p>
                 </th>
               </tr>
             </thead>
-            <tbody role="rowgroup" className="px-4">
-              <tr role="row">
-                <td className="py-3 text-sm" role="cell">
-                  <div className="flex items-center gap-2">
-                    <div className="h-[30px] w-[30px] rounded-full">
-                      <Image
-                        width={500}
-                        height={500}
-                        src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2244&amp;q=80"
-                        className="h-full w-full rounded-full"
-                        alt=""
-                      />
+            {blogs?.map((blog: TBlog) => (
+              <tbody key={blog?.id} role="rowgroup" className="px-4">
+                <tr>
+                  <td className="py-3 text-sm">
+                    <div className="flex items-center gap-2">
+                      <div className="h-[30px] w-[30px] rounded-full">
+                        <Image
+                          width={500}
+                          height={500}
+                          // @ts-ignore
+                          src={blog?.users?.imgUrl}
+                          className="h-full w-full rounded-full"
+                          alt=""
+                        />
+                      </div>
+                      <p className="text-sm font-medium text-gray-50">
+                        {
+                          // @ts-ignore
+                          blog?.users?.name
+                        }
+                      </p>
                     </div>
-                    <p className="text-sm font-medium text-navy-700 dark:text-white">
-                      @maddison_c21
+                  </td>
+                  <td className="py-3 text-sm">
+                    <p className="text-md font-medium text-gray-50">
+                      {blog?.title.slice(0, 14)} ...
                     </p>
-                  </div>
-                </td>
-                <td className="py-3 text-sm" role="cell">
-                  <p className="text-md font-medium text-gray-600 dark:text-white">
-                    9821
-                  </p>
-                </td>
-                <td className="py-3 text-sm" role="cell">
-                  <div className="mx-2 flex font-bold">
-                    <div className="h-2 w-16 rounded-full bg-gray-200 dark:bg-navy-700">
-                      <div className="flex h-full items-center justify-center rounded-md bg-brand-500 dark:bg-brand-400 w-4/12"></div>
+                  </td>
+                  <td className="py-3 text-sm">
+                    <div className="mx-2 flex font-bold">
+                      <p className="text-md font-medium text-gray-50">3.4k</p>
                     </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+                  </td>
+                  <td className="py-3 text-sm">
+                    <div className="mx-2 flex font-bold">
+                      <button
+                        onClick={() => handleDeleteBlog(blog?.id as string)}
+                        className="text-md font-medium text-gray-50"
+                      >
+                        <AiTwotoneDelete className="text-gray-50 w-6 h-6" />
+                      </button>
+                      <Link
+                        href={`/dashboard/admin/manage_blogs/edit/${blog?.id}`}
+                        className="text-md font-medium text-gray-600 dark:text-white"
+                      >
+                        <AiTwotoneEdit className="text-gray-50 ml-2 w-6 h-6" />
+                      </Link>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
           </table>
         </div>
       </div>

@@ -43,10 +43,10 @@ export default function ManageUser() {
   }
 
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-50 body-font">
       <div className="container px-5 py-12 mx-auto">
         <div className="flex flex-col text-center w-full mb-10">
-          <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
+          <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-50">
             Manage All Users
           </h1>
         </div>
@@ -54,19 +54,19 @@ export default function ManageUser() {
           <table className="table-auto w-full px-5 text-center whitespace-no-wrap">
             <thead>
               <tr>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tl">
                   People
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
                   User Email Address
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
                   User Status
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tr">
                   Set User Status
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tr">
                   Delete User
                 </th>
               </tr>
@@ -87,12 +87,12 @@ export default function ManageUser() {
                     </div>
                   </td>
                   <td className="px-4 py-3">{user?.email}</td>
-                  <td className="px-4 py-3 text-black">{user?.status}</td>
+                  <td className="px-4 py-3 text-gray-50">{user?.status}</td>
                   {user.status === "Active" ? (
                     <td className="px-4 py-3">
                       <button
                         onClick={() => makeInactive(user?.id as string)}
-                        className="badge border-none p-2.5 bg-green-500"
+                        className="badge border-none p-2.5 hover:bg-gray-600 rounded-full"
                       >
                         Inactive User
                       </button>
@@ -101,7 +101,7 @@ export default function ManageUser() {
                     <td className="px-4 py-3">
                       <button
                         onClick={() => makeActive(user?.id as string)}
-                        className="badge border-none p-2.5 bg-[#0d70e0ce]"
+                        className="badge border-none p-2.5 hover:bg-gray-600 rounded-full"
                       >
                         Active User
                       </button>
@@ -110,9 +110,9 @@ export default function ManageUser() {
                   <td className="px-4 py-3">
                     <button
                       onClick={() => deleteUser(user?.id as string)}
-                      className="badge border-none p-2.5 bg-green-500"
+                      className="badge border-none p-2.5"
                     >
-                      <MdDelete className="text-gray-50" />
+                      <MdDelete className="text-gray-50 w-6 h-6" />
                     </button>
                   </td>
                 </tr>
