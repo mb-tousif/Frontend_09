@@ -5,7 +5,7 @@
 ### Site Credential
 ```
     User Email: testAdmin@gmail.com
-    User Password: SpuerAdmin@23
+    User Password: SuperAdmin@23
 ```
 
 ## Description
