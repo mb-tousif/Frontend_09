@@ -35,23 +35,23 @@ export default function Register() {
           <div className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg">
             <Image src={leftImage} className="min-h-full" alt="leftImage" />
           </div>
-          <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-            <h3 className="pt-4 text-2xl text-[#474E68] font-bold text-center">
+          <div className="w-full lg:w-7/12 bg-[#263238] p-5 rounded-lg lg:rounded-l-none">
+            <h3 className="pt-4 text-2xl text-gray-50 font-bold text-center">
               Create an Account!
             </h3>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="px-8 pt-6 pb-8 mb-4 bg-white rounded"
+              className="px-8 pt-6 pb-8 mb-4 bg-[#263238] rounded"
             >
               <div className="mb-4">
                 <label
-                  className="block mb-2 text-sm font-bold text-gray-700"
+                  className="block mb-2 text-sm font-bold text-gray-50"
                   htmlFor="name"
                 >
                   Full Name
                 </label>
                 <input
-                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 border bg-[#263238] rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   {...register("name", { required: true })}
                   type="text"
                   placeholder="Enter Your Name"
@@ -64,13 +64,13 @@ export default function Register() {
               </div>
               <div className="mb-4">
                 <label
-                  className="block mb-2 text-sm font-bold text-gray-700"
+                  className="block mb-2 text-sm font-bold text-gray-50"
                   htmlFor="email"
                 >
                   Email
                 </label>
                 <input
-                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 bg-[#263238] border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   {...register("email", {
                     pattern: {
                       value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
@@ -98,13 +98,13 @@ export default function Register() {
               <div className="mb-4 md:flex md:justify-between">
                 <div className="mb-4 md:mr-2 md:mb-0">
                   <label
-                    className="block mb-2 text-sm font-bold text-gray-700"
+                    className="block mb-2 text-sm font-bold text-gray-50"
                     htmlFor="password"
                   >
                     Password
                   </label>
                   <input
-                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 bg-[#263238] border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     {...register("password", {
                       required: {
                         value: true,
@@ -142,13 +142,13 @@ export default function Register() {
                 </div>
                 <div className="md:ml-2">
                   <label
-                    className="block mb-2 text-sm font-bold text-gray-700"
+                    className="block mb-2 text-sm font-bold text-gray-50"
                     htmlFor="phoneNumber"
                   >
                     Enter Phone Number
                   </label>
                   <input
-                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 bg-[#263238] border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     {...register("contact", { required: true })}
                     type="cell"
                     placeholder="88012 345 6789"
@@ -162,13 +162,13 @@ export default function Register() {
               </div>
               <div className="mb-4">
                 <label
-                  className="block mb-2 text-sm font-bold text-gray-700"
+                  className="block mb-2 text-sm font-bold text-gray-50"
                   htmlFor="name"
                 >
                   Profile Picture
                 </label>
                 <input
-                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 bg-[#263238] border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   {...register("imgUrl", { required: true })}
                   type="text"
                   placeholder="Enter Your Name"
@@ -180,7 +180,7 @@ export default function Register() {
                 )}
               </div>
               <div className="mb-6">
-                <label className="inline-block mb-2 mr-2 text-gray-700">
+                <label className="inline-block mb-2 mr-2 text-gray-50">
                   Gender:
                 </label>
                 <input
@@ -192,7 +192,7 @@ export default function Register() {
                 />
                 <label
                   htmlFor="male"
-                  className="inline-block mb-2 m-2 text-gray-700"
+                  className="inline-block mb-2 m-2 text-gray-50"
                 >
                   Male
                 </label>
@@ -204,7 +204,7 @@ export default function Register() {
                 />
                 <label
                   htmlFor="female"
-                  className="inline-block mb-2 m-2 text-gray-700"
+                  className="inline-block mb-2 m-2 text-gray-50"
                 >
                   Female
                 </label>
@@ -216,7 +216,7 @@ export default function Register() {
                 />
                 <label
                   htmlFor="others"
-                  className="inline-block mb-2 m-2 text-gray-700"
+                  className="inline-block mb-2 m-2 text-gray-50"
                 >
                   Other
                 </label>
@@ -274,13 +274,13 @@ export default function Register() {
               </div> */}
               <div className="mb-4">
                 <label
-                  className="block mb-2 text-sm font-bold text-gray-700"
+                  className="block mb-2 text-sm font-bold text-gray-50"
                   htmlFor="address"
                 >
                   Address
                 </label>
                 <textarea
-                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 bg-[#263238] border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   rows={6}
                   placeholder="Enter Your Address"
                   {...register("address", { required: true })}
@@ -301,7 +301,7 @@ export default function Register() {
               </div>
               <hr className="mb-6 border-t" />
               <div className="text-center">
-                <span className="text-sm md:text-base text-[#0D1519] align-baseline">
+                <span className="text-sm md:text-base text-gray-50 align-baseline">
                   Already have an account ?
                   <Link href="/login" className="ml-2 hover:text-[#474E68]">
                     Login

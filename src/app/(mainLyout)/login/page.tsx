@@ -50,6 +50,7 @@ const LoginPage = () => {
           style={{
             margin: "15px 0px",
           }}
+          className="text-gray-50"
         >
           First login your account
         </h1>
@@ -77,7 +78,7 @@ const LoginPage = () => {
                 required
               />
             </div>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" className="text-gray-50">
               Login
             </Button>
           </Form>

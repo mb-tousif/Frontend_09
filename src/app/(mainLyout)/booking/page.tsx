@@ -79,12 +79,11 @@ export default function Booking() {
 
   const cancelBooking = async (bookingId: string) => {
     try {
-      const payloadStatus = {
-        status: ENUM_BOOKING_STATUS_FOR_USER.CANCELLED,
-      };
       const res = await updateBookingStatusByUser({
         id:bookingId,
-        payload: payloadStatus,
+        payload:  {
+        status: ENUM_BOOKING_STATUS_FOR_USER.CANCELLED,
+      },
       }).unwrap();
       // console.log(res);
       message.success(res.message);

@@ -17,17 +17,15 @@ export default function CartPage() {
   const router = useRouter();
   const [loading, setIsLoading] = useState<boolean>(false);
     const { data, isLoading } =useGetCartByUserIdQuery({});
-    const [deleteCartById, { isSuccess, isError, error}] = useDeleteCartByIdMutation();
-    const [incrementCartQuantity] =
-      useIncrementCartQuantityMutation();
-    const [decrementCartQuantity] =
-      useDecrementCartQuantityMutation();
+    const [deleteCartById] = useDeleteCartByIdMutation();
+    const [incrementCartQuantity] = useIncrementCartQuantityMutation();
+    const [ decrementCartQuantity] = useDecrementCartQuantityMutation();
     useEffect(() => {
       if (!token) {
         router.push("/login");
       }
       setIsLoading(true);
-    }, [token, router]);
+    }, [token, router, loading]);
     if (  isLoading  ) {
       return (
         <Row
@@ -44,23 +42,28 @@ export default function CartPage() {
       );
     }
     const handleDeleteCart = ( id: string) => {
-      deleteCartById(id);
+      try {
+        deleteCartById(id);
+        message.success("Cart deleted successfully");
+      } catch (error) {
+        message.error("Cart cannot be deleted");
+      }
     };
 
     const handleQuantityCart = ( id: string) => {
-      incrementCartQuantity(id);
+      try {
+        incrementCartQuantity(id);
+        message.success("Cart quantity incremented successfully");
+      } catch (error) {
+        message.error("Cart quantity cannot be incremented");
+      }
     };
 
     const handleDecrementCart = (id: string) => {
-      decrementCartQuantity(id);
+      decrementCartQuantity(id)
+      message.success("Cart quantity decremented successfully");
+      // res?.status === 400 && message.error("Cart quantity cannot be decremented");
     };
-    if (isSuccess) {
-      message.success("Cart deleted successfully");
-    }
-    if (isError) {
-      // @ts-ignore
-      message.error(error?.data?.message);
-    }
     // @ts-ignore
     const carts = data?.data?.data.filter(
       (cart: any) => cart.status === ENUM_CART_STATUS.BOOKED
@@ -69,7 +72,7 @@ export default function CartPage() {
     if (carts?.length === undefined || carts?.length ===0) {
       return (
         <div className="flex justify-center items-center min-h-70vh">
-          <div className="text-2xl font-bold text-gray-700">
+          <div className="text-2xl font-bold text-gray-50">
             You have no Cart which is booked
           </div>
         </div>
@@ -78,6 +81,9 @@ export default function CartPage() {
     
     return (
       <div className="min-h-70vh p-2">
+        <div className="text-2xl text-center mt-5 mb-8 font-bold text-gray-50">
+          Your all booked cart
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {carts?.map((cart: TCart) => (
             <div
