@@ -7,7 +7,7 @@ export const baseApi = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     // baseUrl: "http://localhost:5000/api/v1/",
-    baseUrl: "https://painting-service-roan.vercel.app/api/v1/",
+    baseUrl: "https://printing-service-ltd.vercel.app/api/v1/",
     prepareHeaders: (headers, { getState }) => {
       const state = getState() as RootState;
       const token = getAccessToken(state);

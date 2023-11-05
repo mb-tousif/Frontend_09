@@ -13,7 +13,7 @@ export enum ENUM_USER_ROLE_FOR_DASHBOARD {
 export enum ENUM_BOOKING_STATUS_FOR_USER {
   PENDING = "Pending",
   CONFIRMED = "Confirmed",
-  CANCELLED = "Canceled",
+  CANCELLED = "Cancelled",
 }
 
 export enum ENUM_BOOKING_STATUS_FOR_MANAGEMENT {
