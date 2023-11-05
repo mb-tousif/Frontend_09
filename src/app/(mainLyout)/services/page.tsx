@@ -23,19 +23,18 @@ export default function Services() {
     query["search"] = debouncedSearchTerm;
   }
   // filter by min price and max price
-  const { data, isLoading: serviceIsLoading } =
-    useAllServicesQuery({...query})
+  const { data, isLoading: serviceIsLoading } = useAllServicesQuery({...query})
   const { token } = useAppSelector((state) => state?.auth);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(4);
-    const lastIndex = currentPage * postsPerPage;
-    const firstIndex = lastIndex - postsPerPage;
-    // @ts-ignore
-    const services:TService[] = data?.services?.data?.data.filter((service) => {
-     return service?.status === "Available"});
-    const currentData = services?.slice(firstIndex, lastIndex);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(4);
+  const lastIndex = currentPage * postsPerPage;
+  const firstIndex = lastIndex - postsPerPage;
+  // @ts-ignore
+  const services:TService[] = data?.services?.data?.data.filter((service) => {
+   return service?.status === "Available"});
+  const currentData = services?.slice(firstIndex, lastIndex);
   useEffect(() => {
     if (!token) {
       router.push("/login");

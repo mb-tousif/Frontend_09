@@ -30,7 +30,7 @@ export default function Blog() {
         {blogs?.map((blog: TBlog) => (
           <div key={blog.id} className="md:p-8 p-2 bg-[#50577A] rounded-3xl">
             <Image
-              className="rounded-lg w-full"
+              className="rounded-lg w-full ease-in-out duration-700 hover:scale-110"
               width={500}
               height={500}
               src={blog?.imgUrl}
@@ -47,23 +47,23 @@ export default function Blog() {
                 {blog?.content}
               </p>
             </div>
-            <div className="flex items-center space-x-2 mt-10">
+            <div className="flex justify-evenly space-x-2 mt-10">
               <Image
                 width={500}
                 height={500}
                 // @ts-ignore
                 src={blog?.users?.imgUrl}
-                className="w-10 h-10 object-cover object-center rounded-full"
+                className="w-12 h-12 object-cover object-center rounded-full ease-in-out duration-700 hover:scale-125"
                 alt="Blog Author"
               />
               <div>
-                <p className="text-gray-50 font-semibold">
-                {/* @ts-ignore */}
-                  {blog?.users?.name}
-                </p>
-                <p className="text-gray-50 font-semibold text-sm">
+                <p className="text-gray-50 text-center font-semibold">
                   {/* @ts-ignore */}
-                  {blog?.createdAt}
+                  Author: {blog?.users?.name}
+                </p>
+                <p className="text-gray-50 text-center font-semibold text-sm">
+                  {/* @ts-ignore */}
+                  Posted: {blog?.createdAt.split("T")[0]}
                 </p>
               </div>
             </div>
