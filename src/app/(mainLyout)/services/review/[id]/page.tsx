@@ -15,10 +15,7 @@ export default function AddReview({ params }: any) {
   const onSubmit: SubmitHandler<TReview> = async (data: TReview) => {
     try {
       data.serviceId = params?.id;
-      console.log(data);
-      
       const res = await createReview({...data}).unwrap();
-      console.log(res);
       message.success(res?.message);
       reset();
     } catch (err: any) {

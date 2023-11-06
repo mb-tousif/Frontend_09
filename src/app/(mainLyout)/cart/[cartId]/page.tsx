@@ -29,7 +29,7 @@ export default function AddToCart({ params }: {params: any}) {
   }
   const service = data?.data as TService;
   const cartData: TCart = {
-    serviceId: service.id as string,
+    serviceId: service?.id as string,
   };
   const handleAddToCart = (data: TCart) => {
     createCart(data);

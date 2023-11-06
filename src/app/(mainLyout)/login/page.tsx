@@ -25,11 +25,11 @@ const LoginPage = () => {
     try {
       // console.log(data);
       const res = await userLogin({ ...data }).unwrap();
-      message.success(res.message);
+      message.success(res?.message);
       dispatch(setToken(res.data.token));
       router.push("/services");
     } catch (err: any) {
-      message.error(err.data.message);
+      message.error(err.data?.message);
     }
   };
 
@@ -50,7 +50,7 @@ const LoginPage = () => {
           style={{
             margin: "15px 0px",
           }}
-          className="text-gray-50"
+          className="text-gray-50 text-2xl font-bold"
         >
           First login your account
         </h1>
@@ -78,7 +78,11 @@ const LoginPage = () => {
                 required
               />
             </div>
-            <Button type="primary" htmlType="submit" className="text-gray-50">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="bg-[#50577A] hover:bg-[#474E68] text-gray-50 rounded-full"
+            >
               Login
             </Button>
           </Form>

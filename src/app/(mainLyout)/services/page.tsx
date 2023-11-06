@@ -91,7 +91,7 @@ export default function Services() {
                 </div>
                 <article className="p-6 text-justify">
                   <span className="text-lg">Description: </span>
-                  {service.description}
+                  {service?.description}
                 </article>
                 <p className="pt-3 text-center">
                   <span className="text-lg">Duration: </span>
