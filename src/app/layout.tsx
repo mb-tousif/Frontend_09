@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import RootProvider from "@/lib/Provider";
+import RootProvider from "../lib/Provider";
 
 export const metadata: Metadata = {
   title: "Painting Service Ltd",

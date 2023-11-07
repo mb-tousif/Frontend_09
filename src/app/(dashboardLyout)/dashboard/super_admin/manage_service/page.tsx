@@ -2,23 +2,14 @@
 import PaginationSection from '@/components/ui/PaginationSection';
 import { useAllServicesQuery, useDeleteServiceByIdMutation } from '@/redux/api/serviceApi';
 import { TService } from '@/types/service.types';
-import { getUserInfo } from '@/utils/getUserInfo';
 import { Row, Space, Spin, message } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
 export default function ManageService() {
-  const [role, setRole] = useState("");
-  useEffect(() => {
-    const userInfo = getUserInfo();
-    if (userInfo) {
-      //@ts-ignore
-      setRole(userInfo.role);
-    }
-  }, []);
-  const [deleteServiceById, { isSuccess, isError}] =
+  const [deleteServiceById, { isError}] =
     useDeleteServiceByIdMutation({ fixedCacheKey: "Service" });
   const { data, isLoading } = useAllServicesQuery({});
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +17,14 @@ export default function ManageService() {
   const lastServiceIndex = currentPage * postsPerPage;
   const firstServiceIndex = lastServiceIndex - postsPerPage;
   const deleteService = async (id: string) => {
-    await deleteServiceById(id);
+    try {
+      await deleteServiceById(id);
+       message.success("User deleted successfully");
+    } catch (error) {
+      // @ts-ignore
+      message.error(isError?.data?.message);
+    }
+    
   };
   if (isLoading ) {
     return (
@@ -46,13 +44,6 @@ export default function ManageService() {
   // @ts-ignore
   const services: TService[] = data?.services?.data?.data;
   const currentServices = services?.slice(firstServiceIndex, lastServiceIndex);
-  if (isSuccess) {
-    message.success("User deleted successfully");
-  }
-  if (isError) {
-    // @ts-ignore
-    message.error(isError?.data?.message);
-  }
   return (
     <div>
       <h1 className="text-center mt-4 text-4xl font-bold text-gray-50">
@@ -98,18 +89,18 @@ export default function ManageService() {
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 text-sm">
                       {service?.status === "Available" ? (
-                        <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                        <span className="relative inline-block px-3 py-1 font-semibold text-gray-50 leading-tight">
                           <span
                             aria-hidden
-                            className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                            className="absolute inset-0 bg-green-400 opacity-50 rounded-full"
                           ></span>
                           <span className="relative">{service?.status}</span>
                         </span>
                       ) : (
-                        <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
+                        <span className="relative inline-block px-3 py-1 font-semibold text-gray-50 leading-tight">
                           <span
                             aria-hidden
-                            className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                            className="absolute inset-0 bg-red-400 opacity-50 rounded-full"
                           ></span>
                           <span className="relative">{service?.status}</span>
                         </span>
@@ -123,7 +114,7 @@ export default function ManageService() {
                           <AiFillDelete className="text-gray-50 h-6 w-6" />
                         </button>
                         <Link
-                          href={`/dashboard/${role}/manage_service/edit/${service.id}`}
+                          href={`/dashboard/super_admin/manage_service/edit/${service.id}`}
                         >
                           <AiFillEdit className="text-gray-50 ml-3 h-6 w-6" />
                         </Link>

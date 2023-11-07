@@ -1,16 +1,16 @@
 "use client";
-import PaginationSection from "@/components/ui/PaginationSection";
-import { ENUM_BOOKING_STATUS } from "@/constants/common";
-import { useGetAllBookingsQuery } from "@/redux/api/bookingApi";
-import { useDebounced } from "@/redux/hooks";
-import { TBooking } from "@/types/booking.types";
-import { Input, Row, Space, Spin } from "antd";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useState } from "react";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import PaginationSection from '@/components/ui/PaginationSection';
+import { ENUM_CART_STATUS } from '@/constants/common';
+import { useGetAllCartQuery } from '@/redux/api/cartApi';
+import { useDebounced } from '@/redux/hooks';
+import { TCart } from '@/types/cart.types';
+import { Input, Row, Space, Spin } from 'antd';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useState } from 'react'
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
-export default function ManageBooking() {
+export default function ManageCartBySuperAdmin() {
   const [search, setSearch] = useState<string>("");
   const query: Record<string, any> = {};
   const debouncedSearchTerm = useDebounced({
@@ -20,14 +20,14 @@ export default function ManageBooking() {
   if (!!debouncedSearchTerm) {
     query["search"] = debouncedSearchTerm;
   }
-  const { data, isLoading } = useGetAllBookingsQuery({ ...query });
+  const { data, isLoading } = useGetAllCartQuery({ ...query });
   // @ts-ignore
-  const bookings: TBooking[] = data?.bookings?.data?.data;
-   const [currentPage, setCurrentPage] = useState(1);
-   const [postsPerPage] = useState(3);
-   const lastServiceIndex = currentPage * postsPerPage;
-   const firstServiceIndex = lastServiceIndex - postsPerPage;
-   const currentBookings = bookings?.slice(firstServiceIndex, lastServiceIndex);
+  const carts: TCart[] = data?.carts?.data?.data;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(3);
+  const lastServiceIndex = currentPage * postsPerPage;
+  const firstServiceIndex = lastServiceIndex - postsPerPage;
+  const currentCarts = carts?.slice(firstServiceIndex, lastServiceIndex);
   if (isLoading) {
     return (
       <Row
@@ -46,7 +46,7 @@ export default function ManageBooking() {
   return (
     <div>
       <h1 className="text-center mt-4 text-4xl font-bold text-gray-50">
-        All Bookings
+        All Carts
       </h1>
       <section className="container px-4 mx-auto">
         <div className="mt-6 sm:flex sm:items-center sm:justify-end">
@@ -104,45 +104,45 @@ export default function ManageBooking() {
                         scope="col"
                         className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-50"
                       >
-                        Manage Booking
+                        Manage Cart
                       </th>
                     </tr>
                   </thead>
                   <tbody className="bg-[#474E68] divide-y divide-gray-200">
-                    {currentBookings?.map((booking: TBooking) => (
-                      <tr key={booking.id}>
+                    {currentCarts?.map((cart: TCart) => (
+                      <tr key={cart.id}>
                         <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
                           <div>
                             <h2 className="font-medium text-gray-50">
                               {
                                 // @ts-ignore
-                                booking?.services?.name
+                                cart?.services?.name
                               }
                             </h2>
                             <p className="text-sm font-normal text-gray-50">
                               Price:$
                               {
                                 // @ts-ignore
-                                booking?.services?.price
+                                cart?.services?.price
                               }
                             </p>
                           </div>
                         </td>
                         <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
-                          {booking?.status === ENUM_BOOKING_STATUS.CONFIRMED ? (
+                          {cart?.status === ENUM_CART_STATUS.BOOKED ? (
                             <div className="inline px-3 py-1 text-sm font-normal rounded-full text-gray-50 gap-x-2 bg-emerald-400">
-                              {booking?.status}
+                              {cart?.status}
                             </div>
                           ) : (
                             <div className="inline px-3 py-1 text-sm font-normal rounded-full text-gray-50 gap-x-2 bg-red-400">
-                              {booking?.status}
+                              {cart?.status}
                             </div>
                           )}
                         </td>
                         <td className="text-center py-4 text-sm whitespace-nowrap">
                           <div>
                             <h4 className="text-gray-50">
-                              Duration: {booking?.schedule}
+                              Quantity: {cart?.quantity}
                             </h4>
                           </div>
                         </td>
@@ -154,7 +154,7 @@ export default function ManageBooking() {
                               className="object-cover w-8 h-8 -mx-1 border-2 border-white rounded-full dark:border-gray-700 shrink-0"
                               src={
                                 // @ts-ignore
-                                booking?.users?.imgUrl
+                                cart?.users?.imgUrl
                               }
                               alt=""
                             />
@@ -167,7 +167,7 @@ export default function ManageBooking() {
                               <AiFillDelete className="text-red-300 h-6 w-6" />
                             </button>
                             <Link
-                              href={`/dashboard/super_admin/manage_booking/edit/${booking.id}`}
+                              href={`/dashboard/super_admin/manage_cart/edit/${cart.id}`}
                             >
                               <AiFillEdit className="text-emerald-300 ml-3 h-6 w-6" />
                             </Link>
@@ -183,11 +183,12 @@ export default function ManageBooking() {
         </div>
       </section>
       <PaginationSection
-        totalData={bookings?.length}
-        dataPerPage={currentBookings?.length}
+        totalData={carts?.length}
+        dataPerPage={currentCarts?.length}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       />
     </div>
   );
 }
+

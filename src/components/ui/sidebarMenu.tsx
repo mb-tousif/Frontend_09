@@ -7,7 +7,7 @@ import {
   UserOutlined,
   ToolFilled,
   ProfileFilled,
-  DeleteFilled,
+  ShoppingCartOutlined
 } from "@ant-design/icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -54,35 +54,11 @@ const logout = () => {
       ),
       icon: <BsCardChecklist />,
       key: `/dashboard/${role}/manage_booking`,
-      children: [
-        {
-          label: (
-            <Link href={`/dashboard/${role}/manage_booking/pending`}>
-              Pending Booking
-            </Link>
-          ),
-          icon: <ProfileFilled />,
-          key: `/dashboard/${role}/manage_booking/pending`,
-        },
-        {
-          label: (
-            <Link href={`/dashboard/${role}/manage_booking/confirmed`}>
-              Confirmed Booking
-            </Link>
-          ),
-          icon: <ToolFilled />,
-          key: `/dashboard/${role}/manage_booking/confirmed`,
-        },
-        {
-          label: (
-            <Link href={`/dashboard/${role}/manage_booking/rejected`}>
-              Rejected Booking
-            </Link>
-          ),
-          icon: <DeleteFilled />,
-          key: `/dashboard/${role}/manage_booking/rejected`,
-        },
-      ],
+    },
+    {
+      label: <Link href={`/dashboard/${role}/manage_cart`}>Manage Cart</Link>,
+      icon: <ShoppingCartOutlined />,
+      key: `/dashboard/${role}/manage_cart`,
     },
     {
       label: (

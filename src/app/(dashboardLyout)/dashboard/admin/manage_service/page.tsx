@@ -2,22 +2,13 @@
 import PaginationSection from '@/components/ui/PaginationSection';
 import { useAllServicesQuery } from '@/redux/api/serviceApi';
 import { TService } from '@/types/service.types';
-import { getUserInfo } from '@/utils/getUserInfo';
 import { Row, Space, Spin } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
 export default function ManageService() {
-  const [role, setRole] = useState("");
-  useEffect(() => {
-    const userInfo = getUserInfo();
-    if (userInfo) {
-      //@ts-ignore
-      setRole(userInfo.role);
-    }
-  }, []);
   const { data, isLoading } = useAllServicesQuery({});
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(4);
@@ -46,7 +37,7 @@ export default function ManageService() {
       <h1 className="text-center mt-4 text-4xl font-bold text-gray-50">
         Manage Services
       </h1>
-      <div className="sm:p-8 md:p-12">
+      <div className="sm:p-8 mt-3 md:ml-14">
         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
           <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
             <table className="min-w-full leading-normal">
@@ -86,18 +77,18 @@ export default function ManageService() {
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 text-sm">
                       {service?.status === "Available" ? (
-                        <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                        <span className="relative inline-block px-3 py-1 font-semibold text-gray-50 leading-tight">
                           <span
                             aria-hidden
-                            className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                            className="absolute inset-0 bg-green-400 opacity-50 rounded-full"
                           ></span>
                           <span className="relative">{service?.status}</span>
                         </span>
                       ) : (
-                        <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
+                        <span className="relative inline-block px-3 py-1 font-semibold text-gray-50 leading-tight">
                           <span
                             aria-hidden
-                            className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                            className="absolute inset-0 bg-red-400 opacity-50 rounded-full"
                           ></span>
                           <span className="relative">{service?.status}</span>
                         </span>
@@ -109,7 +100,7 @@ export default function ManageService() {
                           <AiFillDelete className="text-gray-50 h-6 w-6" />
                         </button>
                         <Link
-                          href={`/dashboard/${role}/manage_service/edit/${service.id}`}
+                          href={`/dashboard/admin/manage_service/edit/${service.id}`}
                         >
                           <AiFillEdit className="text-gray-50 ml-3 h-6 w-6" />
                         </Link>

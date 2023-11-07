@@ -10,13 +10,10 @@ export enum ENUM_USER_ROLE_FOR_DASHBOARD {
   USER = "user",
 }
 
-export enum ENUM_BOOKING_STATUS_FOR_USER {
+export enum ENUM_BOOKING_STATUS {
   PENDING = "Pending",
   CONFIRMED = "Confirmed",
   CANCELLED = "Cancelled",
-}
-
-export enum ENUM_BOOKING_STATUS_FOR_MANAGEMENT {
   DELIVERED = "Delivered",
   REJECTED = "Rejected",
   COMPLETED = "Completed",

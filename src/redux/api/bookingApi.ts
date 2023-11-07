@@ -8,7 +8,7 @@ export const bookingApi = baseApi.injectEndpoints({
     getAllBookings: build.query({
       query: (arg: Record<string, any>) => {
         return {
-          url: "/bookings/all-carts",
+          url: "/bookings/all-bookings",
           method: "GET",
           params: arg,
         };

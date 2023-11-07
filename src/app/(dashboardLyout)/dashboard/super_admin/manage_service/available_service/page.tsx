@@ -1,10 +1,11 @@
 "use client";
+import PaginationSection from '@/components/ui/PaginationSection';
 import { useDeleteServiceByIdMutation, useGetAvailableServicesQuery } from '@/redux/api/serviceApi';
 import { TService } from '@/types/service.types';
 import { Row, Space, Spin, message } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
+import React, { useState } from 'react'
 import { AiTwotoneDelete, AiTwotoneEdit } from 'react-icons/ai';
 
 export default function AvailableService() {
@@ -12,7 +13,12 @@ export default function AvailableService() {
   const [deleteServiceById, { isSuccess, isError }] =
     useDeleteServiceByIdMutation({ fixedCacheKey: "Service" });
   // @ts-ignore
-  const payload = data?.services?.data?.data 
+  const payload = data?.services?.data?.data
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(3);
+  const lastServiceIndex = currentPage * postsPerPage;
+  const firstServiceIndex = lastServiceIndex - postsPerPage;
+  const currentServices = payload?.slice(firstServiceIndex, lastServiceIndex);
   if (isLoading) {
     return (
       <Row
@@ -77,7 +83,7 @@ export default function AvailableService() {
                   </th>
                 </tr>
               </thead>
-              {payload?.map((service: TService) => (
+              {currentServices?.map((service: TService) => (
                 <tbody key={service?.id} role="rowgroup" className="px-4">
                   <tr>
                     <td className="py-3 text-sm">
@@ -131,6 +137,12 @@ export default function AvailableService() {
             </table>
           </div>
         </div>
+      <PaginationSection
+        totalData={payload?.length}
+        dataPerPage={currentServices?.length}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
       </div>
     </div>
   );

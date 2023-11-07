@@ -1,5 +1,5 @@
 "use client";
-import { ENUM_BOOKING_STATUS_FOR_USER } from "@/constants/common";
+import { ENUM_BOOKING_STATUS } from "@/constants/common";
 import { useGetBookingByUserIdQuery, useUpdateBookingStatusByUserMutation } from "@/redux/api/bookingApi";
 import { useGetCartByUserIdQuery } from "@/redux/api/cartApi";
 import { useAppSelector } from "@/redux/hooks";
@@ -46,14 +46,14 @@ export default function Booking() {
   );
   const bookings = data?.data?.filter(
     (booking: any) =>
-      booking.status === ENUM_BOOKING_STATUS_FOR_USER.PENDING ||
-      booking.status === ENUM_BOOKING_STATUS_FOR_USER.CONFIRMED
+      booking.status === ENUM_BOOKING_STATUS.PENDING ||
+      booking.status === ENUM_BOOKING_STATUS.CONFIRMED
   );
 	
   if (bookings?.length === 0) {
     return (
       <div className="flex justify-center items-center min-h-70vh">
-        <div className="text-2xl font-bold text-gray-700">
+        <div className="text-2xl font-bold text-gray-50">
           You have no Booking
         </div>
       </div>
@@ -63,7 +63,7 @@ export default function Booking() {
   const confirmBooking = async (bookingId: string) => {
     try {
       const payloadStatus = {
-        status: ENUM_BOOKING_STATUS_FOR_USER.CONFIRMED,
+        status: ENUM_BOOKING_STATUS.CONFIRMED,
       };
       const res = await updateBookingStatusByUser({
         id:bookingId,
@@ -82,7 +82,7 @@ export default function Booking() {
       const res = await updateBookingStatusByUser({
         id:bookingId,
         payload:  {
-        status: ENUM_BOOKING_STATUS_FOR_USER.CANCELLED,
+        status: ENUM_BOOKING_STATUS.CANCELLED,
       },
       }).unwrap();
       // console.log(res);
@@ -133,7 +133,7 @@ export default function Booking() {
                       {
                         // @ts-ignore
                         booking?.status ===
-                        ENUM_BOOKING_STATUS_FOR_USER.PENDING ? (
+                        ENUM_BOOKING_STATUS.PENDING ? (
                           <button
                             onClick={() =>
                               confirmBooking(booking?.id as string)

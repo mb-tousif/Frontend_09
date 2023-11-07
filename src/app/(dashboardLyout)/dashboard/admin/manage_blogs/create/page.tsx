@@ -40,7 +40,7 @@ export default function ManageBlogsBySuperAdmin() {
               Blog Title
             </label>
             <input
-              className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              className="w-full px-3 bg-inherit py-2 mb-3 text-sm leading-tight text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               {...register("title", { required: true })}
               type="text"
               placeholder="Enter Blog Title"
@@ -59,7 +59,7 @@ export default function ManageBlogsBySuperAdmin() {
               Blog Image Url
             </label>
             <input
-              className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              className="w-full px-3 bg-inherit py-2 mb-3 text-sm leading-tight text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               {...register("imgUrl", { required: true })}
               type="text"
               placeholder="Image Url"
@@ -78,7 +78,7 @@ export default function ManageBlogsBySuperAdmin() {
               Blog Content
             </label>
             <textarea
-              className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 border bg-inherit rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               rows={6}
               placeholder="Enter Your Address"
               {...register("content", { required: true })}
