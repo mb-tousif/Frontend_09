@@ -104,7 +104,7 @@ export default function ManageCartByAdmin() {
                         scope="col"
                         className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-50"
                       >
-                        Manage Status
+                        Manage Cart
                       </th>
                     </tr>
                   </thead>
@@ -182,12 +182,12 @@ export default function ManageCartByAdmin() {
           </div>
         </div>
       </section>
-          <PaginationSection
-            totalData={carts?.length}
-            dataPerPage={currentCarts?.length}
-            setCurrentPage={setCurrentPage}
-            currentPage={currentPage}
-          />
+      <PaginationSection
+        totalData={carts?.length}
+        dataPerPage={currentCarts?.length}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 }
