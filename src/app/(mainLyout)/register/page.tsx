@@ -35,13 +35,13 @@ export default function Register() {
           <div className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg">
             <Image src={leftImage} className="min-h-full" alt="leftImage" />
           </div>
-          <div className="w-full lg:w-7/12 bg-[#263238] p-5 rounded-lg lg:rounded-l-none">
+          <div className="w-full lg:w-7/12 bg-[#263238cc] p-5 rounded-lg lg:rounded-l-none">
             <h3 className="pt-4 text-2xl text-gray-50 font-bold text-center">
               Create an Account!
             </h3>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="px-8 pt-6 pb-8 mb-4 bg-[#263238] rounded"
+              className="px-8 pt-6 pb-8 mb-4 rounded"
             >
               <div className="mb-4">
                 <label

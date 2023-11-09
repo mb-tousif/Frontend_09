@@ -6,7 +6,6 @@ import { SidebarMenus } from "./sidebarMenu";
 
 const Sidebar = ({ collapsed }: { collapsed: true | false }) => {
   const [role, setRole] = useState("");
-
   useEffect(() => {
     const userInfo = getUserInfo();
 
@@ -14,14 +13,14 @@ const Sidebar = ({ collapsed }: { collapsed: true | false }) => {
       //@ts-ignore
       setRole(userInfo.role);
     }
-  }, []);
+  }, [role]);
 
   return (
     <Sider
       trigger={null}
       collapsible
       collapsed={collapsed}
-      width={250}
+      width={220}
       style={{
         overflow: "auto",
         position: "sticky",

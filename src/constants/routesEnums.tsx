@@ -29,10 +29,5 @@ export const navBarRoutes = [
     id: 3,
     name: "Blogs",
     link: "/blogs",
-  },
-  {
-    id: 5,
-    name: "Sign up",
-    link: "/register",
-  },
+  }
 ];

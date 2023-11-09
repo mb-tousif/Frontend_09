@@ -11,6 +11,7 @@ import Form from "@/components/form/Form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormInput from "@/components/form/FormInput";
 import { loginSchema } from "@/schema/userSchema";
+import Link from "next/link";
 
 type FormValues = {
   id: string;
@@ -79,12 +80,19 @@ const LoginPage = () => {
               />
             </div>
             <Button
-              type="primary"
               htmlType="submit"
               className="bg-[#50577A] hover:bg-[#474E68] text-gray-50 rounded-full"
             >
               Login
             </Button>
+            <div className="text-center p-3">
+              <span className="text-sm md:text-base text-[#474E68] align-baseline">
+                If you don&rsquo;t have an account ?
+                <Link href="/register" className="ml-2 text-[#474E68]">
+                  Register here.
+                </Link>
+              </span>
+            </div>
           </Form>
         </div>
       </Col>

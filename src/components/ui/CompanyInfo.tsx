@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CompanyInfo() {
   return (
-    <div className="container flex text-gray-50 flex-col mx-auto">
+    <div className="container flex text-gray-50 p-3 flex-col mx-auto">
       <h1 className="text-2xl text-center pt-8 font-bold">Our Contact Info</h1>
       <div className="w-full draggable">
         <div className="container flex flex-col items-center gap-16 mx-auto my-8">

@@ -8,7 +8,7 @@ export default function RootPageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-[#8d99ae]">
+    <div>
       <ScrollToTop />
       <Navbar />
       <div>{children}</div>

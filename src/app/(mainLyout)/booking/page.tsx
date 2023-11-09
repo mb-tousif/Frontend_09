@@ -95,7 +95,7 @@ export default function Booking() {
 
   return (
     <div>
-      <div className="min-h-70v pt-10 text-gray-50">
+      <div className="min-h-70vh pt-10 text-gray-50">
         <h1 className="mb-10 text-center text-2xl font-bold">Booking Items</h1>
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div className="rounded-lg md:w-2/3">
