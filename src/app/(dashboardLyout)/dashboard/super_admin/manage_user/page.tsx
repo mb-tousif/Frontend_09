@@ -69,7 +69,7 @@ export default function ManageUser() {
     <section className="text-gray-50 body-font">
       <div className="container px-5 py-12 mx-auto">
         <div className="flex flex-col text-center w-full mb-10">
-          <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-50">
+          <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-[#474E68]">
             Manage All Users
           </h1>
         </div>

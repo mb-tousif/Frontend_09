@@ -34,15 +34,15 @@ export default function ManageService() {
   const currentServices = services?.slice(firstServiceIndex, lastServiceIndex);
   return (
     <div>
-      <h1 className="text-center mt-4 text-4xl font-bold text-gray-50">
+      <h1 className="text-center mt-4 text-4xl font-bold text-[#474E68]">
         Manage Services
       </h1>
       <div className="sm:p-8 mt-3 md:ml-14">
         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
           <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-            <table className="min-w-full leading-normal">
+            <table className="min-w-full bg-[#3c4153ad] leading-normal">
               <thead>
-                <tr className=" bg-[#3c4153ad]">
+                <tr className="">
                   <th className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-50 uppercase tracking-wider">
                     Service Details
                   </th>

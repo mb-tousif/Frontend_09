@@ -50,12 +50,12 @@ export default function Booking() {
       booking.status === ENUM_BOOKING_STATUS.CONFIRMED
   );
 	
-  if (bookings?.length === 0) {
+  if (bookings?.length <= 0) {
     return (
       <div className="flex justify-center items-center min-h-70vh">
-        <div className="text-2xl font-bold text-gray-50">
+        <p className="text-2xl font-bold text-[#474E68]">
           You have no Booking
-        </div>
+        </p>
       </div>
     );
   }
@@ -95,7 +95,7 @@ export default function Booking() {
 
   return (
     <div>
-      <div className="min-h-70vh pt-10 text-gray-50">
+      <div className="min-h-70vh pt-10 text-[#474E68]">
         <h1 className="mb-10 text-center text-2xl font-bold">Booking Items</h1>
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div className="rounded-lg md:w-2/3">
@@ -132,8 +132,7 @@ export default function Booking() {
                     <div className="flex justify-center p-2">
                       {
                         // @ts-ignore
-                        booking?.status ===
-                        ENUM_BOOKING_STATUS.PENDING ? (
+                        booking?.status === ENUM_BOOKING_STATUS.PENDING ? (
                           <button
                             onClick={() =>
                               confirmBooking(booking?.id as string)

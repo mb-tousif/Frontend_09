@@ -40,6 +40,7 @@ export default function ManageUser() {
   const deleteUser = async (id: string) => {
     await deleteUserById(id);
   };
+  
   if (isLoading) {
     return (
       <Row
@@ -66,12 +67,12 @@ export default function ManageUser() {
     <section className="text-gray-50 body-font">
       <div className="container px-5 py-12 mx-auto">
         <div className="flex flex-col text-center w-full mb-10">
-          <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-50">
+          <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-[#474E68]">
             Manage All Users
           </h1>
         </div>
         <div className="w-full mx-auto overflow-auto">
-          <table className="table-auto w-full px-5 text-center whitespace-no-wrap">
+          <table className="table-auto bg-[#3c4153ad] w-full px-5 text-center whitespace-no-wrap">
             <thead>
               <tr>
                 <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tl">
@@ -100,13 +101,13 @@ export default function ManageUser() {
                   <td className="px-4 py-3">
                     <div className="avatar">
                       <div className="w-12 sm:w-16 md:w-20">
-                        <Image
+                        {/* <Image
                           width={200}
                           height={200}
                           src={`${user?.imgUrl}`}
                           alt="Avatar"
                           className="rounded-full h-14"
-                        />
+                        /> */}
                       </div>
                     </div>
                   </td>

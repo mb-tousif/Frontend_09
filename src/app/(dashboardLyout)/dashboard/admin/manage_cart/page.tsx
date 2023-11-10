@@ -1,7 +1,7 @@
 "use client";
 import PaginationSection from '@/components/ui/PaginationSection';
 import { ENUM_CART_STATUS } from '@/constants/common';
-import { useGetAllCartQuery } from '@/redux/api/cartApi';
+import { useDeleteCartByIdMutation, useGetAllCartQuery } from '@/redux/api/cartApi';
 import { useDebounced } from '@/redux/hooks';
 import { TCart } from '@/types/cart.types';
 import { Input, Row, Space, Spin } from 'antd';
@@ -21,6 +21,7 @@ export default function ManageCartByAdmin() {
     query["search"] = debouncedSearchTerm;
   }
   const { data, isLoading } = useGetAllCartQuery({ ...query });
+  const [deleteCartById] =useDeleteCartByIdMutation();
   // @ts-ignore
   const carts: TCart[] = data?.carts?.data?.data;
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,6 +29,10 @@ export default function ManageCartByAdmin() {
   const lastServiceIndex = currentPage * postsPerPage;
   const firstServiceIndex = lastServiceIndex - postsPerPage;
   const currentCarts = carts?.slice(firstServiceIndex, lastServiceIndex);
+  // Delete cart
+  const handleDeleteCart = (id: string) => {
+    deleteCartById(id);
+  }
   if (isLoading) {
     return (
       <Row
@@ -45,7 +50,7 @@ export default function ManageCartByAdmin() {
   }
   return (
     <div>
-      <h1 className="text-center mt-4 text-4xl font-bold text-gray-50">
+      <h1 className="text-center mt-4 text-4xl font-bold text-[#474E68]">
         All Carts
       </h1>
       <section className="container px-4 mx-auto">
@@ -163,7 +168,7 @@ export default function ManageCartByAdmin() {
 
                         <td className="px-4 py-4 text-sm whitespace-nowrap">
                           <div className="text-gray-50 flex justify-evenly whitespace-no-wrap">
-                            <button>
+                            <button onClick={()=>handleDeleteCart(cart?.id as string)}>
                               <AiFillDelete className="text-red-300 h-6 w-6" />
                             </button>
                             <Link

@@ -72,16 +72,16 @@ export default function CartPage() {
     if (carts?.length === undefined || carts?.length ===0) {
       return (
         <div className="flex justify-center items-center min-h-70vh">
-          <div className="text-2xl font-bold text-gray-50">
+          <p className="text-2xl font-bold text-[#474E68]">
             You have no Cart which is booked
-          </div>
+          </p>
         </div>
       );
     }
     
     return (
       <div className="min-h-70vh p-2">
-        <div className="text-2xl text-center mt-5 mb-8 font-bold text-gray-50">
+        <div className="text-2xl text-center mt-5 mb-8 font-bold text-[#474E68]">
           Your all booked cart
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

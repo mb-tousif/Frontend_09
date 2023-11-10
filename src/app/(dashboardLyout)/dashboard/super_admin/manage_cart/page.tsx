@@ -45,7 +45,7 @@ export default function ManageCartBySuperAdmin() {
   }
   return (
     <div>
-      <h1 className="text-center mt-4 text-4xl font-bold text-gray-50">
+      <h1 className="text-center mt-4 text-4xl font-bold text-[#474E68]">
         All Carts
       </h1>
       <section className="container px-4 mx-auto">

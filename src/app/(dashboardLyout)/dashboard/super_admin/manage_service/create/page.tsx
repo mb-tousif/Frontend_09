@@ -23,7 +23,7 @@ export default function CreateSuperAdminService() {
   };
   return (
     <div>
-      <h1 className="text-center mt-4 text-4xl font-bold text-gray-50">
+      <h1 className="text-center mt-4 text-4xl font-bold text-[#474E68]">
         Create Service
       </h1>
       <div className="flex justify-center sm:p-6 md:p-10">
@@ -41,7 +41,7 @@ export default function CreateSuperAdminService() {
               </label>
               <input
                 className="w-full px-3 py-2 mb-3 text-sm leading-tight bg-gray-700 text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                {...(register("name"))}
+                {...register("name")}
                 type="text"
                 placeholder="Enter Service Title"
               />
@@ -100,7 +100,7 @@ export default function CreateSuperAdminService() {
               <input
                 className="w-full px-3 py-2 mb-3 text-sm leading-tight bg-gray-700 text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                 type="text"
-                {...(register("imgUrl"))}
+                {...register("imgUrl")}
                 placeholder="Enter Service image url"
               />
               {errors.imgUrl && (
@@ -119,7 +119,7 @@ export default function CreateSuperAdminService() {
               <input
                 className="w-full px-3 py-2 mb-3 text-sm leading-tight bg-gray-700 text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                 type="number"
-                {...(register("price"))}
+                {...register("price")}
                 placeholder="Enter Price"
               />
               {errors.price && (
@@ -137,7 +137,7 @@ export default function CreateSuperAdminService() {
               </label>
               <input
                 className="w-full px-3 py-2 mb-3 text-sm leading-tight bg-gray-700 text-gray-50 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                {...(register("schedule"))}
+                {...register("schedule")}
                 type="text"
                 placeholder="Enter Service Schedule"
               />

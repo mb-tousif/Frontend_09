@@ -41,7 +41,7 @@ export default function AvailableService() {
     }
   };
   return (
-    <div className="mt-6">
+    <div className="mt-6 mb-8">
       <div className="antialiased flex flex-col md:mx-36 justify-center items-center h-[100vh]">
         <div className="relative flex w-full flex-col rounded-[10px] bg-[#50577abd] bg-clip-border">
           <div className="flex h-fit w-full items-center justify-between rounded-t-2xl px-4 pb-[20px] pt-4">

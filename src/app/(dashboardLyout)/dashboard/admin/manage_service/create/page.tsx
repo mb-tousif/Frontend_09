@@ -23,7 +23,7 @@ export default function CreateAdminService() {
  };
  return (
    <div>
-     <h1 className="text-center mt-4 text-4xl font-bold text-gray-50">
+     <h1 className="text-center mt-4 text-4xl font-bold text-[#474E68]">
        Create Service
      </h1>
      <div className="flex justify-center sm:p-6 md:p-10">

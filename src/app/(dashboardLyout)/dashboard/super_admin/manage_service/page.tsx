@@ -46,7 +46,7 @@ export default function ManageService() {
   const currentServices = services?.slice(firstServiceIndex, lastServiceIndex);
   return (
     <div>
-      <h1 className="text-center mt-4 text-4xl font-bold text-gray-50">
+      <h1 className="text-center mt-4 text-4xl font-bold text-[#474E68]">
         Manage Services
       </h1>
       <div className="sm:p-8 md:p-12">
