@@ -47,7 +47,7 @@ export default function EditService({ params }: any) {
   }
   return (
     <div>
-      <h1 className="text-center mt-4 text-4xl font-bold text-gray-50">
+      <h1 className="text-center mt-4 text-4xl font-bold text-[#474E68]">
         Edit Service
       </h1>
       <div className="flex justify-center sm:p-6 md:p-10">

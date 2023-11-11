@@ -33,6 +33,9 @@ export default function Service({ params }: any) {
   }
   return (
     <div>
+      <h3 className="text-center text-2xl md:text-4xl font-medium md:font-bold text-[#474E68] sm:ml-6 mt-6 mb-6">
+        Service Detail
+      </h3>
       <main className="my-8">
         <div className="container mx-auto px-6">
           <div className="md:flex md:items-center">
@@ -46,22 +49,22 @@ export default function Service({ params }: any) {
               />
             </div>
             <div className="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
-              <h3 className="text-gray-50 uppercase text-lg">
+              <h3 className="text-[#474E68] uppercase text-lg">
                 {service?.category}
               </h3>
-              <span className="text-gray-50 mt-3">{service?.name}</span>
+              <span className="text-[#474E68] mt-3">{service?.name}</span>
               <hr className="my-3" />
               <div className="mt-2">
-                <label className="text-gray-50 text-sm" htmlFor="count">
+                <label className="text-[#474E68] text-sm" htmlFor="count">
                   Price: ${service?.price}
                 </label>
-                <p className="flex text-gray-50 items-center mt-1">
-                  Time takes: {service?.schedule}
+                <p className="flex text-[#474E68] items-center mt-1">
+                  Duration: {service?.schedule}
                 </p>
               </div>
               <div className="mt-1">
-                <label className="text-gray-50 text-sm" htmlFor="count">
-                  {service?.description}
+                <label className="text-[#474E68] text-sm" htmlFor="count">
+                  Description: {service?.description}
                 </label>
               </div>
               <div className="flex justify-evenly items-center mt-6">
@@ -102,7 +105,7 @@ export default function Service({ params }: any) {
           {/* Show related category data */}
           <ReviewList service={service} />
           <div className="mt-16">
-            <h3 className="text-gray-50 text-2xl font-medium">
+            <h3 className="text-[#474E68] text-2xl font-medium">
               More Same Category Services
             </h3>
             <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">

@@ -101,13 +101,13 @@ export default function ManageUser() {
                   <td className="px-4 py-3">
                     <div className="avatar">
                       <div className="w-12 sm:w-16 md:w-20">
-                        {/* <Image
+                        <Image
                           width={200}
                           height={200}
                           src={`${user?.imgUrl}`}
                           alt="Avatar"
                           className="rounded-full h-14"
-                        /> */}
+                        />
                       </div>
                     </div>
                   </td>

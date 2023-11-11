@@ -69,7 +69,6 @@ export default function Booking() {
         id:bookingId,
         payload: payloadStatus,
       }).unwrap();
-      // console.log(res);
       message.success(res.message);
     } catch (error) {
       // @ts-ignore
@@ -114,19 +113,19 @@ export default function Booking() {
                 />
                 <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                   <div className="mt-5 sm:mt-0">
-                    <h2 className="text-lg font-bold">
+                    <h2 className="text-lg text-gray-50 font-bold">
                       {
                         // @ts-ignore
                         booking?.services?.name
                       }
                     </h2>
-                    <p className="mt-1 text-xs">
+                    <p className="mt-1 text-gray-50 text-xs">
                       {
                         // @ts-ignore
                         booking?.services?.description
                       }
                     </p>
-                    <p className="mt-1 text-sm">
+                    <p className="mt-1 text-gray-50 text-sm">
                       Booking Status: {booking?.status}
                     </p>
                     <div className="flex justify-center p-2">

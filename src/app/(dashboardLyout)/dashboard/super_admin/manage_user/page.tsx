@@ -73,26 +73,26 @@ export default function ManageUser() {
             Manage All Users
           </h1>
         </div>
-        <div className="w-full mx-auto overflow-auto">
-          <table className="table-auto w-full px-5 text-center whitespace-no-wrap">
+        <div className="w-full mx-auto my-auto overflow-auto">
+          <table className="table-auto w-full bg-gray-600 px-5 text-center whitespace-no-wrap">
             <thead>
               <tr>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tl">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm rounded-tl">
                   People
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm">
                   Name
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm">
                   Status
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm">
                   Role
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tr">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm rounded-tr">
                   Update Role
                 </th>
-                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm bg-gray-600 rounded-tr">
+                <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-50 text-sm rounded-tr">
                   Delete User
                 </th>
               </tr>

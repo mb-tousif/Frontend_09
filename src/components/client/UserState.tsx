@@ -7,14 +7,15 @@ import { useEffect, useState } from "react";
 export default function UserState() {
   const { token } = useAppSelector((state) => state.auth);
   const [ hasToken, setHasToken ] = useState(false);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (token) {
       setHasToken(true);
     }
-  }, [token, hasToken]);
-  const dispatch = useAppDispatch();
+  }, [token, hasToken, dispatch]);
   const handleAuth = () => {
     dispatch(removeToken());
+    window.location.reload();
   };
   return (
     <>

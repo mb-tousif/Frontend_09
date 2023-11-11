@@ -52,9 +52,9 @@ export default function ManageService() {
       <div className="sm:p-8 md:p-12">
         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
           <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-            <table className="min-w-full leading-normal">
+            <table className="min-w-full leading-normal bg-[#3c4153ad]">
               <thead>
-                <tr className=" bg-[#3c4153ad]">
+                <tr>
                   <th className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-50 uppercase tracking-wider">
                     Service Details
                   </th>
