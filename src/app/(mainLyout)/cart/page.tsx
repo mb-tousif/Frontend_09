@@ -6,8 +6,10 @@ import {
   useIncrementCartQuantityMutation,
   useDecrementCartQuantityMutation,
 } from "@/redux/api/cartApi";
+import { useCreatePaymentMutation } from '@/redux/api/paymentApi';
 import { useAppSelector } from '@/redux/hooks';
 import { TCart } from '@/types/cart.types';
+import { TPayment } from '@/types/payment.types';
 import { Row, Space, Spin, message } from 'antd';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -20,6 +22,7 @@ export default function CartPage() {
     const [deleteCartById] = useDeleteCartByIdMutation();
     const [incrementCartQuantity] = useIncrementCartQuantityMutation();
     const [ decrementCartQuantity] = useDecrementCartQuantityMutation();
+    const [ createPayment ] = useCreatePaymentMutation();
     useEffect(() => {
       if (!token) {
         router.push("/login");
@@ -64,10 +67,21 @@ export default function CartPage() {
       message.success("Cart quantity decremented successfully");
       // res?.status === 400 && message.error("Cart quantity cannot be decremented");
     };
+
     // @ts-ignore
     const carts = data?.data?.data.filter(
       (cart: any) => cart.status === ENUM_CART_STATUS.BOOKED
     );
+
+    const handlePayment = async (cart:TCart) => {
+      // const paymentData:TPayment = ;
+      const res = await createPayment({
+        cartId: cart?.id,
+        serviceId: cart?.serviceId,
+        amount: Number(cart?.totalPrice),
+      }).unwrap();
+      router.push(`${res?.data}`);
+    };
 
     if (carts?.length === undefined || carts?.length ===0) {
       return (
@@ -136,7 +150,9 @@ export default function CartPage() {
                 </div>
                 {carts.length > 0 ? (
                   <div className="flex item-center justify-between mt-3">
-                    <button className="px-3 bg-[#50577A] hover:bg-[#474E68] py-2 text-xs font-bold uppercase rounded">
+                    <button 
+                      onClick={() => handlePayment(cart)}
+                    className="px-3 bg-[#50577A] hover:bg-[#474E68] py-2 text-xs font-bold uppercase rounded">
                       Buy now
                     </button>
                     <button

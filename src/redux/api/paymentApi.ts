@@ -3,7 +3,6 @@ import { tagTypes } from "../tagTypesList";
 import { baseApi } from "../baseApi";
 import { TPayment } from "@/types/payment.types";
 
-
 export const paymentApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getAllPayment: build.query({
@@ -26,9 +25,9 @@ export const paymentApi = baseApi.injectEndpoints({
       query: (payload: TPayment) => ({
         url: "/payments/create-payment",
         method: "POST",
-        data: payload,
+        body: payload,
       }),
-      invalidatesTags: [tagTypes.Payment],
+      invalidatesTags: [tagTypes.Payment, tagTypes.Notification],
     }),
     // get by id
     getPaymentById: build.query({
