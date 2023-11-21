@@ -7,8 +7,10 @@ import {
   UserOutlined,
   ToolFilled,
   ProfileFilled,
-  ShoppingCartOutlined
+  ShoppingCartOutlined,
+  DollarOutlined,
 } from "@ant-design/icons";
+import { IoMdNotifications } from "react-icons/io";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BsCardChecklist } from "react-icons/bs";
@@ -54,6 +56,13 @@ const logout = () => {
       ),
       icon: <BsCardChecklist />,
       key: `/dashboard/${role}/manage_booking`,
+    },
+    {
+      label: (
+        <Link href={`/dashboard/${role}/manage_payment`}>Manage Payment</Link>
+      ),
+      icon: <DollarOutlined />,
+      key: `/dashboard/${role}/manage_payment`,
     },
     {
       label: <Link href={`/dashboard/${role}/manage_cart`}>Manage Cart</Link>,
@@ -135,6 +144,11 @@ const logout = () => {
       label: <Link href={`/services`}>Services</Link>,
       icon: <TableOutlined />,
       key: `/services`,
+    },
+    {
+      label: <Link href={`/dashboard/${role}/notification`}>Notification</Link>,
+      icon: <IoMdNotifications />,
+      key: `/dashboard/${role}/notification`,
     },
     {
       label: <h2 onClick={logout}>Logout</h2>,

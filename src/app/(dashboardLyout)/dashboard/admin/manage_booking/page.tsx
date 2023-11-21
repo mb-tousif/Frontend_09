@@ -22,7 +22,7 @@ export default function ManageBookingByAdmin() {
   }
   const { data, isLoading } = useGetAllBookingsQuery({...query});
   // @ts-ignore
-  const bookings:TBooking[] = data?.bookings?.data?.data;
+  const bookings:TBooking[] = data?.bookings?.data?.data.filter((booking:TBooking) => booking?.status !== ENUM_BOOKING_STATUS.PURCHASED);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(3);
   const lastServiceIndex = currentPage * postsPerPage;
@@ -130,12 +130,12 @@ export default function ManageBookingByAdmin() {
                           </div>
                         </td>
                         <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
-                          {booking?.status === ENUM_BOOKING_STATUS.CONFIRMED ? (
-                            <div className="inline px-3 py-1 text-sm font-normal rounded-full text-gray-50 gap-x-2 bg-emerald-400">
+                          {booking?.status === ENUM_BOOKING_STATUS.PENDING ? (
+                            <div className="inline px-3 py-1 text-sm font-normal rounded-full text-gray-50 gap-x-2 bg-red-400">
                               {booking?.status}
                             </div>
                           ) : (
-                            <div className="inline px-3 py-1 text-sm font-normal rounded-full text-gray-50 gap-x-2 bg-red-400">
+                            <div className="inline px-3 py-1 text-sm font-normal rounded-full text-gray-50 gap-x-2 bg-emerald-400">
                               {booking?.status}
                             </div>
                           )}

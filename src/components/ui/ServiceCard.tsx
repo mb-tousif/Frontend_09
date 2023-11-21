@@ -53,7 +53,7 @@ export default function ServiceCard({payload}:{payload:TService[] | undefined}) 
                     <p className="text-primary inline-block whitespace-nowrap rounded-xl font-semibold leading-tight">
                       <p className="text-lg">Price: ${service?.price}</p>
                       <p className="text-sm">
-                        Duration: ${service?.schedule}
+                        Duration: {service?.schedule}
                       </p>
                     </p>
                   </div>

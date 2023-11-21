@@ -30,6 +30,14 @@ export const notificationApi = baseApi.injectEndpoints({
       }),
       providesTags: [tagTypes.Notification],
     }),
+    // get by id
+    getNotificationByUserId: build.query({
+      query: (id: string) => ({
+        url: `/notifications/user/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.Notification],
+    }),
     // create
     createNotification: build.mutation({
       query: (payload: TNotification) => ({
@@ -61,6 +69,7 @@ export const notificationApi = baseApi.injectEndpoints({
 export const {
   useGetAllNotificationsQuery,
   useGetNotificationByIdQuery,
+  useGetNotificationByUserIdQuery,
   useCreateNotificationMutation,
   useUpdateNotificationByIdMutation,
   useDeleteNotificationByIdMutation,

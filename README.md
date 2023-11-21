@@ -11,7 +11,7 @@
 ## Description
 <p>This <em>Painting Booking and Management Service</em> web site by using next.js. There are different type of user with different functionality and feature.</p>
 
-- [x] User can choose a service for cart and booked it. they can also see their booking list and review. They can also give a review. In case, they can cancel their booking or delete their booking. Filter option is also available for user to search their service.
+- [x] User can choose a service for cart and booked it. they can also see their booking list and review. They can also give a review. In case, they can cancel their booking or delete their booking. Filter option is also available for user to search their service. User can purchase a service by using <b>sslcommerz</b> payment gateway.
 
 - [x] Admin can add a service and delete a service. They can also make a new admin. They can also see all the booking list and update the status of the booking. Take action about user activity. They can post a blog and delete a blog.
 
@@ -20,6 +20,8 @@
 ## Technology
 - [x] Next.js
 - [x] Typescript
+- [x] SSLCommerz
+- [x] Redux Toolkit
 - [x] Tailwind CSS
 - [x] Ant Design
 - [x] React Hook Form

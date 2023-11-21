@@ -17,6 +17,7 @@ export enum ENUM_BOOKING_STATUS {
   DELIVERED = "Delivered",
   REJECTED = "Rejected",
   COMPLETED = "Completed",
+  PURCHASED = "Purchased",
 }
 
 export enum ENUM_CART_STATUS {
