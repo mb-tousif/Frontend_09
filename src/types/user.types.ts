@@ -23,7 +23,7 @@ export type TUser = {
     role?: string;
     gender?: string;
     status?: string;
-    imgUrl?: string;
+    imgUrl?: any;
     address?: string;
     contact?: string;
     createdAt?: Date;

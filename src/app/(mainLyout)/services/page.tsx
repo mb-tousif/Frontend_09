@@ -68,7 +68,7 @@ export default function Services() {
             onChange={(e) => setSearch(e.target.value)}
             style={{
               width: "80%",
-              color: "black",
+              color: "#fff",
             }}
             className="bg-[#474E68] border-none text-gary-50 placeholder:text-gray-50"
           />

@@ -1,14 +1,23 @@
 "use client"
 import ReviewList from '@/components/ui/ReviewList';
 import { useAllServicesQuery, useGetServiceByIdQuery } from '@/redux/api/serviceApi';
+import { useAppSelector } from '@/redux/hooks';
 import { TService } from '@/types/service.types';
 import { Row, Space, Spin } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
+import { useRouter } from 'next/navigation';
+import React, { use, useEffect } from 'react'
 
 export default function Service({ params }: any) {
-  const { data, isLoading } = useGetServiceByIdQuery(params?.id);
+  const { token } = useAppSelector((state) => state?.auth);
+  const router = useRouter();
+  useEffect(() => {
+    if (!token) {
+      router.push("/login");
+    }
+  }, [token, router]);
+  const { data, isLoading } = useGetServiceByIdQuery(params?.serviceId);
   const service = data?.data as TService;
   // console.log(service);
   const { data: serviceData, isLoading: serviceIsLoading } = useAllServicesQuery({category: service?.category});

@@ -20,9 +20,25 @@ export default function Register() {
   } = useForm<TUser>();
   const onSubmit: SubmitHandler<TUser> = async (data: TUser) => {
     try {
-      const res = await userRegister({ ...data }).unwrap();
-      message.success(res.message);
-      router.push("/login");
+      const image = data.imgUrl[0];
+      const formData = new FormData();
+      formData.append("image", image);
+      const url = `https://api.imgbb.com/1/upload?key=da2f1e176fea3246b58bbffb26e211a6`;
+      data.imgUrl = await fetch(url, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.success) {
+            const photoUrl = result.data.url;
+            return photoUrl;
+          }
+        });
+        console.log(data.imgUrl);
+        const res = await userRegister({ ...data }).unwrap();
+        message.success(res.message);
+        router.push("/login");      
     } catch (err: any) {
       message.error(err.data.message);
     }
@@ -160,25 +176,6 @@ export default function Register() {
                   )}
                 </div>
               </div>
-              <div className="mb-4">
-                <label
-                  className="block mb-2 text-sm font-bold text-gray-50"
-                  htmlFor="name"
-                >
-                  Profile Picture
-                </label>
-                <input
-                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-50 bg-[#263238] border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                  {...register("imgUrl", { required: true })}
-                  type="text"
-                  placeholder="Enter Your Name"
-                />
-                {errors.imgUrl && (
-                  <p className="text-rose-600 text-center text-sm">
-                    Profile picture is required.
-                  </p>
-                )}
-              </div>
               <div className="mb-6">
                 <label className="inline-block mb-2 mr-2 text-gray-50">
                   Gender:
@@ -226,9 +223,8 @@ export default function Register() {
                   </p>
                 )}
               </div>
-              {/* upload image later
               <div className="mb-4">
-                <label className="flex flex-col items-center px-4 py-6 bg-white text-[#03A776] rounded-lg shadow border border-blue cursor-pointer hover:bg-blue">
+                <label className="flex flex-col items-center px-4 py-6 bg-[#263238] text-gray-50 rounded-lg shadow border border-blue cursor-pointer hover:bg-blue">
                   <svg
                     className="w-8 h-8"
                     fill="currentColor"
@@ -249,7 +245,7 @@ export default function Register() {
                     Upload your profile picture.
                   </p>
                 )}
-              </div> */}
+              </div>
               {/* <div className="mb-6">
                 <label className="inline-block mb-2 mr-2 text-gray-700">
                   User Role

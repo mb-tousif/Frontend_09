@@ -9,7 +9,12 @@ export default function CompanyInfo() {
       <div className="w-full draggable">
         <div className="container flex flex-col items-center gap-16 mx-auto my-8">
           <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            <div className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main">
+            <div
+              data-aos="flip-up"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+              className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main"
+            >
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +35,12 @@ export default function CompanyInfo() {
                 painting@service.com
               </a>
             </div>
-            <div className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main">
+            <div
+              data-aos="flip-down"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+              className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main"
+            >
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +61,12 @@ export default function CompanyInfo() {
                 +516-486-5135
               </a>
             </div>
-            <div className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main">
+            <div
+              data-aos="flip-up"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+              className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main"
+            >
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

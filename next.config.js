@@ -6,7 +6,10 @@ const nextConfig = {
       "img.freepik.com",
       "images.unsplash.com",
       "media.wired.com",
-      "www.wired.com",],
+      "www.wired.com",
+      "i.ibb.co",
+      "cdn.rareblocks.xyz",
+    ],
   },
 };
 

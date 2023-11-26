@@ -3,6 +3,7 @@ import { useGetAllBlogsQuery } from '@/redux/api/blogApi';
 import { TBlog } from '@/types/blog.types';
 import { Row, Space, Spin } from 'antd';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Blog() {
   const { data, isLoading } = useGetAllBlogsQuery({});
@@ -41,31 +42,22 @@ export default function Blog() {
             <h1 className="font-semibold text-gray-50 leading-none text-xl mt-1 capitalize">
               {blog?.title}
             </h1>
-            <div className="max-w-full mt-2">
-              <p className="text-base font-medium tracking-wide text-gray-50 mt-1">
-                {blog?.content}
-              </p>
-            </div>
-            <div className="flex justify-evenly space-x-2 mt-10">
-              <Image
-                width={500}
-                height={500}
-                // @ts-ignore
-                src={blog?.users?.imgUrl}
-                className="w-12 h-12 object-cover object-center rounded-full ease-in-out duration-700 hover:scale-125"
-                alt="Blog Author"
-              />
-              <div>
-                <p className="text-gray-50 text-center font-semibold">
-                  {/* @ts-ignore */}
-                  Author: {blog?.users?.name}
-                </p>
-                <p className="text-gray-50 text-center font-semibold text-sm">
-                  {/* @ts-ignore */}
-                  Posted: {blog?.createdAt.split("T")[0]}
-                </p>
-              </div>
-            </div>
+                <Link
+                  href={`/blogs/${blog?.id}`}
+                  className="py-3 flex mt-3 items-center justify-center w-full font-semibold rounded-md bg-[#2f3e8a] hover:bg-[#474E68] text-gray-50 transition duration-300 ease-in-out"
+                >
+                  Read More
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    className=" h-5 w-5 ms-3"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                    />
+                  </svg>
+                </Link>
           </div>
         ))}
       </div>
