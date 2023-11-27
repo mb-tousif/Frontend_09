@@ -3,18 +3,25 @@ import React from 'react'
 export default function CompanyInfo() {
   return (
     <div className="container flex text-gray-50 p-3 flex-col mx-auto">
-      <h1 className="text-center text-2xl md:text-4xl font-medium md:font-bold text-[#474E68]">
+      <h1
+        data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        data-aos-duration="600"
+        className="text-center text-2xl md:text-4xl font-medium md:font-bold text-[#474E68]"
+      >
         Our Contact Info
       </h1>
-      <div className="w-full draggable">
+      <div
+        className="w-full draggable"
+        data-aos="fade-left"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        data-aos-duration="600"
+      >
         <div className="container flex flex-col items-center gap-16 mx-auto my-8">
           <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            <div
-              data-aos="flip-up"
-              data-aos-offset="300"
-              data-aos-easing="ease-in-sine"
-              className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main"
-            >
+            <div className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -35,12 +42,7 @@ export default function CompanyInfo() {
                 painting@service.com
               </a>
             </div>
-            <div
-              data-aos="flip-down"
-              data-aos-offset="300"
-              data-aos-easing="ease-in-sine"
-              className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main"
-            >
+            <div className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -61,12 +63,7 @@ export default function CompanyInfo() {
                 +516-486-5135
               </a>
             </div>
-            <div
-              data-aos="flip-up"
-              data-aos-offset="300"
-              data-aos-easing="ease-in-sine"
-              className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main"
-            >
+            <div className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

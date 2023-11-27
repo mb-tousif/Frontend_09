@@ -21,7 +21,7 @@ export default function CartPage() {
     const { data, isLoading } =useGetCartByUserIdQuery({});
     const [deleteCartById] = useDeleteCartByIdMutation();
     const [incrementCartQuantity] = useIncrementCartQuantityMutation();
-    const [ decrementCartQuantity] = useDecrementCartQuantityMutation();
+    const [ decrementCartQuantity, { isError, isSuccess }] = useDecrementCartQuantityMutation();
     const [ createPayment ] = useCreatePaymentMutation();
     useEffect(() => {
       if (!token) {
@@ -62,12 +62,16 @@ export default function CartPage() {
       }
     };
 
-    const handleDecrementCart = (id: string) => {
-      decrementCartQuantity(id)
-      message.success("Cart quantity decremented successfully");
-      // res?.status === 400 && message.error("Cart quantity cannot be decremented");
+    const handleDecrementCart =async (id: string) => {
+      await decrementCartQuantity(id);
+      if (isSuccess) {
+        message.success("Cart quantity decremented successfully");
+      }
+      if (isError) {
+        message.error("Cart quantity cannot be decremented");
+      }
     };
-
+    
     // @ts-ignore
     const carts = data?.data?.data.filter(
       (cart: any) => cart.status === ENUM_CART_STATUS.BOOKED

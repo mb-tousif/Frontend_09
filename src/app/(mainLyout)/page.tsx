@@ -36,13 +36,23 @@ export default function Home() {
       <HeroBanner />
       <ServiceSection />
       <div className="mt-6">
-        <h1 className="text-center text-2xl md:text-4xl font-medium md:font-bold text-[#474E68]">
+        <h1
+          data-aos="fade-left"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="200"
+          className="text-center text-2xl md:text-4xl font-medium md:font-bold text-[#474E68]"
+        >
           Available Services
         </h1>
         <ServiceCard payload={payload} />
       </div>
       <div className="mt-6">
-        <h1 className="text-center text-2xl md:text-4xl font-medium md:font-bold text-[#474E68]">
+        <h1
+          data-aos="fade-left"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="200"
+          className="text-center text-2xl md:text-4xl font-medium md:font-bold text-[#474E68]"
+        >
           Upcoming Services
         </h1>
         <ServiceCard payload={upcomingPayload} />

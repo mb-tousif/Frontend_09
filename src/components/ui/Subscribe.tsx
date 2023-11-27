@@ -28,7 +28,13 @@ export default function Subscribe() {
     <div className="flex justify-center">
       <div className="flex flex-col max-w-6xl md:h-56 bg-[#474E68] md:bg-[#50577A] rounded-lg shadow-lg overflow-hidden md:flex-row my-10">
         <div className="md:flex items-center justify-center md:w-1/2 md:bg-[#474E68]">
-          <div className="py-6 px-8 md:py-0 text-gray-50">
+          <div
+            data-aos="fade-left"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+            data-aos-duration="600"
+            className="py-6 px-8 md:py-0 text-gray-50"
+          >
             <h2 className="text-2xl font-bold">Sign Up For News Letter</h2>
             <p className="mt-2">
               Painting Service Ltd is the best partner for your painting.

@@ -6,10 +6,21 @@ import React from 'react'
 export default function ServiceSection() {
   return (
     <div className="p-2 md:p-6">
-      <h1 className="text-center text-2xl mb-6 md:text-4xl font-medium md:font-bold text-[#474E68]">
+      <h1
+        data-aos="fade-left"
+        data-aos-easing="ease-in-sine"
+        data-aos-duration="600"
+        className="text-center text-2xl mb-6 md:text-4xl font-medium md:font-bold text-[#474E68]"
+      >
         Our Service Category
       </h1>
-      <div className="grid text-gray-50 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-10">
+      <div
+        data-aos="fade-left"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        data-aos-duration="600"
+        className="grid text-gray-50 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-10"
+      >
         {services.map((service) => (
           <div
             key={service.id}

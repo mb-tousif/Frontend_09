@@ -28,7 +28,7 @@ export default function BlogDetails({ params }: any) {
     <div className="antialiased p-4">
         <div className="md:p-8 p-2 bg-[#50577A] rounded-3xl">
           <Image
-            className="rounded-lg w-full"
+            className="rounded-lg h-52 w-full"
             width={500}
             height={500}
             src={blog?.imgUrl}
@@ -45,7 +45,7 @@ export default function BlogDetails({ params }: any) {
               {blog?.content}
             </p>
           </div>
-          <div className="flex justify-evenly space-x-2 mt-10">
+          <div className="flex justify-evenly md:justify-center space-x-2 mt-10">
             <Image
               width={500}
               height={500}

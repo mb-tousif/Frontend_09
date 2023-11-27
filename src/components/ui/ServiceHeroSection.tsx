@@ -20,7 +20,13 @@ export default function ServiceHeroSection() {
           alt="Painting Service"
         />
         <div className="absolute sm:bottom-8 bottom-4 pr-10 sm:pr-0 left-4 sm:left-8 flex justify-start items-start">
-          <p className="text-3xl sm:text-4xl font-semibold leading-9 text-white">
+          <p
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+            data-aos-duration="600"
+            className="text-3xl sm:text-4xl font-semibold leading-9 text-white"
+          >
             Affordable Elegance: Painting Dreams on a Budget
           </p>
         </div>

@@ -5,7 +5,12 @@ export default function OurClient() {
   return (
     <div className="px-4 mx-auto max-w-7xl sm:px-6 mt-8 lg:px-8 text-center">
       <div className="mx-auto p-4 text-center bg-[#50577A] rounded-2xl pb-8">
-        <h2 className="text-2xl font-normal text-gray-50 sm:text-4xl sm:leading-tight">
+        <h2
+        data-aos="fade-left"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        data-aos-duration="600" 
+        className="text-2xl font-normal text-gray-50 sm:text-4xl sm:leading-tight">
             Our Clients Who Trust Us
         </h2>
         <div className="grid items-center max-w-4xl grid-cols-2 gap-4 mx-auto mt-8 md:mt-20 md:grid-cols-4">

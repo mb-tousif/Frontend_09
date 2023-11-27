@@ -89,7 +89,7 @@ export default function Service({ params }: any) {
                 }
                 <Link href={`/cart/${service?.id}`}>
                   <button className="flex bg-[#50577A] hover:bg-[#474E68] border-none text-gray-50 rounded-md p-2">
-                    add to cart
+                    Add to cart
                     <svg
                       className="h-5 w-5 ml-2"
                       fill="none"

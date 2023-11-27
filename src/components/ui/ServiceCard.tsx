@@ -6,7 +6,11 @@ import React from "react";
 export default function ServiceCard({payload}:{payload:TService[] | undefined}) {
   const services = payload;
   return (
-    <div className="grid text-gray-50 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 p-2 mt-6">
+    <div 
+      data-aos="fade-right"
+      data-aos-easing="ease-in-sine"
+      data-aos-duration="600" 
+      className="grid text-gray-50 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 p-2 mt-6">
       {services?.map((service) => (
         <div
           key={service?.id}
