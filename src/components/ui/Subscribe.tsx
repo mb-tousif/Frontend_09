@@ -30,7 +30,6 @@ export default function Subscribe() {
         <div className="md:flex items-center justify-center md:w-1/2 md:bg-[#474E68]">
           <div
             data-aos="fade-left"
-            data-aos-offset="300"
             data-aos-easing="ease-in-sine"
             data-aos-duration="600"
             className="py-6 px-8 md:py-0 text-gray-50"

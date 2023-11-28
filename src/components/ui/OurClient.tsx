@@ -6,7 +6,6 @@ export default function OurClient() {
       <div className="mx-auto p-4 text-center bg-[#50577A] rounded-2xl pb-8">
         <h2
         data-aos="fade-left"
-        data-aos-offset="300"
         data-aos-easing="ease-in-sine"
         data-aos-duration="600" 
         className="text-2xl font-normal text-gray-50 sm:text-4xl sm:leading-tight">
