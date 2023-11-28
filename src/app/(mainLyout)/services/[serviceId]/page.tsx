@@ -10,13 +10,6 @@ import { useRouter } from 'next/navigation';
 import React, { use, useEffect } from 'react'
 
 export default function Service({ params }: any) {
-  const { token } = useAppSelector((state) => state?.auth);
-  const router = useRouter();
-  useEffect(() => {
-    if (!token) {
-      router.push("/login");
-    }
-  }, [token, router]);
   const { data, isLoading } = useGetServiceByIdQuery(params?.serviceId);
   const service = data?.data as TService;
   // console.log(service);
