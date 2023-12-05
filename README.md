@@ -26,3 +26,4 @@
 - [x] Ant Design
 - [x] React Hook Form
 - [x] Zod
+- [x] React Hook Form Zod Resolver
