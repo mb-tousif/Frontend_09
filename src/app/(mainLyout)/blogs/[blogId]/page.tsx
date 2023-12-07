@@ -7,8 +7,6 @@ import Image from 'next/image';
 export default function BlogDetails({ params }: any) {
   const { data, isLoading } = useGetBlogByIdQuery(params?.blogId);
   const blog = data?.data as TBlog;
-  console.log(blog);
-  
   if (isLoading ) {
     return (
       <Row
@@ -25,10 +23,10 @@ export default function BlogDetails({ params }: any) {
     );
   }
   return (
-    <div className="antialiased p-4">
+    <div className="p-4 container">
         <div className="md:p-8 p-2 bg-[#50577A] rounded-3xl">
           <Image
-            className="rounded-lg h-52 w-full"
+            className="rounded-lg h-52 sm:h-[400px] w-full"
             width={500}
             height={500}
             src={blog?.imgUrl}
