@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CompanyInfo() {
   return (
-    <div className="container flex text-gray-50 p-3 flex-col mx-auto">
+    <div className="container min-h-70vh flex text-gray-50 p-3 flex-col mx-auto">
       <h1
         data-aos="fade-right"
         data-aos-offset="300"
@@ -42,7 +42,7 @@ export default function CompanyInfo() {
                 painting@service.com
               </a>
             </div>
-            <div className="flex flex-col items-center gap-3 px-8 py-10 bg-[#50577A] rounded-3xl shadow-main">
+            <div className="flex flex-col items-center gap-3 px-8 py-4 bg-[#50577A] rounded-3xl shadow-main">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
