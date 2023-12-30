@@ -1,4 +1,5 @@
 "use client";
+import Brand from "@/components/ui/Feature";
 import CompanyInfo from "@/components/ui/CompanyInfo";
 import HeroBanner from "@/components/ui/HeroBanner";
 import OurClient from "@/components/ui/OurClient";
@@ -7,6 +8,7 @@ import ServiceSection from "@/components/ui/ServiceSection";
 import Subscribe from "@/components/ui/Subscribe";
 import { useGetAvailableServicesQuery, useGetUpcomingServicesQuery } from "@/redux/api/serviceApi";
 import { Row, Space, Spin } from "antd";
+import Feature from "@/components/ui/Feature";
 
 export default function Home() {
   // const query: Record<string, any> = {};
@@ -40,7 +42,7 @@ export default function Home() {
           data-aos="fade-left"
           data-aos-easing="ease-in-sine"
           data-aos-duration="200"
-          className="text-center text-2xl md:text-4xl font-medium md:font-bold text-[#474E68]"
+          className="sm:text-3xl first-letter:text-4xl sm:first-letter:text-5xl md:first-letter:text-6xl text-center md:text-4xl text-lg font-medium mb-6 text-[#474E68]"
         >
           Available Services
         </h1>
@@ -51,12 +53,13 @@ export default function Home() {
           data-aos="fade-left"
           data-aos-easing="ease-in-sine"
           data-aos-duration="200"
-          className="text-center text-2xl md:text-4xl font-medium md:font-bold text-[#474E68]"
+          className="sm:text-3xl first-letter:text-4xl sm:first-letter:text-5xl md:first-letter:text-6xl text-center md:text-4xl text-lg font-medium mb-6 text-[#474E68]"
         >
           Upcoming Services
         </h1>
         <ServiceCard payload={upcomingPayload} />
       </div>
+      <Feature />
       <OurClient />
       <Subscribe />
       <CompanyInfo />

@@ -26,7 +26,7 @@ export default function Subscribe() {
   };
   return (
     <div className="flex justify-center">
-      <div className="flex flex-col max-w-6xl md:h-56 bg-[#474E68] md:bg-[#50577A] rounded-lg shadow-lg overflow-hidden md:flex-row my-10">
+      <div className="container flex flex-col max-w-6xl lg:min-h-[350px] md:min-h-[300px] md:h-56 bg-[#474E68] md:bg-[#50577A] rounded-lg shadow-lg overflow-hidden md:flex-row my-10">
         <div className="md:flex items-center justify-center md:w-1/2 md:bg-[#474E68]">
           <div
             data-aos="fade-left"

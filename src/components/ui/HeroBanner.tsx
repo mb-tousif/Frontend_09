@@ -12,7 +12,7 @@ export default function HeroBanner() {
               data-aos-offset="300"
               data-aos-easing="ease-in-sine"
               data-aos-duration="600"
-              className="sm:text-3xl md:text-5xl text-lg font-medium mb-6"
+              className="sm:text-3xl first-letter:text-4xl sm:first-letter:text-5xl md:first-letter:text-6xl text-center md:text-4xl text-lg font-medium mb-6"
             >
               Welcome to Painting Service Ltd.
             </h1>

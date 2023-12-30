@@ -8,10 +8,10 @@ export default function OurClient() {
         data-aos="fade-left"
         data-aos-easing="ease-in-sine"
         data-aos-duration="600" 
-        className="text-2xl font-normal text-gray-50 sm:text-4xl sm:leading-tight">
+        className="text-2xl font-normal pt-8 text-gray-50 sm:text-4xl sm:leading-tight">
             Our Clients Who Trust Us
         </h2>
-        <div className="grid items-center max-w-4xl grid-cols-2 gap-4 mx-auto mt-8 md:mt-20 md:grid-cols-4">
+        <div className="grid items-center max-w-4xl grid-cols-2 gap-4 mx-auto mt-2 md:mt-20 md:grid-cols-4">
           <div className="bg-white rounded-2xl h-12 flex shadow-lg items-center justify-center">
             <Image
               width={200}

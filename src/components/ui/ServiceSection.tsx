@@ -10,7 +10,7 @@ export default function ServiceSection() {
         data-aos="fade-left"
         data-aos-easing="ease-in-sine"
         data-aos-duration="600"
-        className="text-center text-2xl mb-6 md:text-4xl font-medium md:font-bold text-[#474E68]"
+        className="sm:text-3xl first-letter:text-4xl sm:first-letter:text-5xl md:first-letter:text-6xl text-center md:text-4xl text-lg font-medium mb-6 text-[#474E68]"
       >
         Our Service Category
       </h1>
