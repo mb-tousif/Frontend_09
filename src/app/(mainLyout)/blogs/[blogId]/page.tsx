@@ -49,7 +49,7 @@ export default function BlogDetails({ params }: any) {
               height={500}
               // @ts-ignore
               src={blog?.users?.imgUrl}
-              className="w-12 h-12 object-cover object-center rounded-full ease-in-out duration-700 hover:scale-125"
+              className="w-12 h-12 object-cover object-center rounded-full ease-in-out duration-700 hover:scale-125 aspect-video"
               alt="Blog Author"
             />
             <div>

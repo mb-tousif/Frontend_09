@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function HeroBanner() {
   return (
     <div className="min-h-70vh flex items-center">
-      <div className="bg-main sm:m-3 md:m-6 bg-cover w-full rounded-3xl">
+      <div className="bg-main aspect-auto sm:m-3 md:m-6 bg-cover w-full rounded-3xl">
         <div className="w-full bg-[#141414b0] rounded-3xl p-4 py-24">
           <div className="container mx-auto text-center text-gray-50">
             <h1

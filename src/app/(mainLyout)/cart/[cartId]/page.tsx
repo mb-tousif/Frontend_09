@@ -54,7 +54,7 @@ export default function AddToCart({ params }: {params: any}) {
             height={200}
             src={service?.imgUrl}
             alt="product-image"
-            className="w-full h-48 rounded-lg m-3 sm:w-4/6"
+            className="w-full h-48 rounded-lg m-3 sm:w-4/6 aspect-video"
           />
         </div>
         <div className="flex justify-center flex-col text-center">

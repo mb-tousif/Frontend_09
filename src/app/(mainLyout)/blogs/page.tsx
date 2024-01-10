@@ -30,7 +30,7 @@ export default function Blog() {
         {blogs?.map((blog: TBlog) => (
           <div key={blog.id} className="md:p-8 p-2 bg-[#50577A] rounded-3xl">
             <Image
-              className="rounded-lg w-full ease-in-out duration-700 hover:scale-110"
+              className="rounded-lg w-full ease-in-out duration-700 hover:scale-110 aspect-video"
               width={500}
               height={500}
               src={blog?.imgUrl}

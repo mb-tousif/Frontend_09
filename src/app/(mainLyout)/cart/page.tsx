@@ -109,7 +109,7 @@ export default function CartPage() {
               className="sm:flex max-w-3xl rounded-lg mx-auto my-auto min-h-50vh bg-[#3c4153ad]"
             >
               <div
-                className="sm:w-3/5 bg-cover"
+                className="sm:w-3/5 bg-cover aspect-video"
                 style={{
                   // @ts-ignore
                   backgroundImage: `url(${cart?.services?.imgUrl})`,
