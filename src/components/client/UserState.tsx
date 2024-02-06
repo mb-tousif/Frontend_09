@@ -2,11 +2,13 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { removeToken } from "@/redux/slices/authSlice";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function UserState() {
   const { token } = useAppSelector((state) => state.auth);
   const [ hasToken, setHasToken ] = useState(false);
+  const router = useRouter();
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (token) {
@@ -15,7 +17,8 @@ export default function UserState() {
   }, [token, hasToken, dispatch]);
   const handleAuth = () => {
     dispatch(removeToken());
-    window.location.reload();
+    setHasToken(false);
+    router.push("/");
   };
   return (
     <>

@@ -9,6 +9,7 @@ export default function Blog() {
   const { data, isLoading } = useGetAllBlogsQuery({});
   // @ts-ignore
   const blogs=data?.blogs?.data?.data
+  
   if (isLoading) {
     return (
       <Row
